@@ -1,0 +1,38 @@
+[
+  {
+    "id": "njdot",
+    "name": "NJ Department of Transportation",
+    "type": "state",
+    "county": null,
+    "municipality": null,
+    "email": null,
+    "formUrl": "https://www.njdotproblemreporting.nj.gov/",
+    "phone": "1-800-768-4653 (1-800-POTHOLE)",
+    "sourceUrl": "https://www.njdotproblemreporting.nj.gov/",
+    "verified": false
+  },
+  {
+    "id": "somerset-county",
+    "name": "Somerset County Engineering Division",
+    "type": "county",
+    "county": "Somerset",
+    "municipality": null,
+    "email": null,
+    "formUrl": "https://www.somersetcountynj.gov/government/public-works/roads-bridges/road-complaint",
+    "phone": "908-231-7000 (county main line)",
+    "sourceUrl": "https://www.somersetcountynj.gov/government/public-works/engineering",
+    "verified": false
+  },
+  {
+    "id": "hillsborough-township",
+    "name": "Hillsborough Township Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Hillsborough Township",
+    "email": "dpw@hillsboroughnj.gov",
+    "formUrl": null,
+    "phone": "908-369-4313 option 6",
+    "sourceUrl": "https://hillsboroughnj.gov/departments/dpw",
+    "verified": false
+  }
+]

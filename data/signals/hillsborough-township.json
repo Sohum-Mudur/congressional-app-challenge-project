@@ -1,0 +1,934 @@
+[
+  {
+    "id": "osm-105288618",
+    "osmNodeIds": [
+      105288618
+    ],
+    "lat": 40.523563,
+    "lng": -74.628032,
+    "name": "Partridge Road & US 206",
+    "roads": [
+      {
+        "name": "Partridge Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105304913",
+    "osmNodeIds": [
+      105304913,
+      9484740217,
+      13495758130,
+      13495758131
+    ],
+    "lat": 40.499508,
+    "lng": -74.646168,
+    "name": "US 206",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105304942",
+    "osmNodeIds": [
+      105304942
+    ],
+    "lat": 40.500523,
+    "lng": -74.648437,
+    "name": "Amwell Road",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105328066",
+    "osmNodeIds": [
+      105328066
+    ],
+    "lat": 40.501655,
+    "lng": -74.641229,
+    "name": "Piney Woods Drive & Amwell Road",
+    "roads": [
+      {
+        "name": "Piney Woods Drive",
+        "ref": null
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105330026",
+    "osmNodeIds": [
+      105330026
+    ],
+    "lat": 40.496616,
+    "lng": -74.620381,
+    "name": "Amwell Road & Willow Road",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Willow Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105330063",
+    "osmNodeIds": [
+      105330063
+    ],
+    "lat": 40.477761,
+    "lng": -74.626814,
+    "name": "Willow Road & Hillsborough Road",
+    "roads": [
+      {
+        "name": "Willow Road",
+        "ref": null
+      },
+      {
+        "name": "Hillsborough Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105331257",
+    "osmNodeIds": [
+      105331257,
+      11177631091,
+      11177631093,
+      13591233707,
+      13591233708,
+      13591233709
+    ],
+    "lat": 40.478109,
+    "lng": -74.655273,
+    "name": "Mountain View Road & US 206 & Peter J. Biondi Memorial Bypass",
+    "roads": [
+      {
+        "name": "Mountain View Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "Peter J. Biondi Memorial Bypass",
+        "ref": "US 206 BYP"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105333670",
+    "osmNodeIds": [
+      105333670
+    ],
+    "lat": 40.502558,
+    "lng": -74.693685,
+    "name": "East Mountain Road & Amwell Road",
+    "roads": [
+      {
+        "name": "East Mountain Road",
+        "ref": null
+      },
+      {
+        "name": "East Mountain Road",
+        "ref": "CR 677"
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 677",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105333709",
+    "osmNodeIds": [
+      105333709
+    ],
+    "lat": 40.502989,
+    "lng": -74.674194,
+    "name": "Beekman Lane & Amwell Road",
+    "roads": [
+      {
+        "name": "Beekman Lane",
+        "ref": null
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105334000",
+    "osmNodeIds": [
+      105334000,
+      105334002
+    ],
+    "lat": 40.518339,
+    "lng": -74.642478,
+    "name": "Farm Road & Triangle Road",
+    "roads": [
+      {
+        "name": "Farm Road",
+        "ref": null
+      },
+      {
+        "name": "Triangle Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105344946",
+    "osmNodeIds": [
+      105344946
+    ],
+    "lat": 40.533536,
+    "lng": -74.62082,
+    "name": "Camplain Road & US 206",
+    "roads": [
+      {
+        "name": "Camplain Road",
+        "ref": null
+      },
+      {
+        "name": "US 206",
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105348836",
+    "osmNodeIds": [
+      105348836
+    ],
+    "lat": 40.504572,
+    "lng": -74.672981,
+    "name": "Beekman Lane & South Branch Road",
+    "roads": [
+      {
+        "name": "Beekman Lane",
+        "ref": null
+      },
+      {
+        "name": "South Branch Road",
+        "ref": "CR 625"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 625",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373597",
+    "osmNodeIds": [
+      105373597
+    ],
+    "lat": 40.527462,
+    "lng": -74.626715,
+    "name": "Valley Road & US 206",
+    "roads": [
+      {
+        "name": "Valley Road",
+        "ref": null
+      },
+      {
+        "name": "US 206",
+        "ref": "US 206"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373635",
+    "osmNodeIds": [
+      105373635
+    ],
+    "lat": 40.517813,
+    "lng": -74.631677,
+    "name": "Triangle Road & US 206 & Falcon Road",
+    "roads": [
+      {
+        "name": "Triangle Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "Falcon Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373693",
+    "osmNodeIds": [
+      105373693
+    ],
+    "lat": 40.508112,
+    "lng": -74.637447,
+    "name": "Andria Avenue & Hamilton Road & US 206",
+    "roads": [
+      {
+        "name": "Andria Avenue",
+        "ref": null
+      },
+      {
+        "name": "Hamilton Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373716",
+    "osmNodeIds": [
+      105373716
+    ],
+    "lat": 40.505887,
+    "lng": -74.642776,
+    "name": "New Amwell Road & US 206",
+    "roads": [
+      {
+        "name": "New Amwell Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373726",
+    "osmNodeIds": [
+      105373726
+    ],
+    "lat": 40.502352,
+    "lng": -74.644734,
+    "name": "Amwell Road & US 206",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373741",
+    "osmNodeIds": [
+      105373741,
+      105373748
+    ],
+    "lat": 40.494103,
+    "lng": -74.648431,
+    "name": "Raider Boulevard & US 206",
+    "roads": [
+      {
+        "name": "Raider Boulevard",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373750",
+    "osmNodeIds": [
+      105373750
+    ],
+    "lat": 40.488938,
+    "lng": -74.650655,
+    "name": "Homestead Road & US 206",
+    "roads": [
+      {
+        "name": "Homestead Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373758",
+    "osmNodeIds": [
+      105373758
+    ],
+    "lat": 40.482595,
+    "lng": -74.653362,
+    "name": "Hillsborough Road & US 206",
+    "roads": [
+      {
+        "name": "Hillsborough Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390538",
+    "osmNodeIds": [
+      105390538,
+      290053879
+    ],
+    "lat": 40.547846,
+    "lng": -74.614263,
+    "name": "Dukes Parkway West & US 206",
+    "roads": [
+      {
+        "name": "Dukes Parkway West",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390552",
+    "osmNodeIds": [
+      105390552,
+      307877536,
+      12329374433,
+      12330002071
+    ],
+    "lat": 40.541606,
+    "lng": -74.613306,
+    "name": "US 206 & Brooks Boulevard",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "Brooks Boulevard",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390569",
+    "osmNodeIds": [
+      105390569
+    ],
+    "lat": 40.538118,
+    "lng": -74.615824,
+    "name": "Brown Avenue & US 206",
+    "roads": [
+      {
+        "name": "Brown Avenue",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105393987",
+    "osmNodeIds": [
+      105393987
+    ],
+    "lat": 40.520528,
+    "lng": -74.613825,
+    "name": "Sunnymeade Road & Falcon Road",
+    "roads": [
+      {
+        "name": "Sunnymeade Road",
+        "ref": null
+      },
+      {
+        "name": "Falcon Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105395133",
+    "osmNodeIds": [
+      105395133,
+      105395137
+    ],
+    "lat": 40.496082,
+    "lng": -74.653641,
+    "name": "Raider Boulevard & Homestead Road",
+    "roads": [
+      {
+        "name": "Raider Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Homestead Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105399400",
+    "osmNodeIds": [
+      105399400
+    ],
+    "lat": 40.541826,
+    "lng": -74.640038,
+    "name": "New Centre Road & Roycefield Road & Dukes Parkway West",
+    "roads": [
+      {
+        "name": "New Centre Road",
+        "ref": "CR 627"
+      },
+      {
+        "name": "Roycefield Road",
+        "ref": null
+      },
+      {
+        "name": "Dukes Parkway West",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 627",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105411910",
+    "osmNodeIds": [
+      105411910,
+      105411921
+    ],
+    "lat": 40.498353,
+    "lng": -74.655349,
+    "name": "Auten Road & Raider Boulevard & Amwell Road",
+    "roads": [
+      {
+        "name": "Auten Road",
+        "ref": null
+      },
+      {
+        "name": "Raider Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105412136",
+    "osmNodeIds": [
+      105412136
+    ],
+    "lat": 40.499401,
+    "lng": -74.602187,
+    "name": "Amwell Road & Amsterdam Drive",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Amsterdam Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105425712",
+    "osmNodeIds": [
+      105425712,
+      105425714,
+      105425721,
+      105425725
+    ],
+    "lat": 40.506733,
+    "lng": -74.660664,
+    "name": "New Amwell Road & Auten Road",
+    "roads": [
+      {
+        "name": "New Amwell Road",
+        "ref": null
+      },
+      {
+        "name": "Auten Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105425846",
+    "osmNodeIds": [
+      105425846
+    ],
+    "lat": 40.506624,
+    "lng": -74.591269,
+    "name": "Hamilton Road & Somerset Courthouse Road",
+    "roads": [
+      {
+        "name": "Hamilton Road",
+        "ref": null
+      },
+      {
+        "name": "Somerset Courthouse Road",
+        "ref": "CR 533 Bypass"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533 Bypass",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105444676",
+    "osmNodeIds": [
+      105444676,
+      105444678,
+      105444812,
+      105444817
+    ],
+    "lat": 40.514573,
+    "lng": -74.660124,
+    "name": "Triangle Road & Auten Road",
+    "roads": [
+      {
+        "name": "Triangle Road",
+        "ref": null
+      },
+      {
+        "name": "Auten Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-492929598",
+    "osmNodeIds": [
+      492929598
+    ],
+    "lat": 40.498931,
+    "lng": -74.632421,
+    "name": "Service Road & Amwell Road",
+    "roads": [
+      {
+        "name": "Service Road",
+        "ref": null
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621057912",
+    "osmNodeIds": [
+      621057912,
+      621057914
+    ],
+    "lat": 40.554485,
+    "lng": -74.61536,
+    "name": "Dukes Parkway East & US 206",
+    "roads": [
+      {
+        "name": "Dukes Parkway East",
+        "ref": "CR 608"
+      },
+      {
+        "name": "Dukes Parkway East",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-623808661",
+    "osmNodeIds": [
+      623808661,
+      3251027096
+    ],
+    "lat": 40.480554,
+    "lng": -74.644018,
+    "name": "Hillsborough Road & Peter J. Biondi Memorial Bypass",
+    "roads": [
+      {
+        "name": "Hillsborough Road",
+        "ref": null
+      },
+      {
+        "name": "Peter J. Biondi Memorial Bypass",
+        "ref": "US 206 BYP"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206 BYP",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-1859679199",
+    "osmNodeIds": [
+      1859679199
+    ],
+    "lat": 40.518881,
+    "lng": -74.628238,
+    "name": "Falcon Road & Opie Road",
+    "roads": [
+      {
+        "name": "Falcon Road",
+        "ref": null
+      },
+      {
+        "name": "Opie Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-2734980942",
+    "osmNodeIds": [
+      2734980942,
+      3251013186
+    ],
+    "lat": 40.497867,
+    "lng": -74.635066,
+    "name": "Peter J. Biondi Memorial Bypass & Service Road",
+    "roads": [
+      {
+        "name": "Peter J. Biondi Memorial Bypass",
+        "ref": "US 206 BYP"
+      },
+      {
+        "name": "Service Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206 BYP",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-5156475315",
+    "osmNodeIds": [
+      5156475315
+    ],
+    "lat": 40.526687,
+    "lng": -74.62698,
+    "name": "US 206 & Valley Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "Valley Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-7233582710",
+    "osmNodeIds": [
+      7233582710,
+      7233582723
+    ],
+    "lat": 40.508683,
+    "lng": -74.633886,
+    "name": "US 206 & Peter J. Biondi Memorial Bypass",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "Peter J. Biondi Memorial Bypass",
+        "ref": "US 206 BYP"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Hillsborough Township",
+    "county": "Somerset"
+  }
+]

@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Signal Report (working name)
 
-## Getting Started
+**Stuck at a red light with no cross traffic? Report it in one tap, and we get it to the agency that actually fixes it.**
 
-First, run the development server:
+Built in Hillsborough, NJ for the 2026 Congressional App Challenge.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## The problem
+
+Many traffic lights detect waiting cars with sensors in the road. When a sensor breaks, the light can stay red with nobody coming the other way. Drivers wait for nothing, burn fuel, and sometimes run the light out of frustration.
+
+Hardly anyone reports it, because **nobody knows who owns the light.** In New Jersey it depends on the road:
+
+| Road at the intersection | Who owns the light | Example in Hillsborough |
+|---|---|---|
+| Interstate, US or NJ route | NJ Department of Transportation | US 206 & Amwell Rd |
+| County route (CR 5xx/6xx) | County engineering | Amwell Rd (CR 514) & Beekman Ln |
+| Anything else | The township | Triangle Rd & Auten Rd |
+
+## What the app does
+
+1. **One-tap report.** It matches your GPS position to the nearest of Hillsborough's 38 signalized intersections and guesses which way you were going from your phone's heading.
+2. **Routes it automatically.** It reads which roads meet at that light from OpenStreetMap and works out the owner using the rules above.
+3. **Combines reports into evidence.** When **3+ reports from 2+ different people** arrive within 7 days, the owner gets one short daily summary: what's wrong, which direction, how long people waited, and a map link. Agencies ignore floods of single complaints; they act on patterns.
+4. **Closes the loop.** Each email has a private link where staff mark a light "on it" or "fixed" without creating an account. The public map updates.
+5. **Shows the impact.** The Impact page adds up time wasted and estimated CO₂ from idling.
+
+**Safety:** NJ bans handheld phone use while driving. Before a report, the app asks whether you're driving. If you are, one tap saves the spot and you finish the report once you're parked.
+
+## How it's built
+
+```
+Phone (Next.js web app, installable)
+  │  GPS → snap to nearest signal (src/lib/geo.ts)
+  ▼
+POST /api/reports ── validate (zod), rate-limit, anonymous device cookie
+  ▼
+Store (src/lib/store) ── local JSON now → Supabase Postgres next
+  ▼
+Daily cron → /api/digest
+  signalsDueForDigest() → groupByAgency() → renderDigestEmail()   (src/lib/digest.ts)
+  ▼
+Email (Resend) → agency → /agency/<secret link> → "Mark fixed"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Piece | Tech |
+|---|---|
+| App | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS |
+| Map | MapLibre GL with free OpenFreeMap tiles |
+| Signal data | OpenStreetMap via the Overpass API (`scripts/import-signals.ts`) |
+| Database | Local JSON for development; Supabase (Postgres + PostGIS) planned, schema in `supabase/migrations` |
+| Email | Resend; falls back to a local outbox at `/dev/outbox` |
+| Tests | Vitest (`src/lib/*.test.ts`) |
+| Hosting | Vercel, with Vercel Cron for the daily digest |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Interesting problems we solved
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Divided highways.** OSM puts a separate signal node on each side of a divided road, so US 206 & Brooks Blvd showed up as 4 lights. `buildSignals()` merges nodes within 40 m, which turned 64 nodes into 38 real intersections.
+- **Who owns a light.** `ownerForRoads()` ranks every road through the intersection (state > county > township). A light where US 206 crosses a county road therefore goes to NJDOT, which owns the signals on state highways.
+- **Spam and fairness.** Reports need 2+ different devices, repeats from the same device within 30 minutes are ignored, and there's a daily cap.
+- **Agencies without email.** NJDOT and Somerset County only take web forms, so their digests go to our admin with an "Action needed: submit via form" banner.
 
-## Learn More
+## Running it
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install          # also copies MapLibre's worker into public/maplibre
+npm run dev          # http://localhost:3000
+npm test             # unit tests
+npm run import:signals -- "Hillsborough Township" "Somerset"   # refresh signal data from OSM
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Try the whole loop locally:
+1. Open a light (tap it, or `/?signal=osm-105373726`) → **Report this light**.
+2. Reports need 3 different devices, so add two more from private windows, or with `curl` using separate cookie jars.
+3. Open `/dev/outbox` → **Run digest now** to see the email.
+4. Follow the "Mark signals as fixed" link in the email.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Copy `.env.example` to `.env.local` to configure email. **`TEST_MODE` stays `true` until an agency has agreed to get reports**, so every email goes to your own inbox until then.
 
-## Deploy on Vercel
+## Data sources and credits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Traffic signals and roads: © OpenStreetMap contributors (ODbL)
+- Map tiles: OpenFreeMap / OpenMapTiles
+- Agency contacts: each entry in `data/agencies.json` links to its source page and is marked `verified: false` until confirmed by phone.
+- Idling estimate: US DOE (¼–½ gallon per hour idling; we use ¼). CO₂ per gallon: US EPA (8,887 g).
