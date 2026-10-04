@@ -34,7 +34,7 @@ Phone (Next.js web app, installable)
   ▼
 POST /api/reports ── validate (zod), rate-limit, anonymous device cookie
   ▼
-Store (src/lib/store) ── local JSON now → Supabase Postgres next
+Store (src/lib/store) ── Supabase Postgres (local JSON fallback offline)
   ▼
 Daily cron → /api/digest
   signalsDueForDigest() → groupByAgency() → renderDigestEmail()   (src/lib/digest.ts)
@@ -47,7 +47,7 @@ Email (Resend) → agency → /agency/<secret link> → "Mark fixed"
 | App | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS |
 | Map | MapLibre GL with free OpenFreeMap tiles |
 | Signal data | OpenStreetMap via the Overpass API (`scripts/import-signals.ts`) |
-| Database | Local JSON for development; Supabase (Postgres + PostGIS) planned, schema in `supabase/migrations` |
+| Database | Supabase Postgres with Row Level Security (`supabase/migrations`); falls back to a local JSON file when Supabase isn't configured |
 | Email | Resend; falls back to a local outbox at `/dev/outbox` |
 | Tests | Vitest (`src/lib/*.test.ts`) |
 | Hosting | Vercel, with Vercel Cron for the daily digest |
@@ -66,6 +66,8 @@ npm install          # also copies MapLibre's worker into public/maplibre
 npm run dev          # http://localhost:3000
 npm test             # unit tests
 npm run import:signals -- "Hillsborough Township" "Somerset"   # refresh signal data from OSM
+npm run db:migrate   # create/update database tables (needs DATABASE_URL)
+npm run db:seed      # load data/signals and data/agencies into the database
 ```
 
 Try the whole loop locally:
