@@ -13,6 +13,11 @@ export type Email = { to: string; subject: string; text: string; html: string };
 export async function sendEmail(email: Email): Promise<{ delivered: boolean; id: string }> {
   if (!config.resendApiKey) {
     const id = `${new Date().toISOString().replace(/[:.]/g, "-")}-${Math.random().toString(36).slice(2, 7)}`;
+    // Hosted environments (Vercel) have a read-only filesystem, so there's no outbox to write to.
+    if (process.env.NODE_ENV === "production") {
+      console.warn(`RESEND_API_KEY not set; skipped email "${email.subject}" to ${email.to}`);
+      return { delivered: false, id };
+    }
     const dir = path.join(process.cwd(), ".data", "outbox");
     await mkdir(dir, { recursive: true });
     await writeFile(path.join(dir, `${id}.json`), JSON.stringify(email, null, 2));
