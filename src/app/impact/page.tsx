@@ -35,7 +35,7 @@ export default async function ImpactPage() {
         <Stat value={stats.reports} label="reports" />
         <Stat value={stats.people} label="people reporting" />
         <Stat value={`${stats.waitMinutes} min`} label="spent waiting" />
-        <Stat value={`${stats.co2Kg} kg`} label="CO₂ from idling (est.)" />
+        <Stat value={`${stats.co2Kg} kg`} label="CO₂ if all gas cars (est.)" />
         <Stat value={open} label="lights open" />
         <Stat value={fixed} label="lights fixed" />
       </div>
@@ -79,7 +79,8 @@ export default async function ImpactPage() {
 
       <p className="mt-8 text-xs text-neutral-500">
         Estimates: reports without a wait time count as 60 seconds. Idling uses about 0.25 gallons/hour (US DOE, low end) and each gallon emits about 8,887 g of CO₂ (US
-        EPA). Only reported waits are counted, so the real total is higher.
+        EPA). This assumes gas cars. Electric cars like Teslas don&apos;t idle an engine; while stopped they use only a little electricity for climate and
+        screens, so for them the real cost is time. Only reported waits are counted, so the real total is higher.
       </p>
     </main>
   );
