@@ -3,7 +3,7 @@
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Signal } from "../signals";
-import type { Agency, Digest, Report, SignalState, SignalStatus } from "../types";
+import type { Agency, Digest, FixAlert, Report, SignalState, SignalStatus } from "../types";
 import type { Store } from "./types";
 
 type AgencyRow = {
@@ -42,8 +42,11 @@ type ReportRow = {
   wait_seconds: number | null;
   note: string | null;
   reporter_id: string;
+  network_id: string | null;
   created_at: string;
 };
+
+type FixAlertRow = { id: string; signal_id: string; email: string; reporter_id: string; created_at: string };
 
 type DigestRow = { id: string; agency_id: string; signal_ids: string[]; sent_to: string; test_mode: boolean; sent_at: string };
 
@@ -83,6 +86,15 @@ const toReport = (r: ReportRow): Report => ({
   approach: r.approach,
   waitSeconds: r.wait_seconds,
   note: r.note,
+  reporterId: r.reporter_id,
+  networkId: r.network_id,
+  createdAt: r.created_at,
+});
+
+const toFixAlert = (r: FixAlertRow): FixAlert => ({
+  id: r.id,
+  signalId: r.signal_id,
+  email: r.email,
   reporterId: r.reporter_id,
   createdAt: r.created_at,
 });
@@ -132,6 +144,7 @@ export function createSupabaseStore(url: string, secretKey: string): Store {
             wait_seconds: input.waitSeconds,
             note: input.note,
             reporter_id: input.reporterId,
+            network_id: input.networkId,
           })
           .select()
           .single(),
@@ -166,6 +179,28 @@ export function createSupabaseStore(url: string, secretKey: string): Store {
 
     async tokenForAgency(agencyId) {
       return check<{ manage_token: string }>(await db.from("agencies").select("manage_token").eq("id", agencyId).single()).manage_token;
+    },
+
+    async addFixAlert(input) {
+      check(
+        await db
+          .from("fix_alerts")
+          .upsert({ signal_id: input.signalId, email: input.email, reporter_id: input.reporterId }, { onConflict: "signal_id,email", ignoreDuplicates: true }),
+      );
+    },
+
+    async countFixAlerts({ reporterId, since }) {
+      const { count, error } = await db
+        .from("fix_alerts")
+        .select("id", { count: "exact", head: true })
+        .eq("reporter_id", reporterId)
+        .gte("created_at", since.toISOString());
+      if (error) throw new Error(`Supabase: ${error.message}`);
+      return count ?? 0;
+    },
+
+    async takeFixAlerts(signalIds) {
+      return check<FixAlertRow[]>(await db.from("fix_alerts").delete().in("signal_id", signalIds).select()).map(toFixAlert);
     },
 
     async addDigest(input) {

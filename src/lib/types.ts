@@ -21,6 +21,7 @@ export type Report = {
   waitSeconds: number | null;
   note: string | null;
   reporterId: string; // anonymous per-device id
+  networkId: string | null; // salted hash of the IP address; null for reports made before it was recorded
   createdAt: string; // ISO timestamp
 };
 
@@ -41,6 +42,15 @@ export type SignalState = {
   signalId: string;
   status: SignalStatus;
   changedAt: string;
+};
+
+/** Someone who asked for one email when a light is marked fixed. */
+export type FixAlert = {
+  id: string;
+  signalId: string;
+  email: string;
+  reporterId: string;
+  createdAt: string;
 };
 
 export type Digest = {

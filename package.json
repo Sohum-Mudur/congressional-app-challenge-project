@@ -11,13 +11,15 @@
     "import:signals": "tsx scripts/import-signals.ts",
     "postinstall": "node scripts/copy-maplibre-worker.mjs",
     "db:migrate": "tsx --env-file=.env.local scripts/db-migrate.ts",
-    "db:seed": "tsx --env-file=.env.local scripts/db-seed.ts"
+    "db:seed": "tsx --env-file=.env.local scripts/db-seed.ts",
+    "smoke": "tsx --env-file=.env.local scripts/smoke-test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.2",
     "maplibre-gl": "^6.11.2",
-    "next": "16.3.6",
+    "next": "16.3.8",
+    "qrcode": "^1.5.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "resend": "^6.29.0",
@@ -27,10 +29,11 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.20.4",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.6",
+    "eslint-config-next": "16.3.8",
     "postgres": "^3.4.9",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",

@@ -8,8 +8,13 @@ import { ISSUE_LABELS, type Agency, type IssueType, type Report, type SignalStat
 export const DIGEST_RULE = {
   minReports: 3,
   minReporters: 2, // at least two different devices, so one person can't trigger a digest alone
+  // ...and two different internet connections, so clearing cookies or using private tabs isn't enough.
+  // runDigest lowers this to 1 in test mode, so one person on one Wi-Fi can try the whole flow.
+  minNetworks: 2,
   windowDays: 7,
 };
+
+export type DigestRule = typeof DIGEST_RULE;
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -17,6 +22,7 @@ export type SignalSummary = {
   signal: Signal;
   reportCount: number;
   reporterCount: number;
+  networkCount: number;
   firstReportAt: string;
   lastReportAt: string;
   topIssue: IssueType;
@@ -30,6 +36,8 @@ export function summarize(signal: Signal, reports: readonly Report[]): SignalSum
     signal,
     reportCount: reports.length,
     reporterCount: new Set(reports.map((r) => r.reporterId)).size,
+    // Older reports have no network recorded; count each of their devices as its own network.
+    networkCount: new Set(reports.map((r) => r.networkId ?? `device:${r.reporterId}`)).size,
     firstReportAt: sorted[0]?.createdAt ?? "",
     lastReportAt: sorted.at(-1)?.createdAt ?? "",
     topIssue: mostCommon(reports.map((r) => r.issueType))[0] ?? "other",
@@ -47,7 +55,7 @@ export function signalsDueForDigest(
   reports: readonly Report[],
   states: readonly SignalState[],
   now: Date,
-  rule = DIGEST_RULE,
+  rule: DigestRule = DIGEST_RULE,
 ): SignalSummary[] {
   const since = now.getTime() - rule.windowDays * DAY_MS;
   const stateById = new Map(states.map((s) => [s.signalId, s]));
@@ -60,7 +68,8 @@ export function signalsDueForDigest(
 
     const recent = reports.filter((r) => r.signalId === signal.id && Date.parse(r.createdAt) >= floor);
     const summary = summarize(signal, recent);
-    return summary.reportCount >= rule.minReports && summary.reporterCount >= rule.minReporters ? [summary] : [];
+    const enough = summary.reportCount >= rule.minReports && summary.reporterCount >= rule.minReporters && summary.networkCount >= rule.minNetworks;
+    return enough ? [summary] : [];
   });
 }
 

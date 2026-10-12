@@ -21,6 +21,9 @@ export const config = {
   resendApiKey: env("RESEND_API_KEY") ?? null,
   emailFrom: env("EMAIL_FROM") ?? "Signal Report <onboarding@resend.dev>",
 
+  /** Secret mixed into IP-address hashes, so a stored hash can't be turned back into an address. */
+  networkSalt: env("NETWORK_SALT") ?? (process.env.NODE_ENV === "production" ? null : "dev-only-salt"),
+
   /** Vercel Cron sends this as a Bearer token; protects the digest endpoint. */
   cronSecret: env("CRON_SECRET") ?? null,
 };

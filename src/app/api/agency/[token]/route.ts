@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { z } from "zod";
 import { agencyIdFor } from "@/lib/agencies";
+import { sendFixAlerts } from "@/lib/send-fix-alerts";
 import { getStore } from "@/lib/store";
 
 const StatusInput = z.object({
@@ -24,6 +25,6 @@ export async function POST(request: NextRequest, ctx: RouteContext<"/api/agency/
   }
 
   await store.setSignalStatus([signal.id], parsed.data.status);
-  // TODO(supabase): when accounts exist, email reporters who opted in that the light was fixed.
-  return Response.json({ ok: true });
+  const notified = parsed.data.status === "fixed" ? await sendFixAlerts(signal, agency.name) : 0;
+  return Response.json({ ok: true, notified });
 }

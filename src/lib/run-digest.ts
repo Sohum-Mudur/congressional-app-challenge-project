@@ -1,7 +1,7 @@
 import "server-only";
 import { agencyIdFor } from "./agencies";
 import { config } from "./config";
-import { esc, groupByAgency, renderDigestEmail, signalsDueForDigest } from "./digest";
+import { DIGEST_RULE, esc, groupByAgency, renderDigestEmail, signalsDueForDigest } from "./digest";
 import { sendEmail } from "./email";
 import { getStore } from "./store";
 
@@ -17,7 +17,8 @@ export async function runDigest(now = new Date()): Promise<DigestResult[]> {
     store.listAgencies(),
   ]);
 
-  const due = signalsDueForDigest(signals, reports, states, now);
+  const rule = config.testMode ? { ...DIGEST_RULE, minNetworks: 1 } : DIGEST_RULE;
+  const due = signalsDueForDigest(signals, reports, states, now, rule);
   const results: DigestResult[] = [];
 
   for (const [agencyId, items] of groupByAgency(due, agencyIdFor)) {

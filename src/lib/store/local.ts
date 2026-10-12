@@ -5,17 +5,18 @@ import { randomUUID } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { Signal } from "../signals";
-import type { Agency, Digest, Report, SignalState } from "../types";
+import type { Agency, Digest, FixAlert, Report, SignalState } from "../types";
 import type { Store } from "./types";
 
 type DevDb = {
   reports: Report[];
   states: SignalState[];
   digests: Digest[];
+  fixAlerts: FixAlert[];
   agencyTokens: Record<string, string>; // agencyId -> token
 };
 
-const EMPTY: DevDb = { reports: [], states: [], digests: [], agencyTokens: {} };
+const EMPTY: DevDb = { reports: [], states: [], digests: [], fixAlerts: [], agencyTokens: {} };
 
 export function createLocalStore(root = process.cwd()): Store {
   const dbPath = path.join(root, ".data", "dev-db.json");
@@ -95,6 +96,25 @@ export function createLocalStore(root = process.cwd()): Store {
 
     tokenForAgency(agencyId) {
       return update((db) => (db.agencyTokens[agencyId] ??= randomUUID()));
+    },
+
+    addFixAlert(input) {
+      return update((db) => {
+        if (db.fixAlerts.some((a) => a.signalId === input.signalId && a.email === input.email)) return;
+        db.fixAlerts.push({ ...input, id: randomUUID(), createdAt: new Date().toISOString() });
+      });
+    },
+
+    async countFixAlerts({ reporterId, since }) {
+      return (await read()).fixAlerts.filter((a) => a.reporterId === reporterId && Date.parse(a.createdAt) >= since.getTime()).length;
+    },
+
+    takeFixAlerts(signalIds) {
+      return update((db) => {
+        const taken = db.fixAlerts.filter((a) => signalIds.includes(a.signalId));
+        db.fixAlerts = db.fixAlerts.filter((a) => !signalIds.includes(a.signalId));
+        return taken;
+      });
     },
 
     addDigest(input) {

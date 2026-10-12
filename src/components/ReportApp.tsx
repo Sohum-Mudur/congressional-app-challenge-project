@@ -1,9 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { approachDirection, snapToNearest, type Approach, type LatLng } from "@/lib/geo";
 import { ISSUE_LABELS, type IssueType } from "@/lib/types";
+import { useIsInstalled } from "./install";
 import { OWNER_COLORS, OWNER_LABELS } from "./labels";
 import type { MapSignal, PendingReport } from "./types";
 
@@ -12,6 +14,8 @@ const SignalMap = dynamic(() => import("./SignalMap"), { ssr: false });
 
 const PENDING_KEY = "pendingReports";
 const SAFETY_KEY = "safetyAcknowledged";
+const EMAIL_KEY = "fixAlertEmail";
+const INSTALL_HINT_KEY = "installHintDismissed";
 
 const WAIT_CHOICES: { label: string; seconds: number | null }[] = [
   { label: "Under 1 min", seconds: 45 },
@@ -213,6 +217,7 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
               <button onClick={startReport} className="w-full rounded-xl bg-red-600 py-4 text-lg font-bold text-white shadow active:bg-red-700">
                 Report the light I&apos;m at
               </button>
+              <InstallHint />
             </>
           )}
         </div>
@@ -222,6 +227,38 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
 }
 
 // --- pieces ---
+
+/** A one-line nudge to add the app to the home screen, hidden once installed or dismissed. */
+function InstallHint() {
+  const installed = useIsInstalled();
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      return localStorage.getItem(INSTALL_HINT_KEY) === "1";
+    } catch {
+      return false;
+    }
+  });
+  if (installed || dismissed) return null;
+  return (
+    <div className="mt-2 flex items-center justify-between gap-2 text-sm">
+      <Link href="/install" className="font-medium text-sky-700">
+        📲 Add this app to your home screen
+      </Link>
+      <button
+        aria-label="Hide"
+        onClick={() => {
+          setDismissed(true);
+          try {
+            localStorage.setItem(INSTALL_HINT_KEY, "1");
+          } catch {}
+        }}
+        className="px-2 text-neutral-400"
+      >
+        ✕
+      </button>
+    </div>
+  );
+}
 
 function Legend() {
   return (
@@ -393,10 +430,75 @@ function SentCard({ signal, duplicate, onDone }: { signal: MapSignal; duplicate:
         {signal.name} now has <strong>{signal.recentReports}</strong> report{signal.recentReports === 1 ? "" : "s"}. Once 3 people report it, we send one
         summary to <strong>{signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}</strong>.
       </p>
+      <FixAlertForm signalId={signal.id} />
       <button onClick={onDone} className="mt-4 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
         Done
       </button>
     </div>
+  );
+}
+
+/** Optional: one email when the agency marks this light fixed. The address is remembered on this device only, to save retyping. */
+function FixAlertForm({ signalId }: { signalId: string }) {
+  const [email, setEmail] = useState(() => {
+    try {
+      return localStorage.getItem(EMAIL_KEY) ?? "";
+    } catch {
+      return "";
+    }
+  });
+  const [state, setState] = useState<"idle" | "busy" | "done">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  if (state === "done") {
+    return <p className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-900">We&apos;ll email you once when it&apos;s fixed, then delete your address.</p>;
+  }
+
+  return (
+    <form
+      className="mt-4 rounded-xl bg-neutral-50 p-3 text-left"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        setState("busy");
+        setError(null);
+        const res = await fetch("/api/fix-alerts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ signalId, email: email.trim() }),
+        });
+        if (!res.ok) {
+          setError((await res.json().catch(() => ({}))).error ?? "Couldn't save that. Please try again.");
+          setState("idle");
+          return;
+        }
+        try {
+          localStorage.setItem(EMAIL_KEY, email.trim());
+        } catch {}
+        setState("done");
+      }}
+    >
+      <label htmlFor="fix-alert-email" className="text-sm font-semibold">
+        Email me when it&apos;s fixed <span className="font-normal text-neutral-500">(optional)</span>
+      </label>
+      <div className="mt-1.5 flex gap-2">
+        <input
+          id="fix-alert-email"
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="min-w-0 flex-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-base"
+        />
+        <button disabled={state === "busy"} className="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white disabled:opacity-60">
+          {state === "busy" ? "…" : "Notify me"}
+        </button>
+      </div>
+      {error && <p className="mt-1.5 text-xs text-red-700">{error}</p>}
+      <p className="mt-1.5 text-xs text-neutral-500">One email, only about this light. We delete your address after sending it.</p>
+    </form>
   );
 }
 

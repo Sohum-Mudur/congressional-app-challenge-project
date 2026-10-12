@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { team } from "@/content/team";
 
 export const metadata = { title: "About · Signal Report" };
 
@@ -20,7 +21,7 @@ export default function AboutPage() {
         <li>Tap one button. Your location is matched to the nearest traffic light.</li>
         <li>The app looks up which roads meet there and works out who owns that light.</li>
         <li>Reports are combined. When 3 or more people report the same light within a week, the owner gets one clear summary instead of a pile of complaints.</li>
-        <li>The agency marks it fixed with one click, and the map updates.</li>
+        <li>The agency marks it fixed with one click, the map updates, and anyone who asked gets an email.</li>
       </ol>
 
       <h2 className="mt-6 text-lg font-bold">Safety first</h2>
@@ -34,11 +35,43 @@ export default function AboutPage() {
         <a className="text-sky-700" href="https://www.openstreetmap.org/copyright">
           © OpenStreetMap contributors
         </a>
-        . We don&apos;t ask for your name. Each device gets an anonymous id so we can tell that two reports came from different people.
+        .
       </p>
+      <ul className="mt-2 list-disc space-y-1.5 pl-5">
+        <li>We don&apos;t ask for your name and there are no accounts.</li>
+        <li>Your location is only used to find the light you&apos;re at. We save which light you reported, not where you were.</li>
+        <li>
+          To tell that reports came from different people, each device gets a random id, and we keep a scrambled code made from your internet connection (never the
+          address itself).
+        </li>
+        <li>If you ask to be emailed when a light is fixed, we use your address for that one email and then delete it.</li>
+      </ul>
+
+      {team.story && (
+        <>
+          <h2 className="mt-6 text-lg font-bold">Who built this</h2>
+          {team.story.split(/\n\s*\n/).map((paragraph, i) => (
+            <p key={i} className="mt-2">
+              {paragraph}
+            </p>
+          ))}
+          {team.members.length > 0 && (
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {team.members.map((m) => (
+                <div key={m.name} className="rounded-xl bg-white p-4 ring-1 ring-black/5">
+                  <p className="font-semibold">{m.name}</p>
+                  <p className="text-sm text-neutral-500">{m.role}</p>
+                  <p className="mt-1.5 text-sm">{m.bio}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
 
       <p className="mt-8 text-sm text-neutral-500">
-        Built by students in Hillsborough, NJ for the Congressional App Challenge. <Link href="/impact" className="text-sky-700">See the impact →</Link>
+        Built by students in Hillsborough, NJ for the Congressional App Challenge. <Link href="/impact" className="text-sky-700">See the impact →</Link>{" "}
+        <Link href="/install" className="text-sky-700">Get the app →</Link>
       </p>
     </main>
   );

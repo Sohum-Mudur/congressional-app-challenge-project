@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { agencyIdFor } from "./agencies";
-import { formatWait, groupByAgency, renderDigestEmail, signalsDueForDigest, summarize } from "./digest";
+import { DIGEST_RULE, formatWait, groupByAgency, renderDigestEmail, signalsDueForDigest, summarize } from "./digest";
 import type { Signal } from "./signals";
 import { impactStats } from "./stats";
 import type { Agency, Report } from "./types";
@@ -21,6 +21,7 @@ function report(signalId: string, reporterId: string, daysAgo: number, extra: Pa
     approach: "northbound",
     waitSeconds: 150,
     note: null,
+    networkId: null,
     createdAt: new Date(NOW.getTime() - daysAgo * 86_400_000).toISOString(),
     ...extra,
   };
@@ -62,6 +63,15 @@ describe("signalsDueForDigest", () => {
 
     const fixedYesterday = [{ signalId: "osm-1", status: "fixed" as const, changedAt: new Date(NOW.getTime() - 0.5 * 86_400_000).toISOString() }];
     expect(signalsDueForDigest(signals, reports, fixedYesterday, NOW)).toEqual([]);
+  });
+
+  it("needs 2+ different networks, so one person clearing cookies can't trigger a digest", () => {
+    const oneWifi = ["a", "b", "c"].map((who) => report("osm-1", who, 1, { networkId: "home" }));
+    expect(signalsDueForDigest(signals, oneWifi, [], NOW)).toEqual([]);
+    expect(signalsDueForDigest(signals, oneWifi, [], NOW, { ...DIGEST_RULE, minNetworks: 1 })).toHaveLength(1);
+
+    const twoNetworks = [...oneWifi.slice(0, 2), report("osm-1", "d", 1, { networkId: "phone" })];
+    expect(signalsDueForDigest(signals, twoNetworks, [], NOW)).toHaveLength(1);
   });
 });
 
