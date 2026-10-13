@@ -10,8 +10,9 @@ export interface Store {
   listSignals(): Promise<Signal[]>;
   listAgencies(): Promise<Agency[]>;
 
-  listReports(opts?: { signalId?: string; since?: Date }): Promise<Report[]>;
+  listReports(opts?: { signalId?: string; reporterId?: string; since?: Date }): Promise<Report[]>;
   addReport(report: Omit<Report, "id" | "createdAt">): Promise<Report>;
+  deleteReport(id: string): Promise<void>;
 
   listSignalStates(): Promise<SignalState[]>;
   setSignalStatus(signalIds: string[], status: SignalStatus): Promise<void>;
@@ -25,6 +26,7 @@ export interface Store {
   countFixAlerts(opts: { reporterId: string; since: Date }): Promise<number>;
   /** Remove and return every alert for these signals, so each person is emailed once. */
   takeFixAlerts(signalIds: string[]): Promise<FixAlert[]>;
+  deleteFixAlerts(opts: { signalId: string; reporterId: string }): Promise<void>;
 
   addDigest(digest: Omit<Digest, "id" | "sentAt">): Promise<Digest>;
   listDigests(): Promise<Digest[]>;

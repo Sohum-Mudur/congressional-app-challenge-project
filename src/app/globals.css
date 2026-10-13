@@ -18,3 +18,33 @@ body {
 button {
   cursor: pointer;
 }
+
+/* The user's location on the map: a blue dot with a direction cone, like Google Maps. */
+.me-marker {
+  width: 72px;
+  height: 72px;
+  pointer-events: none;
+}
+.me-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 9999px;
+  background: #0a84ff;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 1px 4px rgb(0 0 0 / 0.35);
+}
+.me-cone {
+  position: absolute;
+  inset: 0;
+  display: none;
+  background: conic-gradient(from -40deg, rgb(10 132 255 / 0) 0deg, rgb(10 132 255 / 0.55) 40deg, rgb(10 132 255 / 0) 80deg, transparent 80deg);
+  -webkit-mask-image: radial-gradient(circle, #000 15%, transparent 70%);
+  mask-image: radial-gradient(circle, #000 15%, transparent 70%);
+}
+.me-marker.has-heading .me-cone {
+  display: block;
+}

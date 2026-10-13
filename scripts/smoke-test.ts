@@ -28,9 +28,9 @@ function expect(ok: unknown, msg: string): asserts ok {
 /** Each "person" is a separate cookie jar, like a separate phone. */
 class Person {
   cookie = "";
-  async post(path: string, body: unknown, headers: Record<string, string> = {}) {
+  async post(path: string, body: unknown, headers: Record<string, string> = {}, method = "POST") {
     const res = await fetch(BASE + path, {
-      method: "POST",
+      method,
       headers: { "Content-Type": "application/json", ...(this.cookie && { cookie: this.cookie }), ...headers },
       body: JSON.stringify(body),
     });
@@ -64,6 +64,17 @@ async function main() {
     expect(r.status === 201, `report ${i + 1} returned ${r.status} ${JSON.stringify(r.body)}`);
   }
   step("3 reports from 3 different devices");
+
+  // Taking a report back: only its own device can, and then it can report again.
+  const last = await people[2].post("/api/reports", { signalId, issueType: "stuck_red", note: NOTE });
+  const lastId = last.body.report?.id;
+  const sneaky = await new Person().post(`/api/reports/${lastId}`, null, {}, "DELETE");
+  expect(sneaky.status === 404, `another device must not take back someone's report (got ${sneaky.status})`);
+  const undo = await people[2].post(`/api/reports/${lastId}`, null, {}, "DELETE");
+  expect(undo.status === 200, `taking back a report returned ${undo.status} ${JSON.stringify(undo.body)}`);
+  const again = await people[2].post("/api/reports", { signalId, issueType: "stuck_red", note: NOTE });
+  expect(again.status === 201, `reporting again after taking back returned ${again.status}`);
+  step("a report was taken back by its own device (and nobody else could)");
 
   const stranger = await new Person().post("/api/fix-alerts", { signalId, email: TEST_INBOX });
   expect(stranger.status === 403, `someone who didn't report must not sign up for alerts (got ${stranger.status})`);

@@ -129,6 +129,7 @@ export function createSupabaseStore(url: string, secretKey: string): Store {
     async listReports(opts = {}) {
       let q = db.from("reports").select("*").order("created_at");
       if (opts.signalId) q = q.eq("signal_id", opts.signalId);
+      if (opts.reporterId) q = q.eq("reporter_id", opts.reporterId);
       if (opts.since) q = q.gte("created_at", opts.since.toISOString());
       return check<ReportRow[]>(await q).map(toReport);
     },
@@ -158,6 +159,11 @@ export function createSupabaseStore(url: string, secretKey: string): Store {
           .in("status", ["ok", "fixed"]),
       );
       return toReport(row);
+    },
+
+    async deleteReport(id) {
+      if (!UUID.test(id)) return;
+      check(await db.from("reports").delete().eq("id", id));
     },
 
     async listSignalStates() {
@@ -201,6 +207,10 @@ export function createSupabaseStore(url: string, secretKey: string): Store {
 
     async takeFixAlerts(signalIds) {
       return check<FixAlertRow[]>(await db.from("fix_alerts").delete().in("signal_id", signalIds).select()).map(toFixAlert);
+    },
+
+    async deleteFixAlerts({ signalId, reporterId }) {
+      check(await db.from("fix_alerts").delete().eq("signal_id", signalId).eq("reporter_id", reporterId));
     },
 
     async addDigest(input) {

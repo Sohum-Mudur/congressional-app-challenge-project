@@ -57,7 +57,10 @@ export function createLocalStore(root = process.cwd()): Store {
     async listReports(opts = {}) {
       const { reports } = await read();
       return reports.filter(
-        (r) => (!opts.signalId || r.signalId === opts.signalId) && (!opts.since || Date.parse(r.createdAt) >= opts.since.getTime()),
+        (r) =>
+          (!opts.signalId || r.signalId === opts.signalId) &&
+          (!opts.reporterId || r.reporterId === opts.reporterId) &&
+          (!opts.since || Date.parse(r.createdAt) >= opts.since.getTime()),
       );
     },
 
@@ -70,6 +73,12 @@ export function createLocalStore(root = process.cwd()): Store {
         if (!state) db.states.push({ signalId: input.signalId, status: "reported", changedAt: report.createdAt });
         else if (state.status === "ok" || state.status === "fixed") Object.assign(state, { status: "reported", changedAt: report.createdAt });
         return report;
+      });
+    },
+
+    deleteReport(id) {
+      return update((db) => {
+        db.reports = db.reports.filter((r) => r.id !== id);
       });
     },
 
@@ -114,6 +123,12 @@ export function createLocalStore(root = process.cwd()): Store {
         const taken = db.fixAlerts.filter((a) => signalIds.includes(a.signalId));
         db.fixAlerts = db.fixAlerts.filter((a) => !signalIds.includes(a.signalId));
         return taken;
+      });
+    },
+
+    deleteFixAlerts({ signalId, reporterId }) {
+      return update((db) => {
+        db.fixAlerts = db.fixAlerts.filter((a) => !(a.signalId === signalId && a.reporterId === reporterId));
       });
     },
 

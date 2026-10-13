@@ -7,7 +7,8 @@ import { approachDirection, snapToNearest, type Approach, type LatLng } from "@/
 import { ISSUE_LABELS, type IssueType } from "@/lib/types";
 import { useIsInstalled } from "./install";
 import { OWNER_COLORS, OWNER_LABELS } from "./labels";
-import type { MapSignal, PendingReport } from "./types";
+import type { MapSignal, MyReport, PendingReport } from "./types";
+import { useLiveLocation } from "./useLiveLocation";
 
 // MapLibre touches `window`, so only load it in the browser.
 const SignalMap = dynamic(() => import("./SignalMap"), { ssr: false });
@@ -29,8 +30,13 @@ type Step =
   | { name: "idle" }
   | { name: "safety" }
   | { name: "locating" }
+  | { name: "none-nearby"; nearest: { signal: MapSignal; distance: number } | null }
   | { name: "form"; signalId: string; approach: Approach | null; pending?: PendingReport }
-  | { name: "sent"; signalId: string; duplicate: boolean };
+  | { name: "sent"; signalId: string; reportId: string; duplicate: boolean }
+  | { name: "saved"; item: PendingReport; nearName: string | null }
+  | { name: "mine" };
+
+type Notice = { tone: "ok" | "warn"; text: string };
 
 // --- small localStorage helpers (storage can be unavailable in private mode) ---
 function loadPending(): PendingReport[] {
@@ -60,18 +66,28 @@ function getPosition(): Promise<GeolocationPosition> {
 export default function ReportApp({ initialSignalId }: { initialSignalId: string | null }) {
   const [signals, setSignals] = useState<MapSignal[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(initialSignalId);
-  const [userPosition, setUserPosition] = useState<LatLng | null>(null);
+  const live = useLiveLocation();
   const [step, setStep] = useState<Step>({ name: "idle" });
   const [pending, setPending] = useState<PendingReport[]>(loadPending);
-  const [message, setMessage] = useState<string | null>(null);
+  const [notice, setNotice] = useState<Notice | null>(null);
+  const [mine, setMine] = useState<MyReport[]>([]);
+  const setMessage = (text: string | null) => setNotice(text ? { tone: "warn", text } : null);
 
+  /** Reload the map data and this device's reports. Resolves once both are in. */
   const refresh = useCallback(() => {
-    fetch("/api/signals", { cache: "no-store" })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data: MapSignal[] | null) => data && setSignals(data));
+    const load = <T,>(url: string): Promise<T | null> =>
+      fetch(url, { cache: "no-store" })
+        .then((res) => (res.ok ? res.json() : null))
+        .catch(() => null);
+    return Promise.all([
+      load<MapSignal[]>("/api/signals").then((data) => data && setSignals(data)),
+      load<MyReport[]>("/api/reports/mine").then((data) => data && setMine(data)),
+    ]).then(() => undefined);
   }, []);
 
-  useEffect(refresh, [refresh]);
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
 
   const selected = useMemo(() => signals.find((s) => s.id === selectedId) ?? null, [signals, selectedId]);
 
@@ -87,23 +103,31 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
     else setStep({ name: "safety" });
   }
 
+  /** Where you are now: the live position if it's fresh, otherwise a one-off GPS fix. */
+  async function currentFix(): Promise<LatLng & { heading: number | null }> {
+    live.start();
+    const p = live.position;
+    if (p && Date.now() - p.at < 15_000) return { lat: p.lat, lng: p.lng, heading: live.travelHeading() };
+    const pos = await getPosition();
+    const moving = (pos.coords.speed ?? 0) >= 2.5;
+    return { lat: pos.coords.latitude, lng: pos.coords.longitude, heading: live.travelHeading() ?? (moving ? pos.coords.heading : null) };
+  }
+
   async function locateAndSnap() {
     try {
       sessionStorage.setItem(SAFETY_KEY, "1");
     } catch {}
     setStep({ name: "locating" });
     try {
-      const pos = await getPosition();
-      const here = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-      setUserPosition(here);
+      const here = await currentFix();
       const hit = snapToNearest(here, signals);
       if (!hit) {
-        setStep({ name: "idle" });
-        setMessage("No traffic light within 60 m of you. Tap the light on the map instead.");
+        setStep({ name: "none-nearby", nearest: snapToNearest(here, signals, Infinity) });
         return;
       }
       setSelectedId(hit.signal.id);
-      setStep({ name: "form", signalId: hit.signal.id, approach: approachDirection(here, hit.signal, pos.coords.heading) });
+      // The direction you were driving just before stopping is the best guess for which way you're facing.
+      setStep({ name: "form", signalId: hit.signal.id, approach: approachDirection(here, hit.signal, here.heading) });
     } catch (err) {
       setStep({ name: "idle" });
       setMessage(`${(err as Error).message} You can tap the light on the map instead.`);
@@ -114,17 +138,33 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
   async function saveForLater() {
     setStep({ name: "locating" });
     try {
-      const pos = await getPosition();
-      const item: PendingReport = { lat: pos.coords.latitude, lng: pos.coords.longitude, heading: pos.coords.heading, at: new Date().toISOString() };
+      const here = await currentFix();
+      const item: PendingReport = { lat: here.lat, lng: here.lng, heading: here.heading, at: new Date().toISOString() };
       const next = [...loadPending(), item];
       savePending(next);
       setPending(next);
-      setStep({ name: "idle" });
-      setMessage("Saved. Finish the report once you're parked.");
+      setStep({ name: "saved", item, nearName: snapToNearest(item, signals)?.signal.name ?? null });
     } catch (err) {
       setStep({ name: "idle" });
       setMessage((err as Error).message);
     }
+  }
+
+  async function takeBack(reportId: string): Promise<boolean> {
+    const res = await fetch(`/api/reports/${reportId}`, { method: "DELETE" });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setMessage(body.error ?? "Couldn't take that report back. Please try again.");
+      return false;
+    }
+    setNotice({
+      tone: "ok",
+      text: body.alreadySent
+        ? "Report taken back. The agency had already been sent a summary that included it."
+        : "Report taken back. It won't be sent to anyone.",
+    });
+    await refresh();
+    return true;
   }
 
   function finishPending(item: PendingReport) {
@@ -165,8 +205,8 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
       return;
     }
     if (step.pending) dropPending(step.pending);
-    setStep({ name: "sent", signalId: step.signalId, duplicate: Boolean(body.duplicate) });
-    refresh();
+    await refresh(); // so the confirmation shows the new report count
+    setStep({ name: "sent", signalId: step.signalId, reportId: body.report.id, duplicate: Boolean(body.duplicate) });
   }
 
   // --- render ---
@@ -175,7 +215,14 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
 
   return (
     <div className="relative flex-1">
-      <SignalMap signals={signals} selectedId={selectedId} userPosition={userPosition} onSelect={selectFromMap} />
+      <SignalMap
+        signals={signals}
+        selectedId={selectedId}
+        userPosition={live.position}
+        heading={live.heading}
+        onSelect={selectFromMap}
+        onLocate={live.start}
+      />
       <Legend />
 
       <div className="absolute inset-x-0 bottom-0 z-10 mx-auto max-w-md px-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
@@ -194,12 +241,60 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
             />
           )}
 
-          {step.name === "sent" && formSignal && <SentCard signal={formSignal} duplicate={step.duplicate} onDone={() => setStep({ name: "idle" })} />}
+          {step.name === "sent" && formSignal && (
+            <SentCard
+              signal={formSignal}
+              duplicate={step.duplicate}
+              onDone={() => setStep({ name: "idle" })}
+              onUndo={async () => {
+                if (await takeBack(step.reportId)) setStep({ name: "idle" });
+              }}
+            />
+          )}
+
+          {step.name === "saved" && (
+            <SavedCard
+              nearName={step.nearName}
+              onDone={() => setStep({ name: "idle" })}
+              onUndo={() => {
+                dropPending(step.item);
+                setStep({ name: "idle" });
+                setNotice({ tone: "ok", text: "Saved spot removed." });
+              }}
+            />
+          )}
+
+          {step.name === "none-nearby" && (
+            <NoneNearbyCard
+              nearest={step.nearest}
+              onPick={(id) => {
+                setSelectedId(id);
+                setStep({ name: "form", signalId: id, approach: null });
+              }}
+              onDone={() => setStep({ name: "idle" })}
+            />
+          )}
+
+          {step.name === "mine" && (
+            <MyReportsList
+              reports={mine}
+              signals={signals}
+              onTakeBack={takeBack}
+              onShow={(id) => {
+                setSelectedId(id);
+                setStep({ name: "idle" });
+              }}
+              onDone={() => setStep({ name: "idle" })}
+            />
+          )}
 
           {step.name === "idle" && (
             <>
               {selected && <SignalCard signal={selected} onReport={() => setStep({ name: "form", signalId: selected.id, approach: null })} />}
-              {message && <p className="mb-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{message}</p>}
+              {live.error && !notice && <p className="mb-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{live.error}</p>}
+              {notice && (
+                <p className={`mb-3 rounded-lg p-3 text-sm ${notice.tone === "ok" ? "bg-green-50 text-green-900" : "bg-amber-50 text-amber-900"}`}>{notice.text}</p>
+              )}
               {pending.length > 0 && (
                 <div className="mb-3 rounded-lg bg-sky-50 p-3 text-sm text-sky-900">
                   <p className="font-medium">
@@ -207,9 +302,14 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {pending.map((p) => (
-                      <button key={p.at} onClick={() => finishPending(p)} className="rounded-full bg-sky-600 px-3 py-1.5 font-medium text-white">
-                        Finish ({new Date(p.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })})
-                      </button>
+                      <span key={p.at} className="inline-flex overflow-hidden rounded-full bg-sky-600 font-medium text-white">
+                        <button onClick={() => finishPending(p)} className="py-1.5 pl-3 pr-2">
+                          Finish ({new Date(p.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })})
+                        </button>
+                        <button onClick={() => dropPending(p)} aria-label="Delete this saved spot" className="border-l border-white/30 px-2.5">
+                          ✕
+                        </button>
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -217,6 +317,11 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
               <button onClick={startReport} className="w-full rounded-xl bg-red-600 py-4 text-lg font-bold text-white shadow active:bg-red-700">
                 Report the light I&apos;m at
               </button>
+              {mine.length > 0 && (
+                <button onClick={() => setStep({ name: "mine" })} className="mt-2 w-full py-1.5 text-sm font-medium text-neutral-600">
+                  Your reports ({mine.length})
+                </button>
+              )}
               <InstallHint />
             </>
           )}
@@ -421,7 +526,8 @@ function ReportForm({
   );
 }
 
-function SentCard({ signal, duplicate, onDone }: { signal: MapSignal; duplicate: boolean; onDone: () => void }) {
+function SentCard({ signal, duplicate, onDone, onUndo }: { signal: MapSignal; duplicate: boolean; onDone: () => void; onUndo: () => Promise<void> }) {
+  const [undoing, setUndoing] = useState(false);
   return (
     <div className="text-center">
       <p className="text-3xl">✅</p>
@@ -432,6 +538,127 @@ function SentCard({ signal, duplicate, onDone }: { signal: MapSignal; duplicate:
       </p>
       <FixAlertForm signalId={signal.id} />
       <button onClick={onDone} className="mt-4 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
+        Done
+      </button>
+      <button
+        disabled={undoing}
+        onClick={async () => {
+          setUndoing(true);
+          await onUndo();
+          setUndoing(false);
+        }}
+        className="mt-1 w-full py-2.5 text-sm font-medium text-neutral-500 disabled:opacity-50"
+      >
+        {undoing ? "Taking it back…" : "Made a mistake? Undo this report"}
+      </button>
+    </div>
+  );
+}
+
+function SavedCard({ nearName, onDone, onUndo }: { nearName: string | null; onDone: () => void; onUndo: () => void }) {
+  return (
+    <div className="text-center">
+      <p className="text-3xl">📍</p>
+      <p className="mt-1 text-lg font-bold">Spot saved</p>
+      <p className="mt-1 text-sm text-neutral-600">
+        {nearName ? (
+          <>
+            Near <strong>{nearName}</strong>.
+          </>
+        ) : (
+          "There's no traffic light within 60 m of this spot, so you'll pick the light on the map when you finish."
+        )}{" "}
+        Nothing has been sent yet. Once you&apos;re parked, open the app and tap <strong>Finish</strong>.
+      </p>
+      <button onClick={onDone} className="mt-4 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
+        OK
+      </button>
+      <button onClick={onUndo} className="mt-1 w-full py-2.5 text-sm font-medium text-neutral-500">
+        Undo
+      </button>
+    </div>
+  );
+}
+
+function NoneNearbyCard({
+  nearest,
+  onPick,
+  onDone,
+}: {
+  nearest: { signal: MapSignal; distance: number } | null;
+  onPick: (signalId: string) => void;
+  onDone: () => void;
+}) {
+  const miles = nearest ? nearest.distance / 1609.34 : 0;
+  return (
+    <div>
+      <p className="text-lg font-bold">No traffic light right here</p>
+      <p className="mt-1 text-sm text-neutral-600">
+        We only cover Hillsborough&apos;s traffic lights, and none is within 60 m (200 ft) of you. If you already drove away from the light, find it on the map and tap it.
+      </p>
+      {nearest && miles < 2 && (
+        <button
+          onClick={() => onPick(nearest.signal.id)}
+          className="mt-3 w-full rounded-xl bg-neutral-100 p-3 text-left ring-1 ring-black/5"
+        >
+          <span className="block text-xs text-neutral-500">Closest light ({miles < 0.1 ? `${Math.round(nearest.distance * 3.28)} ft` : `${miles.toFixed(1)} mi`} away)</span>
+          <span className="block font-semibold">{nearest.signal.name}</span>
+          <span className="text-sm font-semibold text-red-700">Report this light →</span>
+        </button>
+      )}
+      <button onClick={onDone} className="mt-3 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
+        Pick on the map
+      </button>
+    </div>
+  );
+}
+
+function MyReportsList({
+  reports,
+  signals,
+  onTakeBack,
+  onShow,
+  onDone,
+}: {
+  reports: MyReport[];
+  signals: MapSignal[];
+  onTakeBack: (id: string) => Promise<boolean>;
+  onShow: (signalId: string) => void;
+  onDone: () => void;
+}) {
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const name = (id: string) => signals.find((s) => s.id === id)?.name ?? "Unknown light";
+  return (
+    <div>
+      <p className="text-lg font-bold">Your reports</p>
+      <p className="text-sm text-neutral-600">From this phone, in the last 30 days.</p>
+      {reports.length === 0 && <p className="mt-3 text-sm text-neutral-600">None right now.</p>}
+      <ul className="mt-2 divide-y divide-neutral-100">
+        {reports.map((r) => (
+          <li key={r.id} className="flex items-center justify-between gap-3 py-2.5">
+            <button onClick={() => onShow(r.signalId)} className="min-w-0 text-left">
+              <span className="block truncate font-medium">{name(r.signalId)}</span>
+              <span className="block text-xs text-neutral-500">
+                {ISSUE_LABELS[r.issueType]} ·{" "}
+                {new Date(r.createdAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
+              </span>
+            </button>
+            <button
+              disabled={busyId === r.id}
+              onClick={async () => {
+                if (!window.confirm(`Take back your report for ${name(r.signalId)}?`)) return;
+                setBusyId(r.id);
+                await onTakeBack(r.id);
+                setBusyId(null);
+              }}
+              className="shrink-0 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-semibold text-neutral-700 disabled:opacity-50"
+            >
+              {busyId === r.id ? "…" : "Take back"}
+            </button>
+          </li>
+        ))}
+      </ul>
+      <button onClick={onDone} className="mt-3 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
         Done
       </button>
     </div>
