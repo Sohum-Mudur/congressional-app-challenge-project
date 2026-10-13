@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { approachDirection, snapToNearest, type Approach, type LatLng } from "@/lib/geo";
+import { searchSignals } from "@/lib/search";
 import { ISSUE_LABELS, type IssueType } from "@/lib/types";
 import { useIsInstalled } from "./install";
 import { OWNER_COLORS, OWNER_LABELS } from "./labels";
@@ -30,6 +31,7 @@ type Step =
   | { name: "idle" }
   | { name: "safety" }
   | { name: "locating" }
+  | { name: "pick" } // "choose a light on the map": the next light tapped opens its report form
   | { name: "none-nearby"; nearest: { signal: MapSignal; distance: number } | null }
   | { name: "form"; signalId: string; approach: Approach | null; pending?: PendingReport }
   | { name: "sent"; signalId: string; reportId: string; duplicate: boolean }
@@ -200,7 +202,7 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
     }
     setSelectedId(id);
     setMessage(null);
-    if (step.name === "form") setStep({ ...step, signalId: id, approach: null });
+    if (step.name === "form" || step.name === "pick") setStep({ name: "form", signalId: id, approach: null });
     else if (step.name !== "safety" && step.name !== "locating") setStep({ name: "idle" });
   }
 
@@ -228,6 +230,20 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
   const formSignal = step.name === "form" || step.name === "sent" ? signals.find((s) => s.id === step.signalId) : null;
   const close = () => setStep({ name: "idle" });
 
+  /** Go straight to the report form for a light picked from search, the map, or a list. */
+  function reportLight(id: string) {
+    setSelectedId(id);
+    setNotice(null);
+    setStep({ name: "form", signalId: id, approach: null });
+  }
+
+  function startPicking() {
+    setSelectedId(null);
+    setNotice(null);
+    setStep({ name: "pick" });
+    setFrame(signals.map((s) => ({ lat: s.lat, lng: s.lng }))); // zoom out so every light is in view
+  }
+
   return (
     <div className="relative flex-1 overflow-hidden">
       <SignalMap
@@ -239,6 +255,7 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
         onLocate={live.start}
         frame={frame}
       />
+      <SearchBar signals={signals} onChoose={reportLight} />
       <Legend />
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 mx-auto w-full max-w-md sm:px-3 sm:pb-3">
@@ -283,6 +300,18 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
               />
             )}
 
+            {step.name === "pick" && (
+              <div>
+                <div className="flex items-start justify-between gap-3">
+                  <p className="text-xl font-bold">Tap the light you want to report</p>
+                  <CloseButton onClick={close} label="Cancel" />
+                </div>
+                <p className="mt-1 text-[15px] text-neutral-600">
+                  Each colored dot on the map is a traffic light. Pinch to zoom in, or search for a street at the top.
+                </p>
+              </div>
+            )}
+
             {step.name === "none-nearby" && (
               <NoneNearbyCard
                 nearest={step.nearest}
@@ -309,13 +338,6 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
 
             {step.name === "idle" && (
               <>
-                {selected && (
-                  <SignalCard
-                    signal={selected}
-                    onReport={() => setStep({ name: "form", signalId: selected.id, approach: null })}
-                    onClose={() => setSelectedId(null)}
-                  />
-                )}
                 {live.error && !notice && <Banner tone="warn">{live.error}</Banner>}
                 {notice && <Banner tone={notice.tone}>{notice.text}</Banner>}
                 {pending.length > 0 && (
@@ -337,15 +359,31 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
                     </div>
                   </div>
                 )}
-                <button onClick={startReport} className="btn-primary w-full">
-                  Report the light I&apos;m at
-                </button>
-                {mine.length > 0 && (
-                  <button onClick={() => setStep({ name: "mine" })} className="mt-1 w-full py-2.5 text-sm font-medium text-neutral-600">
+
+                {selected ? (
+                  // A light is picked: one clear action for it, nothing competing.
+                  <SignalCard signal={selected} onReport={() => reportLight(selected.id)} onClose={() => setSelectedId(null)} />
+                ) : (
+                  <>
+                    <p className="text-xl font-bold">Report a broken traffic light</p>
+                    <div className="mt-3 grid gap-2.5">
+                      <button onClick={startReport} className="btn-primary flex w-full items-center justify-center gap-2.5">
+                        <PinIcon /> I&apos;m at the light now
+                      </button>
+                      <button onClick={startPicking} className="btn-secondary flex w-full items-center justify-center gap-2.5">
+                        <MapIcon /> Choose a light on the map
+                      </button>
+                    </div>
+                    <p className="mt-2 text-center text-xs text-neutral-500">Already home? Choose it on the map, or search for the street above.</p>
+                  </>
+                )}
+
+                {!selected && mine.length > 0 && (
+                  <button onClick={() => setStep({ name: "mine" })} className="mt-2 w-full py-2 text-sm font-medium text-neutral-600">
                     Your reports ({mine.length})
                   </button>
                 )}
-                <InstallHint />
+                {!selected && <InstallHint />}
               </>
             )}
           </div>
@@ -362,6 +400,92 @@ function XIcon({ className = "h-4 w-4" }: { className?: string }) {
     <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
       <path d="M6 6l12 12M18 6L6 18" />
     </svg>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+      <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z" />
+    </svg>
+  );
+}
+
+function MapIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
+      <path d="M9 4L3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4zM9 4v13M15 6.5v13" />
+    </svg>
+  );
+}
+
+/** Search box floating over the top of the map, like Google Maps'. Results drop down below it, away from the phone's keyboard. */
+function SearchBar({ signals, onChoose }: { signals: MapSignal[]; onChoose: (id: string) => void }) {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const results = useMemo(() => searchSignals(signals, query), [signals, query]);
+  const showList = open && query.trim().length > 0;
+
+  return (
+    <div className="absolute left-3 right-[4.25rem] top-3 z-20">
+      <div className="flex h-[46px] items-center gap-2 rounded-full bg-white pl-4 pr-2 shadow-[0_1px_3px_rgb(60_64_67/0.3),0_4px_8px_3px_rgb(60_64_67/0.15)]">
+        <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-neutral-500" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden>
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="M16 16l4.5 4.5" />
+        </svg>
+        <input
+          type="search"
+          enterKeyHint="search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setTimeout(() => setOpen(false), 150)} // let a tap on a result land first
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && results[0]) {
+              onChoose(results[0].id);
+              setQuery("");
+              (e.target as HTMLInputElement).blur();
+            }
+          }}
+          placeholder="Search a street, e.g. Triangle Rd"
+          aria-label="Search for a traffic light by street"
+          className="min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-neutral-400 [&::-webkit-search-cancel-button]:hidden"
+        />
+        {query && (
+          <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-500">
+            <XIcon className="h-4 w-4" />
+          </button>
+        )}
+      </div>
+      {showList && (
+        <ul className="mt-2 max-h-[50dvh] overflow-y-auto rounded-3xl bg-white py-2 shadow-[0_1px_3px_rgb(60_64_67/0.3),0_4px_8px_3px_rgb(60_64_67/0.15)]">
+          {results.length === 0 && <li className="px-4 py-3 text-sm text-neutral-500">No Hillsborough traffic light on a street like that.</li>}
+          {results.map((s) => (
+            <li key={s.id}>
+              <button
+                type="button"
+                onMouseDown={(e) => e.preventDefault()} // keep the input focused until the choice is made
+                onClick={() => {
+                  onChoose(s.id);
+                  setQuery("");
+                  setOpen(false);
+                }}
+                className="flex w-full items-center gap-3 px-4 py-2.5 text-left active:bg-neutral-100"
+              >
+                <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: OWNER_COLORS[s.ownerType] }} aria-hidden />
+                <span className="min-w-0">
+                  <span className="block truncate font-medium">{s.name}</span>
+                  <span className="block text-xs text-neutral-500">Fixed by {s.agency?.name ?? OWNER_LABELS[s.ownerType]}</span>
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
@@ -439,7 +563,7 @@ function Legend() {
       type="button"
       onClick={() => setOpen(!open)}
       aria-expanded={open}
-      className="absolute left-3 top-3 z-10 rounded-[20px] bg-white px-3.5 py-2.5 text-left text-xs text-neutral-800 shadow-[0_1px_3px_rgb(60_64_67/0.3),0_4px_8px_3px_rgb(60_64_67/0.15)]"
+      className="absolute left-3 top-[4.25rem] z-10 rounded-[20px] bg-white px-3.5 py-2.5 text-left text-xs text-neutral-800 shadow-[0_1px_3px_rgb(60_64_67/0.3),0_4px_8px_3px_rgb(60_64_67/0.15)]"
     >
       <span className="flex items-center gap-2 font-semibold">
         <span className="flex -space-x-1" aria-hidden>
@@ -493,7 +617,7 @@ function SafetyGate({ onContinue, onLater, onCancel }: { onContinue: () => void;
 
 function SignalCard({ signal, onReport, onClose }: { signal: MapSignal; onReport: () => void; onClose: () => void }) {
   return (
-    <div className="mb-4">
+    <div>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-lg font-bold leading-snug">{signal.name}</p>
@@ -507,12 +631,12 @@ function SignalCard({ signal, onReport, onClose }: { signal: MapSignal; onReport
         </div>
         <CloseButton onClick={onClose} />
       </div>
-      <div className="mt-3 flex items-center justify-between gap-3">
+      <div className="mt-2.5">
         <StatusBadge signal={signal} />
-        <button onClick={onReport} className="rounded-full bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 active:bg-red-100">
-          Report this light
-        </button>
       </div>
+      <button onClick={onReport} className="btn-primary mt-4 w-full">
+        Report this light
+      </button>
     </div>
   );
 }

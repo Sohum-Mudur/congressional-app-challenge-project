@@ -156,7 +156,7 @@ export default function SignalMap({ signals, selectedId, userPosition, heading, 
         type: "circle",
         source: "signals",
         paint: {
-          "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, ["case", ["get", "selected"], 9, 4.5], 16, ["case", ["get", "selected"], 14, 9]],
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, ["case", ["get", "selected"], 10, 6], 16, ["case", ["get", "selected"], 15, 10.5]],
           "circle-color": ["match", ["get", "ownerType"], "state", OWNER_COLORS.state, "county", OWNER_COLORS.county, OWNER_COLORS.municipal],
           "circle-stroke-color": ["case", ["get", "selected"], "#111827", ["==", ["get", "status"], "fixed"], "#16a34a", "#ffffff"],
           "circle-stroke-width": ["case", ["get", "selected"], 3.5, 2],
@@ -229,12 +229,15 @@ export default function SignalMap({ signals, selectedId, userPosition, heading, 
     if (!ready || !map || !frame?.length) return;
     const lngs = frame.map((p) => p.lng);
     const lats = frame.map((p) => p.lat);
+    // MapLibre remembers padding from earlier camera moves and adds it to this one, which can zoom out to the
+    // whole state. Start from none so only the padding below counts.
+    map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
     map.fitBounds(
       [
         [Math.min(...lngs), Math.min(...lats)],
         [Math.max(...lngs), Math.max(...lats)],
       ],
-      { padding: { top: 90, bottom: 420, left: 50, right: 50 }, maxZoom: 16, duration: 800 },
+      { padding: { top: 130, bottom: Math.min(380, map.getContainer().clientHeight * 0.45), left: 40, right: 40 }, maxZoom: 16, duration: 800 },
     );
   }, [ready, frame]);
 

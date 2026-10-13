@@ -122,3 +122,15 @@ button {
   transform: scale(0.99);
 }
 
+.btn-secondary {
+  border-radius: 1.125rem;
+  background: #f1f1f0;
+  padding: 0.875rem;
+  font-weight: 600;
+  color: #171717;
+  transition: transform 0.1s, background 0.1s;
+}
+.btn-secondary:active {
+  background: #e5e5e4;
+  transform: scale(0.99);
+}
