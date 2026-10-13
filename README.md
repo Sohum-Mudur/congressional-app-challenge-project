@@ -1,86 +1,148 @@
 # Signal Report (working name)
 
-**Stuck at a red light with no cross traffic? Report it in one tap, and we get it to the agency that actually fixes it.**
+**Stuck at a red light with no cross traffic? Report it in a few taps, and the app gets it to the agency that actually fixes that light.**
 
-Built in Hillsborough, NJ for the 2026 Congressional App Challenge.
+Built in Hillsborough, New Jersey, for the 2026 Congressional App Challenge.
+
+**Live app:** https://congressional-app-challenge-project.vercel.app (works on any phone; add it to your home screen to use it like an app)
+
+---
 
 ## The problem
 
-Many traffic lights detect waiting cars with sensors in the road. When a sensor breaks, the light can stay red with nobody coming the other way. Drivers wait for nothing, burn fuel, and sometimes run the light out of frustration.
+Many traffic lights detect waiting cars with sensors buried in the road. When a sensor fails, the light can stay red even though nobody is coming the other way. Drivers wait minutes for nothing, waste fuel, and some give up and run the light.
 
-Hardly anyone reports it, because **nobody knows who owns the light.** In New Jersey it depends on the road:
+Almost nobody reports it, because **nobody knows who owns the light.** In New Jersey it depends on which roads meet there:
 
-| Road at the intersection | Who owns the light | Example in Hillsborough |
+| Road at the intersection | Who owns and fixes the light | Example in Hillsborough |
 |---|---|---|
-| Interstate, US or NJ route | NJ Department of Transportation | US 206 & Amwell Rd |
-| County route (CR 5xx/6xx) | County engineering | Amwell Rd (CR 514) & Beekman Ln |
-| Anything else | The township | Triangle Rd & Auten Rd |
+| Interstate, US or NJ route | NJ Department of Transportation (NJDOT) | US 206 & Amwell Rd |
+| County route (CR 5xx/6xx) | Somerset County Engineering | Amwell Rd (CR 514) & Beekman Ln |
+| Anything else | Hillsborough Township Public Works | Triangle Rd & Auten Rd |
+
+Even when people do report, a single complaint is easy to dismiss. Agencies act on **patterns**.
 
 ## What the app does
 
-1. **One-tap report.** It matches your GPS position to the nearest of Hillsborough's 38 signalized intersections and guesses which way you were going from your phone's heading.
-2. **Routes it automatically.** It reads which roads meet at that light from OpenStreetMap and works out the owner using the rules above.
-3. **Combines reports into evidence.** When **3+ reports from 2+ different people** arrive within 7 days, the owner gets one short daily summary: what's wrong, which direction, how long people waited, and a map link. Agencies ignore floods of single complaints; they act on patterns.
-4. **Closes the loop.** Each email has a private link where staff mark a light "on it" or "fixed" without creating an account. The public map updates.
-5. **Shows the impact.** The Impact page adds up time wasted and estimated CO₂ from idling.
+1. **Find the light.** Three ways: tap **"I'm at the light now"** (GPS picks the nearest of Hillsborough's 38 signalized intersections), **choose it on the map**, or **search by street** ("triangle rd", "rt 206").
+2. **Say what's wrong.** Stays red, completely out, stuck flashing, pedestrian button broken; plus roughly how long you waited and which way you were going (guessed from your direction of travel).
+3. **Route it automatically.** The app reads which roads meet at that light and works out the owner using the rules above.
+4. **Combine reports into evidence.** When **3+ reports from 2+ different people** arrive within 7 days, the owner gets **one short summary email (a "digest")**: the problem, the direction, typical wait, and a map link.
+5. **Close the loop.** The email has a private link where staff mark a light "We're on it" or "Fixed", with no account needed. The public map updates, and anyone who asked gets **one email saying it's fixed**.
+6. **Show the impact.** The Impact page adds up time spent waiting and estimated CO₂ from idling (for gas cars; electric cars mostly lose time, not energy).
 
-**Safety:** NJ bans handheld phone use while driving. Before a report, the app asks whether you're driving. If you are, one tap saves the spot and you finish the report once you're parked.
+It feels like a familiar map app (live blue dot, a driving arrow, follow and compass modes, search), but it does one job: getting broken lights fixed. It deliberately does **not** give directions.
 
-## How it's built
+### Safety first
+New Jersey bans handheld phone use while driving. Before a GPS report, the app asks **"Are you driving?"**. If you are, one tap saves the spot and you finish the report once parked. You can also report later from home by choosing the light on the map.
 
+### Privacy
+- No accounts and no names.
+- Your location is used to find the light, and only the **light** is saved, never your coordinates.
+- To tell people apart, each phone gets a random ID, and we store a **scrambled code** made from the internet connection (a salted hash), never the IP address itself.
+- "Email me when it's fixed" is optional. The address is used for that one email and then **deleted**.
+- You can take back your own reports at any time.
+
+## How it works
+
+```mermaid
+flowchart TD
+    A["Phone: find the light<br/>(GPS, map or search)"] --> B["POST /api/reports<br/>validate, rate-limit, anonymous device ID"]
+    B --> C[("Supabase Postgres<br/>signals, reports, agencies, digests, fix_alerts")]
+    D["Vercel Cron, every morning<br/>/api/digest"] --> C
+    D --> E{"3+ reports, 2+ people,<br/>2+ networks in 7 days?"}
+    E -- yes --> F["One email per agency<br/>(Resend)"]
+    F --> G["Agency opens private link<br/>/agency/[token]"]
+    G -- "Mark fixed" --> C
+    G -- "Mark fixed" --> H["One 'It's fixed' email<br/>to people who asked, then their address is deleted"]
 ```
-Phone (Next.js web app, installable)
-  │  GPS → snap to nearest signal (src/lib/geo.ts)
-  ▼
-POST /api/reports ── validate (zod), rate-limit, anonymous device cookie
-  ▼
-Store (src/lib/store) ── Supabase Postgres (local JSON fallback offline)
-  ▼
-Daily cron → /api/digest
-  signalsDueForDigest() → groupByAgency() → renderDigestEmail()   (src/lib/digest.ts)
-  ▼
-Email (Resend) → agency → /agency/<secret link> → "Mark fixed"
-```
 
-| Piece | Tech |
+**Test mode.** While `TEST_MODE=true` (the current setting), every email goes to the team's own inbox instead of a real agency, with the subject showing who it *would* have gone to. No agency is contacted until one agrees to receive reports.
+
+**Agencies without email.** NJDOT and Somerset County only accept web forms, so their digests go to the team with an "Action needed: submit via form" banner, and a person submits them.
+
+### Tech stack
+
+| Piece | Technology |
 |---|---|
-| App | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS |
-| Map | MapLibre GL with free OpenFreeMap tiles |
+| App | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4; installable as a Progressive Web App (PWA) |
+| Map | MapLibre GL; OpenFreeMap "Positron" tiles, recolored in `src/components/mapStyle.ts` |
+| Location | Browser Geolocation (live tracking) and DeviceOrientation (compass) |
 | Signal data | OpenStreetMap via the Overpass API (`scripts/import-signals.ts`) |
-| Database | Supabase Postgres with Row Level Security (`supabase/migrations`); falls back to a local JSON file when Supabase isn't configured |
-| Email | Resend; falls back to a local outbox at `/dev/outbox` |
-| Tests | Vitest (`src/lib/*.test.ts`) |
+| Database | Supabase Postgres with Row Level Security (`supabase/migrations/`) |
+| Email | Resend |
+| Validation | Zod |
+| Tests | Vitest (unit tests) plus an end-to-end script (`scripts/smoke-test.ts`) |
 | Hosting | Vercel, with Vercel Cron for the daily digest |
 
-### Interesting problems we solved
+### Problems we had to solve
 
-- **Divided highways.** OSM puts a separate signal node on each side of a divided road, so US 206 & Brooks Blvd showed up as 4 lights. `buildSignals()` merges nodes within 40 m, which turned 64 nodes into 38 real intersections.
-- **Who owns a light.** `ownerForRoads()` ranks every road through the intersection (state > county > township). A light where US 206 crosses a county road therefore goes to NJDOT, which owns the signals on state highways.
-- **Spam and fairness.** Reports need 2+ different devices, repeats from the same device within 30 minutes are ignored, and there's a daily cap.
-- **Agencies without email.** NJDOT and Somerset County only take web forms, so their digests go to our admin with an "Action needed: submit via form" banner.
+- **Divided highways.** OpenStreetMap puts a separate signal on each side of a divided road, so one intersection could show up as 4 lights. `buildSignals()` (`src/lib/signals.ts`) merges signals within 40 m: 64 map points became 38 real intersections.
+- **Who owns a light.** `ownerForRoads()` (`src/lib/jurisdiction.ts`) ranks every road through the intersection (state > county > township), so a light where US 206 crosses a county road goes to NJDOT.
+- **Which way were you going?** GPS gives no direction when you're stopped at a red light. The app remembers your direction of travel from just before you stopped (`src/components/useLiveLocation.ts`).
+- **Spam and fairness.** A digest needs reports from 2+ devices **and** 2+ internet connections, so clearing cookies isn't enough to fake a crowd. Repeat reports within 30 minutes are ignored, and there are daily caps per device and per connection.
+- **Only real reporters can ask for alerts.** You can only sign up for a "fixed" email on a light you just reported, so nobody can sign up strangers' addresses.
 
-## Running it
+## Project structure
 
-```bash
-npm install          # also copies MapLibre's worker into public/maplibre
-npm run dev          # http://localhost:3000
-npm test             # unit tests
-npm run import:signals -- "Hillsborough Township" "Somerset"   # refresh signal data from OSM
-npm run db:migrate   # create/update database tables (needs DATABASE_URL)
-npm run db:seed      # load data/signals and data/agencies into the database
+```
+src/
+  app/                    Pages and API routes (Next.js App Router)
+    page.tsx              The map (home)
+    impact/ about/ install/
+    agency/[token]/       No-login page where agency staff mark lights fixed
+    api/
+      reports/            Create a report; list or take back your own
+      fix-alerts/         "Email me when it's fixed"
+      digest/             Daily digest (run by Vercel Cron)
+      agency/[token]/     Agency status updates
+      signals/            Map data
+  components/             Map, report screens, live location, search bar
+  lib/
+    jurisdiction.ts       Who owns a light
+    signals.ts            Merging OpenStreetMap signals into intersections
+    geo.ts                Distance, nearest light, direction of travel
+    digest.ts             When a light qualifies, and the digest email
+    search.ts             Street search
+    store/                Database access (Supabase, or a local JSON file for offline development)
+  content/team.ts         The "Who built this" section of the About page
+data/
+  signals/                Hillsborough's 38 traffic lights (generated from OpenStreetMap)
+  agencies.json           Who to contact, with a source link for each
+supabase/migrations/      Database tables and security rules
+scripts/                  Import, database setup and the end-to-end test
 ```
 
-Try the whole loop locally:
-1. Open a light (tap it, or `/?signal=osm-105373726`) → **Report this light**.
-2. Reports need 3 different devices, so add two more from private windows, or with `curl` using separate cookie jars.
-3. Open `/dev/outbox` → **Run digest now** to see the email.
-4. Follow the "Mark signals as fixed" link in the email.
+## Running it yourself
 
-Copy `.env.example` to `.env.local` to configure email. **`TEST_MODE` stays `true` until an agency has agreed to get reports**, so every email goes to your own inbox until then.
+You need Node.js 22 or newer.
+
+```bash
+npm install          # also copies MapLibre's map worker into public/maplibre
+cp .env.example .env.local
+npm run dev          # http://localhost:3000
+```
+
+With an empty `.env.local`, the app still runs: reports are saved to a local file and emails are shown at `/dev/outbox` instead of being sent. To use a real database and email, fill in `.env.local` (every setting is explained in `.env.example`), then:
+
+```bash
+npm run db:migrate   # create the database tables
+npm run db:seed      # load the traffic lights and agencies
+```
+
+Other commands:
+
+```bash
+npm test             # 36 unit tests
+npm run smoke        # end-to-end test against a running site (refuses to run unless TEST_MODE is on)
+npm run import:signals -- "Hillsborough Township" "Somerset"   # refresh traffic light data from OpenStreetMap
+```
+
+**Try the whole loop locally:** report a light from three different browser windows (two of them private), open `/dev/outbox` and press **Run digest now**, then follow the "Mark signals as fixed" link in the email.
 
 ## Data sources and credits
 
-- Traffic signals and roads: © OpenStreetMap contributors (ODbL)
-- Map tiles: OpenFreeMap / OpenMapTiles
-- Agency contacts: each entry in `data/agencies.json` links to its source page and is marked `verified: false` until confirmed by phone.
-- Idling estimate: US DOE (¼–½ gallon per hour idling; we use ¼). CO₂ per gallon: US EPA (8,887 g).
+- Traffic signals and roads: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) (ODbL)
+- Map tiles: [OpenFreeMap](https://openfreemap.org) / OpenMapTiles
+- Agency contacts: each entry in `data/agencies.json` links to the page it came from and is marked `verified: false` until confirmed by phone.
+- Idling estimate: US Department of Energy (¼–½ gallon per hour; we use ¼). CO₂ per gallon of gasoline: US EPA (8,887 g).
