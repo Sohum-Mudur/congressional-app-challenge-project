@@ -16,7 +16,7 @@ export default async function InstallPage() {
 
       <InstallButton />
 
-      <section className="mt-6 rounded-xl bg-white p-4 ring-1 ring-black/5">
+      <section className="mt-6 rounded-2xl bg-white p-4 ring-1 ring-black/5">
         <h2 className="text-lg font-bold">iPhone</h2>
         <ol className="mt-2 list-decimal space-y-1.5 pl-5">
           <li>
@@ -31,7 +31,7 @@ export default async function InstallPage() {
         </ol>
       </section>
 
-      <section className="mt-3 rounded-xl bg-white p-4 ring-1 ring-black/5">
+      <section className="mt-3 rounded-2xl bg-white p-4 ring-1 ring-black/5">
         <h2 className="text-lg font-bold">Android</h2>
         <ol className="mt-2 list-decimal space-y-1.5 pl-5">
           <li>
@@ -43,7 +43,7 @@ export default async function InstallPage() {
         </ol>
       </section>
 
-      <section className="mt-3 flex flex-col items-center gap-4 rounded-xl bg-white p-4 ring-1 ring-black/5 sm:flex-row">
+      <section className="mt-3 flex flex-col items-center gap-4 rounded-2xl bg-white p-4 ring-1 ring-black/5 sm:flex-row">
         <div className="h-40 w-40 shrink-0" aria-label={`QR code for ${config.siteUrl}`} role="img" dangerouslySetInnerHTML={{ __html: qr }} />
         <div>
           <h2 className="text-lg font-bold">On a computer?</h2>

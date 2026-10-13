@@ -35,11 +35,11 @@ export default async function AgencyPage(props: PageProps<"/agency/[token]">) {
       </p>
 
       {rows.length === 0 ? (
-        <p className="mt-6 rounded-xl bg-white p-6 text-center text-neutral-600 ring-1 ring-black/5">No open reports right now.</p>
+        <p className="mt-6 rounded-2xl bg-white p-6 text-center text-neutral-600 ring-1 ring-black/5">No open reports right now.</p>
       ) : (
         <ul className="mt-6 space-y-3">
           {rows.map(({ signal, status, summary }) => (
-            <li key={signal.id} className="rounded-xl bg-white p-4 ring-1 ring-black/5">
+            <li key={signal.id} className="rounded-2xl bg-white p-4 ring-1 ring-black/5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="font-semibold">{signal.name}</p>

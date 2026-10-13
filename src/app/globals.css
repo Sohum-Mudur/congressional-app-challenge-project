@@ -19,32 +19,106 @@ button {
   cursor: pointer;
 }
 
-/* The user's location on the map: a blue dot with a direction cone, like Google Maps. */
+/* The user's location on the map, like Google Maps: a blue dot with a direction cone while still,
+   and a navigation arrow while driving. */
 .me-marker {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   pointer-events: none;
 }
 .me-dot {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 18px;
-  height: 18px;
-  margin: -9px 0 0 -9px;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
   border-radius: 9999px;
-  background: #0a84ff;
+  background: #1a73e8;
   border: 3px solid #fff;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 1px 4px rgb(0 0 0 / 0.35);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08), 0 2px 6px rgb(0 0 0 / 0.3);
 }
 .me-cone {
   position: absolute;
   inset: 0;
   display: none;
-  background: conic-gradient(from -40deg, rgb(10 132 255 / 0) 0deg, rgb(10 132 255 / 0.55) 40deg, rgb(10 132 255 / 0) 80deg, transparent 80deg);
+  background: conic-gradient(from -40deg, rgb(26 115 232 / 0) 0deg, rgb(26 115 232 / 0.5) 40deg, rgb(26 115 232 / 0) 80deg, transparent 80deg);
   -webkit-mask-image: radial-gradient(circle, #000 15%, transparent 70%);
   mask-image: radial-gradient(circle, #000 15%, transparent 70%);
 }
 .me-marker.has-heading .me-cone {
   display: block;
 }
+.me-arrow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  display: none;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.35));
+}
+.me-arrow path {
+  fill: #1a73e8;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.me-marker.driving .me-arrow {
+  display: block;
+}
+.me-marker.driving .me-dot,
+.me-marker.driving .me-cone {
+  display: none;
+}
+
+/* Round floating buttons on the map (location, compass), styled like Google Maps'. */
+.map-button {
+  display: flex;
+  height: 46px;
+  width: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(60 64 67 / 0.3), 0 4px 8px 3px rgb(60 64 67 / 0.15);
+  transition: transform 0.1s;
+}
+.map-button:active {
+  transform: scale(0.94);
+}
+
+/* MapLibre's attribution button: smaller and rounder, so it doesn't look bolted on. */
+.maplibregl-ctrl-attrib.maplibregl-compact {
+  border-radius: 9999px;
+  font-size: 11px;
+}
+
+/* Shared buttons. */
+.btn-primary {
+  border-radius: 1.125rem;
+  background: #dc2626;
+  padding: 1rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 8px 20px -6px rgb(220 38 38 / 0.5);
+  transition: transform 0.1s, background 0.1s;
+}
+.btn-primary:active {
+  background: #b91c1c;
+  transform: scale(0.99);
+}
+.btn-dark {
+  border-radius: 1.125rem;
+  background: #171717;
+  padding: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.1s;
+}
+.btn-dark:active {
+  transform: scale(0.99);
+}
+

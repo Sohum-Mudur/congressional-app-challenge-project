@@ -9,12 +9,18 @@ export type LivePosition = {
   at: number; // ms timestamp
   /** GPS direction of travel, only while actually moving (GPS heading is meaningless when stopped). */
   movingHeading: number | null;
+  /** True while driving, and for a few seconds after slowing down, so the car arrow doesn't flicker at slow speeds. */
+  driving: boolean;
+  /** The last direction of travel while driving. */
+  travelHeading: number | null;
 };
 
 /** Faster than a brisk walk: below this, the GPS heading jumps around and isn't trustworthy. */
 const MOVING_MPS = 2.5;
 /** How long the last direction of travel stays useful, e.g. while waiting at a red light. */
 const TRAVEL_HEADING_TTL_MS = 2 * 60 * 1000;
+/** Keep showing the driving arrow this long after the last moving GPS fix. */
+const DRIVING_GRACE_MS = 8_000;
 
 type CompassEvent = DeviceOrientationEvent & { webkitCompassHeading?: number };
 type OrientationPermission = { requestPermission?: () => Promise<"granted" | "denied"> };
@@ -31,6 +37,9 @@ export function useLiveLocation() {
   const watchId = useRef<number | null>(null);
   const lastTravel = useRef<{ heading: number; at: number } | null>(null);
   const compassOn = useRef(false);
+  const removeCompass = useRef<(() => void) | null>(null);
+  const hasFix = useRef(false);
+  const stopDriving = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const stop = useCallback(() => {
     if (watchId.current != null) navigator.geolocation.clearWatch(watchId.current);
@@ -50,14 +59,35 @@ export function useLiveLocation() {
         const { latitude, longitude, accuracy, heading, speed } = p.coords;
         const moving = speed != null && speed >= MOVING_MPS && heading != null && !Number.isNaN(heading);
         if (moving) lastTravel.current = { heading, at: p.timestamp };
-        setPosition({ lat: latitude, lng: longitude, accuracy, at: p.timestamp, movingHeading: moving ? heading : null });
+        const t = lastTravel.current;
+        const driving = t != null && p.timestamp - t.at < DRIVING_GRACE_MS;
+        hasFix.current = true;
+        // Phones often stop sending updates while standing still, so end "driving" on a timer too,
+        // not only when the next GPS fix arrives.
+        if (stopDriving.current) clearTimeout(stopDriving.current);
+        if (driving) {
+          stopDriving.current = setTimeout(
+            () => setPosition((p) => p && { ...p, driving: false, travelHeading: null, movingHeading: null }),
+            DRIVING_GRACE_MS - (p.timestamp - t.at) + 100,
+          );
+        }
+        setPosition({
+          lat: latitude,
+          lng: longitude,
+          accuracy,
+          at: p.timestamp,
+          movingHeading: moving ? heading : null,
+          driving,
+          travelHeading: driving ? t.heading : null,
+        });
         setError(null);
       },
       (err) => {
         if (err.code === err.PERMISSION_DENIED) {
           setError("Location is turned off for this app. Turn it on in Settings → Privacy → Location Services, or tap a light on the map.");
           stop();
-        } else {
+        } else if (!hasFix.current) {
+          // A slow fix after we already have one isn't worth interrupting anyone; the dot just waits for the next update.
           setError("Can't get your location right now. Try again in a moment, or tap a light on the map.");
         }
       },
@@ -92,6 +122,11 @@ export function useLiveLocation() {
     };
     window.addEventListener("deviceorientationabsolute", onOrientation);
     window.addEventListener("deviceorientation", onOrientation);
+    removeCompass.current = () => {
+      window.removeEventListener("deviceorientationabsolute", onOrientation);
+      window.removeEventListener("deviceorientation", onOrientation);
+      compassOn.current = false;
+    };
   }, []);
 
   /** Turn on live location (and the compass). Call from a tap so the phone shows its permission prompts. */
@@ -113,6 +148,8 @@ export function useLiveLocation() {
       cancelled = true;
       if (watchId.current != null) navigator.geolocation.clearWatch(watchId.current);
       watchId.current = null;
+      removeCompass.current?.();
+      if (stopDriving.current) clearTimeout(stopDriving.current);
     };
   }, [startWatch]);
 
@@ -122,8 +159,8 @@ export function useLiveLocation() {
     return t && Date.now() - t.at < TRAVEL_HEADING_TTL_MS ? t.heading : null;
   }, []);
 
-  // Moving: trust GPS direction of travel. Standing still: the compass shows which way the phone faces.
-  const heading = position?.movingHeading ?? compass;
+  // Driving: trust the GPS direction of travel. Standing still: the compass shows which way the phone faces.
+  const heading = position?.travelHeading ?? compass;
 
-  return { position, heading, error, active, start, travelHeading };
+  return { position, heading, compass, error, active, start, travelHeading };
 }

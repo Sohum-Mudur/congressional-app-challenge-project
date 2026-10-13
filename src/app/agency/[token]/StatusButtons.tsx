@@ -28,11 +28,11 @@ export default function StatusButtons({ token, signalId, status }: { token: stri
     <div className="flex flex-col items-end gap-1">
       <div className="flex gap-2">
         {status !== "acknowledged" && (
-          <button disabled={busy} onClick={() => set("acknowledged")} className="rounded-lg bg-sky-100 px-3 py-2 text-sm font-semibold text-sky-900 disabled:opacity-50">
+          <button disabled={busy} onClick={() => set("acknowledged")} className="rounded-full bg-sky-100 px-3.5 py-2 text-sm font-semibold text-sky-900 disabled:opacity-50">
             We&apos;re on it
           </button>
         )}
-        <button disabled={busy} onClick={() => set("fixed")} className="rounded-lg bg-green-600 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">
+        <button disabled={busy} onClick={() => set("fixed")} className="rounded-full bg-green-600 px-3.5 py-2 text-sm font-semibold text-white disabled:opacity-50">
           Mark fixed
         </button>
       </div>

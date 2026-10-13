@@ -58,7 +58,7 @@ export default function AboutPage() {
           {team.members.length > 0 && (
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
               {team.members.map((m) => (
-                <div key={m.name} className="rounded-xl bg-white p-4 ring-1 ring-black/5">
+                <div key={m.name} className="rounded-2xl bg-white p-4 ring-1 ring-black/5">
                   <p className="font-semibold">{m.name}</p>
                   <p className="text-sm text-neutral-500">{m.role}</p>
                   <p className="mt-1.5 text-sm">{m.bio}</p>

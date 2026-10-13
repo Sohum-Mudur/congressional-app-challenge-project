@@ -71,6 +71,7 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
   const [pending, setPending] = useState<PendingReport[]>(loadPending);
   const [notice, setNotice] = useState<Notice | null>(null);
   const [mine, setMine] = useState<MyReport[]>([]);
+  const [frame, setFrame] = useState<LatLng[] | null>(null);
   const setMessage = (text: string | null) => setNotice(text ? { tone: "warn", text } : null);
 
   /** Reload the map data and this device's reports. Resolves once both are in. */
@@ -122,7 +123,9 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
       const here = await currentFix();
       const hit = snapToNearest(here, signals);
       if (!hit) {
-        setStep({ name: "none-nearby", nearest: snapToNearest(here, signals, Infinity) });
+        const nearest = snapToNearest(here, signals, Infinity);
+        setStep({ name: "none-nearby", nearest });
+        setFrame(nearest ? [here, nearest.signal] : [here]); // show where you are relative to the closest light
         return;
       }
       setSelectedId(hit.signal.id);
@@ -185,7 +188,16 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
     setPending(next);
   }
 
-  function selectFromMap(id: string) {
+
+  /** A light was tapped on the map, or empty map (null), which closes the light's card like Google Maps does. */
+  function selectFromMap(id: string | null) {
+    if (id === null) {
+      if (step.name === "idle") {
+        setSelectedId(null);
+        setNotice(null);
+      }
+      return;
+    }
     setSelectedId(id);
     setMessage(null);
     if (step.name === "form") setStep({ ...step, signalId: id, approach: null });
@@ -201,6 +213,8 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
     });
     const body = await res.json().catch(() => ({}));
     if (!res.ok) {
+      // Back to the main card so the reason is visible (it used to be hidden behind the open form).
+      setStep({ name: "idle" });
       setMessage(body.error ?? "Something went wrong. Please try again.");
       return;
     }
@@ -212,9 +226,10 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
   // --- render ---
 
   const formSignal = step.name === "form" || step.name === "sent" ? signals.find((s) => s.id === step.signalId) : null;
+  const close = () => setStep({ name: "idle" });
 
   return (
-    <div className="relative flex-1">
+    <div className="relative flex-1 overflow-hidden">
       <SignalMap
         signals={signals}
         selectedId={selectedId}
@@ -222,109 +237,118 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
         heading={live.heading}
         onSelect={selectFromMap}
         onLocate={live.start}
+        frame={frame}
       />
       <Legend />
 
-      <div className="absolute inset-x-0 bottom-0 z-10 mx-auto max-w-md px-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        <div className="max-h-[78dvh] overflow-y-auto rounded-2xl bg-white p-4 text-neutral-900 shadow-xl ring-1 ring-black/5">
-          {step.name === "safety" && <SafetyGate onContinue={locateAndSnap} onLater={saveForLater} onCancel={() => setStep({ name: "idle" })} />}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 mx-auto w-full max-w-md sm:px-3 sm:pb-3">
+        <div className="pointer-events-auto flex max-h-[82dvh] flex-col rounded-t-[28px] bg-white text-neutral-900 shadow-[0_-6px_28px_rgb(0_0_0/0.14)] sm:rounded-[28px]">
+          <div className="flex shrink-0 justify-center pb-1 pt-2.5" aria-hidden>
+            <span className="h-1.5 w-10 rounded-full bg-neutral-300" />
+          </div>
+          <div className="overflow-y-auto overscroll-contain px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-1">
+            {step.name === "safety" && <SafetyGate onContinue={locateAndSnap} onLater={saveForLater} onCancel={close} />}
 
-          {step.name === "locating" && <p className="py-6 text-center text-neutral-600">Finding your location…</p>}
+            {step.name === "locating" && (
+              <div className="flex items-center justify-center gap-3 py-8 text-neutral-600">
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-sky-600" aria-hidden />
+                Finding your location…
+              </div>
+            )}
 
-          {step.name === "form" && formSignal && (
-            <ReportForm
-              key={formSignal.id}
-              signal={formSignal}
-              initialApproach={step.approach}
-              onSubmit={submit}
-              onCancel={() => setStep({ name: "idle" })}
-            />
-          )}
+            {step.name === "form" && formSignal && (
+              <ReportForm key={formSignal.id} signal={formSignal} initialApproach={step.approach} onSubmit={submit} onCancel={close} />
+            )}
 
-          {step.name === "sent" && formSignal && (
-            <SentCard
-              signal={formSignal}
-              duplicate={step.duplicate}
-              onDone={() => setStep({ name: "idle" })}
-              onUndo={async () => {
-                if (await takeBack(step.reportId)) setStep({ name: "idle" });
-              }}
-            />
-          )}
+            {step.name === "sent" && formSignal && (
+              <SentCard
+                signal={formSignal}
+                duplicate={step.duplicate}
+                onDone={close}
+                onUndo={async () => {
+                  if (await takeBack(step.reportId)) close();
+                }}
+              />
+            )}
 
-          {step.name === "saved" && (
-            <SavedCard
-              nearName={step.nearName}
-              onDone={() => setStep({ name: "idle" })}
-              onUndo={() => {
-                dropPending(step.item);
-                setStep({ name: "idle" });
-                setNotice({ tone: "ok", text: "Saved spot removed." });
-              }}
-            />
-          )}
+            {step.name === "saved" && (
+              <SavedCard
+                nearName={step.nearName}
+                onDone={close}
+                onUndo={() => {
+                  dropPending(step.item);
+                  close();
+                  setNotice({ tone: "ok", text: "Saved spot removed." });
+                }}
+              />
+            )}
 
-          {step.name === "none-nearby" && (
-            <NoneNearbyCard
-              nearest={step.nearest}
-              onPick={(id) => {
-                setSelectedId(id);
-                setStep({ name: "form", signalId: id, approach: null });
-              }}
-              onDone={() => setStep({ name: "idle" })}
-            />
-          )}
+            {step.name === "none-nearby" && (
+              <NoneNearbyCard
+                nearest={step.nearest}
+                onPick={(id) => {
+                  setSelectedId(id);
+                  setStep({ name: "form", signalId: id, approach: null });
+                }}
+                onDone={close}
+              />
+            )}
 
-          {step.name === "mine" && (
-            <MyReportsList
-              reports={mine}
-              signals={signals}
-              onTakeBack={takeBack}
-              onShow={(id) => {
-                setSelectedId(id);
-                setStep({ name: "idle" });
-              }}
-              onDone={() => setStep({ name: "idle" })}
-            />
-          )}
+            {step.name === "mine" && (
+              <MyReportsList
+                reports={mine}
+                signals={signals}
+                onTakeBack={takeBack}
+                onShow={(id) => {
+                  setSelectedId(id);
+                  close();
+                }}
+                onDone={close}
+              />
+            )}
 
-          {step.name === "idle" && (
-            <>
-              {selected && <SignalCard signal={selected} onReport={() => setStep({ name: "form", signalId: selected.id, approach: null })} />}
-              {live.error && !notice && <p className="mb-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{live.error}</p>}
-              {notice && (
-                <p className={`mb-3 rounded-lg p-3 text-sm ${notice.tone === "ok" ? "bg-green-50 text-green-900" : "bg-amber-50 text-amber-900"}`}>{notice.text}</p>
-              )}
-              {pending.length > 0 && (
-                <div className="mb-3 rounded-lg bg-sky-50 p-3 text-sm text-sky-900">
-                  <p className="font-medium">
-                    You saved {pending.length} light{pending.length > 1 ? "s" : ""} to report.
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {pending.map((p) => (
-                      <span key={p.at} className="inline-flex overflow-hidden rounded-full bg-sky-600 font-medium text-white">
-                        <button onClick={() => finishPending(p)} className="py-1.5 pl-3 pr-2">
-                          Finish ({new Date(p.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })})
-                        </button>
-                        <button onClick={() => dropPending(p)} aria-label="Delete this saved spot" className="border-l border-white/30 px-2.5">
-                          ✕
-                        </button>
-                      </span>
-                    ))}
+            {step.name === "idle" && (
+              <>
+                {selected && (
+                  <SignalCard
+                    signal={selected}
+                    onReport={() => setStep({ name: "form", signalId: selected.id, approach: null })}
+                    onClose={() => setSelectedId(null)}
+                  />
+                )}
+                {live.error && !notice && <Banner tone="warn">{live.error}</Banner>}
+                {notice && <Banner tone={notice.tone}>{notice.text}</Banner>}
+                {pending.length > 0 && (
+                  <div className="mb-3 rounded-2xl bg-sky-50 p-3.5 text-sm text-sky-950">
+                    <p className="font-semibold">
+                      You saved {pending.length} spot{pending.length > 1 ? "s" : ""} to report
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {pending.map((p) => (
+                        <span key={p.at} className="inline-flex overflow-hidden rounded-full bg-sky-600 font-medium text-white shadow-sm">
+                          <button onClick={() => finishPending(p)} className="py-2 pl-3.5 pr-2">
+                            Finish · {new Date(p.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
+                          </button>
+                          <button onClick={() => dropPending(p)} aria-label="Delete this saved spot" className="border-l border-white/25 px-3">
+                            <XIcon className="h-3.5 w-3.5" />
+                          </button>
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-              <button onClick={startReport} className="w-full rounded-xl bg-red-600 py-4 text-lg font-bold text-white shadow active:bg-red-700">
-                Report the light I&apos;m at
-              </button>
-              {mine.length > 0 && (
-                <button onClick={() => setStep({ name: "mine" })} className="mt-2 w-full py-1.5 text-sm font-medium text-neutral-600">
-                  Your reports ({mine.length})
+                )}
+                <button onClick={startReport} className="btn-primary w-full">
+                  Report the light I&apos;m at
                 </button>
-              )}
-              <InstallHint />
-            </>
-          )}
+                {mine.length > 0 && (
+                  <button onClick={() => setStep({ name: "mine" })} className="mt-1 w-full py-2.5 text-sm font-medium text-neutral-600">
+                    Your reports ({mine.length})
+                  </button>
+                )}
+                <InstallHint />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -332,6 +356,48 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
 }
 
 // --- pieces ---
+
+function XIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
+
+function CloseButton({ onClick, label = "Close" }: { onClick: () => void; label?: string }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="-mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-600 active:bg-neutral-200"
+    >
+      <XIcon />
+    </button>
+  );
+}
+
+function Banner({ tone, children }: { tone: "ok" | "warn"; children: React.ReactNode }) {
+  return <p className={`mb-3 rounded-2xl p-3.5 text-sm ${tone === "ok" ? "bg-green-50 text-green-900" : "bg-amber-50 text-amber-900"}`}>{children}</p>;
+}
+
+/** Big round icon at the top of confirmation screens. */
+function ResultIcon({ tone }: { tone: "ok" | "pin" }) {
+  return (
+    <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full ${tone === "ok" ? "bg-green-100 text-green-700" : "bg-sky-100 text-sky-700"}`}>
+      {tone === "ok" ? (
+        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M5 12.5l4.5 4.5L19 7.5" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden>
+          <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z" />
+        </svg>
+      )}
+    </div>
+  );
+}
 
 /** A one-line nudge to add the app to the home screen, hidden once installed or dismissed. */
 function InstallHint() {
@@ -345,9 +411,9 @@ function InstallHint() {
   });
   if (installed || dismissed) return null;
   return (
-    <div className="mt-2 flex items-center justify-between gap-2 text-sm">
-      <Link href="/install" className="font-medium text-sky-700">
-        📲 Add this app to your home screen
+    <div className="mt-1 flex items-center justify-between gap-2 text-sm">
+      <Link href="/install" className="py-2 font-medium text-sky-700">
+        Add this app to your home screen →
       </Link>
       <button
         aria-label="Hide"
@@ -357,67 +423,96 @@ function InstallHint() {
             localStorage.setItem(INSTALL_HINT_KEY, "1");
           } catch {}
         }}
-        className="px-2 text-neutral-400"
+        className="p-2 text-neutral-400"
       >
-        ✕
+        <XIcon className="h-3.5 w-3.5" />
       </button>
     </div>
   );
 }
 
+/** "Who fixes it" key. Folded into a small pill so it doesn't cover the map; tap to open. */
 function Legend() {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="absolute left-3 top-3 z-10 rounded-lg bg-white/95 p-2.5 text-xs text-neutral-800 shadow ring-1 ring-black/5">
-      <p className="mb-1 font-semibold">Who fixes it</p>
-      {(Object.keys(OWNER_LABELS) as (keyof typeof OWNER_LABELS)[]).map((t) => (
-        <div key={t} className="flex items-center gap-2">
-          <span className="inline-block h-3 w-3 rounded-full" style={{ background: OWNER_COLORS[t] }} />
-          {OWNER_LABELS[t]}
-        </div>
-      ))}
-      <div className="mt-1 flex items-center gap-2">
-        <span className="inline-block h-3 w-3 rounded-full bg-red-600/30" /> Reported
-      </div>
-    </div>
+    <button
+      type="button"
+      onClick={() => setOpen(!open)}
+      aria-expanded={open}
+      className="absolute left-3 top-3 z-10 rounded-[20px] bg-white px-3.5 py-2.5 text-left text-xs text-neutral-800 shadow-[0_1px_3px_rgb(60_64_67/0.3),0_4px_8px_3px_rgb(60_64_67/0.15)]"
+    >
+      <span className="flex items-center gap-2 font-semibold">
+        <span className="flex -space-x-1" aria-hidden>
+          {(Object.keys(OWNER_COLORS) as (keyof typeof OWNER_COLORS)[]).map((t) => (
+            <span key={t} className="inline-block h-3 w-3 rounded-full ring-2 ring-white" style={{ background: OWNER_COLORS[t] }} />
+          ))}
+        </span>
+        Who fixes it
+        <svg viewBox="0 0 24 24" className={`h-3.5 w-3.5 transition ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </span>
+      {open && (
+        <span className="mt-2 block space-y-1">
+          {(Object.keys(OWNER_LABELS) as (keyof typeof OWNER_LABELS)[]).map((t) => (
+            <span key={t} className="flex items-center gap-2">
+              <span className="inline-block h-3 w-3 rounded-full" style={{ background: OWNER_COLORS[t] }} />
+              {OWNER_LABELS[t]}
+            </span>
+          ))}
+          <span className="flex items-center gap-2">
+            <span className="inline-block h-3 w-3 rounded-full bg-red-600/30" /> Has reports
+          </span>
+        </span>
+      )}
+    </button>
   );
 }
 
 function SafetyGate({ onContinue, onLater, onCancel }: { onContinue: () => void; onLater: () => void; onCancel: () => void }) {
   return (
     <div>
-      <p className="text-lg font-bold">Are you driving?</p>
-      <p className="mt-1 text-sm text-neutral-600">New Jersey law bans handheld phone use while driving. Only fill in a report as a passenger or once you&apos;re parked.</p>
-      <div className="mt-4 grid gap-2">
-        <button onClick={onContinue} className="rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xl font-bold">Are you driving?</p>
+        <CloseButton onClick={onCancel} label="Cancel" />
+      </div>
+      <p className="mt-1 text-[15px] text-neutral-600">
+        New Jersey law bans handheld phone use while driving. Only fill in a report as a passenger or once you&apos;re parked.
+      </p>
+      <div className="mt-4 grid gap-2.5">
+        <button onClick={onContinue} className="btn-dark">
           I&apos;m a passenger or parked
         </button>
-        <button onClick={onLater} className="rounded-xl bg-sky-600 py-3.5 font-semibold text-white">
+        <button onClick={onLater} className="rounded-[1.125rem] bg-sky-600 py-3.5 font-semibold text-white shadow-lg shadow-sky-600/20 active:scale-[0.99]">
           I&apos;m driving: save this spot for later
-        </button>
-        <button onClick={onCancel} className="py-2 text-sm text-neutral-500">
-          Cancel
         </button>
       </div>
     </div>
   );
 }
 
-function SignalCard({ signal, onReport }: { signal: MapSignal; onReport: () => void }) {
+function SignalCard({ signal, onReport, onClose }: { signal: MapSignal; onReport: () => void; onClose: () => void }) {
   return (
-    <div className="mb-3 border-b border-neutral-100 pb-3">
+    <div className="mb-4">
       <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="font-semibold">{signal.name}</p>
-          <p className="text-sm text-neutral-600">
-            Fixed by {signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}
-            {signal.viaRef ? ` (${signal.viaRef})` : ""}
+        <div className="min-w-0">
+          <p className="text-lg font-bold leading-snug">{signal.name}</p>
+          <p className="mt-0.5 flex items-center gap-1.5 text-sm text-neutral-600">
+            <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: OWNER_COLORS[signal.ownerType] }} />
+            <span>
+              Fixed by {signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}
+              {signal.viaRef ? ` (${signal.viaRef})` : ""}
+            </span>
           </p>
         </div>
-        <StatusBadge signal={signal} />
+        <CloseButton onClick={onClose} />
       </div>
-      <button onClick={onReport} className="mt-2 text-sm font-semibold text-red-700">
-        Report this light →
-      </button>
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <StatusBadge signal={signal} />
+        <button onClick={onReport} className="rounded-full bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 active:bg-red-100">
+          Report this light
+        </button>
+      </div>
     </div>
   );
 }
@@ -437,7 +532,7 @@ export function StatusBadge({ signal }: { signal: Pick<MapSignal, "status" | "re
     acknowledged: "Agency on it",
     fixed: "Fixed ✓",
   }[signal.status];
-  return <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${styles[signal.status]}`}>{label}</span>;
+  return <span className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold ${styles[signal.status]}`}>{label}</span>;
 }
 
 function ReportForm({
@@ -466,59 +561,56 @@ function ReportForm({
         setBusy(false);
       }}
     >
-      <p className="text-sm text-neutral-500">Reporting</p>
-      <p className="text-lg font-bold leading-tight">{signal.name}</p>
-      <p className="text-sm text-neutral-600">Goes to {signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}</p>
-
-      <fieldset className="mt-3">
-        <legend className="mb-1.5 text-sm font-semibold">What&apos;s wrong?</legend>
-        <div className="flex flex-wrap gap-2">
-          {(Object.keys(ISSUE_LABELS) as IssueType[]).map((t) => (
-            <Chip key={t} active={issueType === t} onClick={() => setIssueType(t)}>
-              {ISSUE_LABELS[t]}
-            </Chip>
-          ))}
+      {/* Pinned to the top while the questions scroll, so the light's name and ✕ are always visible. */}
+      <div className="sticky top-0 z-10 -mx-5 flex items-start justify-between gap-3 bg-white px-5 pb-3 pt-1 shadow-[0_10px_12px_-12px_rgb(0_0_0/0.25)]">
+        <div className="min-w-0">
+          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Reporting</p>
+          <p className="text-xl font-bold leading-snug">{signal.name}</p>
+          <p className="mt-0.5 text-sm text-neutral-600">Goes to {signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}</p>
         </div>
-      </fieldset>
+        <CloseButton onClick={onCancel} label="Cancel report" />
+      </div>
 
-      <fieldset className="mt-3">
-        <legend className="mb-1.5 text-sm font-semibold">How long did you wait?</legend>
-        <div className="flex flex-wrap gap-2">
-          {WAIT_CHOICES.map((w) => (
-            <Chip key={w.label} active={waitSeconds === w.seconds} onClick={() => setWaitSeconds(w.seconds)}>
-              {w.label}
-            </Chip>
-          ))}
-        </div>
-      </fieldset>
+      <Question label="What's wrong?" first>
+        {(Object.keys(ISSUE_LABELS) as IssueType[]).map((t) => (
+          <Chip key={t} active={issueType === t} onClick={() => setIssueType(t)}>
+            {ISSUE_LABELS[t]}
+          </Chip>
+        ))}
+      </Question>
 
-      <fieldset className="mt-3">
-        <legend className="mb-1.5 text-sm font-semibold">Which way were you going?</legend>
-        <div className="flex flex-wrap gap-2">
-          {(["northbound", "eastbound", "southbound", "westbound"] as const).map((a) => (
-            <Chip key={a} active={approach === a} onClick={() => setApproach(approach === a ? null : a)}>
-              {a[0].toUpperCase() + a.slice(1)}
-            </Chip>
-          ))}
-        </div>
-      </fieldset>
+      <Question label="How long did you wait?">
+        {WAIT_CHOICES.map((w) => (
+          <Chip key={w.label} active={waitSeconds === w.seconds} onClick={() => setWaitSeconds(w.seconds)}>
+            {w.label}
+          </Chip>
+        ))}
+      </Question>
 
-      <label className="mt-3 block">
-        <span className="mb-1.5 block text-sm font-semibold">Anything else? (optional)</span>
+      <Question label="Which way were you going?">
+        {(["northbound", "eastbound", "southbound", "westbound"] as const).map((a) => (
+          <Chip key={a} active={approach === a} onClick={() => setApproach(approach === a ? null : a)}>
+            {a[0].toUpperCase() + a.slice(1)}
+          </Chip>
+        ))}
+      </Question>
+
+      <label className="mt-5 block">
+        <span className="mb-2 block text-sm font-semibold">
+          Anything else? <span className="font-normal text-neutral-500">(optional)</span>
+        </span>
         <input
           value={note}
           onChange={(e) => setNote(e.target.value)}
           maxLength={500}
           placeholder="e.g. left-turn arrow never comes on"
-          className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-base"
+          className="w-full rounded-2xl border-0 bg-neutral-100 px-4 py-3 text-base outline-none ring-sky-500 placeholder:text-neutral-400 focus:bg-white focus:ring-2"
         />
       </label>
 
-      <div className="mt-4 flex gap-2">
-        <button type="button" onClick={onCancel} className="rounded-xl px-4 py-3.5 font-semibold text-neutral-600">
-          Cancel
-        </button>
-        <button disabled={busy} className="flex-1 rounded-xl bg-red-600 py-3.5 text-lg font-bold text-white disabled:opacity-60">
+      {/* Stays at the bottom of the sheet while the questions scroll, so Send is always in reach. */}
+      <div className="sticky bottom-0 -mx-5 mt-4 bg-gradient-to-t from-white from-70% to-white/0 px-5 pb-1 pt-4">
+        <button disabled={busy} className="btn-primary w-full disabled:opacity-60">
           {busy ? "Sending…" : "Send report"}
         </button>
       </div>
@@ -526,18 +618,27 @@ function ReportForm({
   );
 }
 
+function Question({ label, first, children }: { label: string; first?: boolean; children: React.ReactNode }) {
+  return (
+    <fieldset className={first ? "mt-3" : "mt-5"}>
+      <legend className="mb-2 text-sm font-semibold">{label}</legend>
+      <div className="flex flex-wrap gap-2">{children}</div>
+    </fieldset>
+  );
+}
+
 function SentCard({ signal, duplicate, onDone, onUndo }: { signal: MapSignal; duplicate: boolean; onDone: () => void; onUndo: () => Promise<void> }) {
   const [undoing, setUndoing] = useState(false);
   return (
     <div className="text-center">
-      <p className="text-3xl">✅</p>
-      <p className="mt-1 text-lg font-bold">{duplicate ? "Already got it, thanks!" : "Report received"}</p>
-      <p className="mt-1 text-sm text-neutral-600">
+      <ResultIcon tone="ok" />
+      <p className="mt-3 text-xl font-bold">{duplicate ? "Already got it, thanks!" : "Report sent"}</p>
+      <p className="mt-1 text-[15px] text-neutral-600">
         {signal.name} now has <strong>{signal.recentReports}</strong> report{signal.recentReports === 1 ? "" : "s"}. Once 3 people report it, we send one
         summary to <strong>{signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}</strong>.
       </p>
       <FixAlertForm signalId={signal.id} />
-      <button onClick={onDone} className="mt-4 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
+      <button onClick={onDone} className="btn-dark mt-4 w-full">
         Done
       </button>
       <button
@@ -547,119 +648,9 @@ function SentCard({ signal, duplicate, onDone, onUndo }: { signal: MapSignal; du
           await onUndo();
           setUndoing(false);
         }}
-        className="mt-1 w-full py-2.5 text-sm font-medium text-neutral-500 disabled:opacity-50"
+        className="mt-1 w-full py-3 text-sm font-medium text-neutral-500 disabled:opacity-50"
       >
         {undoing ? "Taking it back…" : "Made a mistake? Undo this report"}
-      </button>
-    </div>
-  );
-}
-
-function SavedCard({ nearName, onDone, onUndo }: { nearName: string | null; onDone: () => void; onUndo: () => void }) {
-  return (
-    <div className="text-center">
-      <p className="text-3xl">📍</p>
-      <p className="mt-1 text-lg font-bold">Spot saved</p>
-      <p className="mt-1 text-sm text-neutral-600">
-        {nearName ? (
-          <>
-            Near <strong>{nearName}</strong>.
-          </>
-        ) : (
-          "There's no traffic light within 60 m of this spot, so you'll pick the light on the map when you finish."
-        )}{" "}
-        Nothing has been sent yet. Once you&apos;re parked, open the app and tap <strong>Finish</strong>.
-      </p>
-      <button onClick={onDone} className="mt-4 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
-        OK
-      </button>
-      <button onClick={onUndo} className="mt-1 w-full py-2.5 text-sm font-medium text-neutral-500">
-        Undo
-      </button>
-    </div>
-  );
-}
-
-function NoneNearbyCard({
-  nearest,
-  onPick,
-  onDone,
-}: {
-  nearest: { signal: MapSignal; distance: number } | null;
-  onPick: (signalId: string) => void;
-  onDone: () => void;
-}) {
-  const miles = nearest ? nearest.distance / 1609.34 : 0;
-  return (
-    <div>
-      <p className="text-lg font-bold">No traffic light right here</p>
-      <p className="mt-1 text-sm text-neutral-600">
-        We only cover Hillsborough&apos;s traffic lights, and none is within 60 m (200 ft) of you. If you already drove away from the light, find it on the map and tap it.
-      </p>
-      {nearest && miles < 2 && (
-        <button
-          onClick={() => onPick(nearest.signal.id)}
-          className="mt-3 w-full rounded-xl bg-neutral-100 p-3 text-left ring-1 ring-black/5"
-        >
-          <span className="block text-xs text-neutral-500">Closest light ({miles < 0.1 ? `${Math.round(nearest.distance * 3.28)} ft` : `${miles.toFixed(1)} mi`} away)</span>
-          <span className="block font-semibold">{nearest.signal.name}</span>
-          <span className="text-sm font-semibold text-red-700">Report this light →</span>
-        </button>
-      )}
-      <button onClick={onDone} className="mt-3 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
-        Pick on the map
-      </button>
-    </div>
-  );
-}
-
-function MyReportsList({
-  reports,
-  signals,
-  onTakeBack,
-  onShow,
-  onDone,
-}: {
-  reports: MyReport[];
-  signals: MapSignal[];
-  onTakeBack: (id: string) => Promise<boolean>;
-  onShow: (signalId: string) => void;
-  onDone: () => void;
-}) {
-  const [busyId, setBusyId] = useState<string | null>(null);
-  const name = (id: string) => signals.find((s) => s.id === id)?.name ?? "Unknown light";
-  return (
-    <div>
-      <p className="text-lg font-bold">Your reports</p>
-      <p className="text-sm text-neutral-600">From this phone, in the last 30 days.</p>
-      {reports.length === 0 && <p className="mt-3 text-sm text-neutral-600">None right now.</p>}
-      <ul className="mt-2 divide-y divide-neutral-100">
-        {reports.map((r) => (
-          <li key={r.id} className="flex items-center justify-between gap-3 py-2.5">
-            <button onClick={() => onShow(r.signalId)} className="min-w-0 text-left">
-              <span className="block truncate font-medium">{name(r.signalId)}</span>
-              <span className="block text-xs text-neutral-500">
-                {ISSUE_LABELS[r.issueType]} ·{" "}
-                {new Date(r.createdAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
-              </span>
-            </button>
-            <button
-              disabled={busyId === r.id}
-              onClick={async () => {
-                if (!window.confirm(`Take back your report for ${name(r.signalId)}?`)) return;
-                setBusyId(r.id);
-                await onTakeBack(r.id);
-                setBusyId(null);
-              }}
-              className="shrink-0 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-semibold text-neutral-700 disabled:opacity-50"
-            >
-              {busyId === r.id ? "…" : "Take back"}
-            </button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={onDone} className="mt-3 w-full rounded-xl bg-neutral-900 py-3.5 font-semibold text-white">
-        Done
       </button>
     </div>
   );
@@ -678,12 +669,12 @@ function FixAlertForm({ signalId }: { signalId: string }) {
   const [error, setError] = useState<string | null>(null);
 
   if (state === "done") {
-    return <p className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-900">We&apos;ll email you once when it&apos;s fixed, then delete your address.</p>;
+    return <p className="mt-4 rounded-2xl bg-green-50 p-3.5 text-sm text-green-900">We&apos;ll email you once when it&apos;s fixed, then delete your address.</p>;
   }
 
   return (
     <form
-      className="mt-4 rounded-xl bg-neutral-50 p-3 text-left"
+      className="mt-4 rounded-2xl bg-neutral-50 p-4 text-left ring-1 ring-black/5"
       onSubmit={async (e) => {
         e.preventDefault();
         setState("busy");
@@ -707,7 +698,7 @@ function FixAlertForm({ signalId }: { signalId: string }) {
       <label htmlFor="fix-alert-email" className="text-sm font-semibold">
         Email me when it&apos;s fixed <span className="font-normal text-neutral-500">(optional)</span>
       </label>
-      <div className="mt-1.5 flex gap-2">
+      <div className="mt-2 flex gap-2">
         <input
           id="fix-alert-email"
           type="email"
@@ -717,15 +708,128 @@ function FixAlertForm({ signalId }: { signalId: string }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="min-w-0 flex-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-base"
+          className="min-w-0 flex-1 rounded-xl border-0 bg-white px-3.5 py-2.5 text-base outline-none ring-1 ring-neutral-200 focus:ring-2 focus:ring-sky-500"
         />
-        <button disabled={state === "busy"} className="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white disabled:opacity-60">
+        <button disabled={state === "busy"} className="rounded-xl bg-sky-600 px-4 py-2.5 font-semibold text-white disabled:opacity-60">
           {state === "busy" ? "…" : "Notify me"}
         </button>
       </div>
       {error && <p className="mt-1.5 text-xs text-red-700">{error}</p>}
-      <p className="mt-1.5 text-xs text-neutral-500">One email, only about this light. We delete your address after sending it.</p>
+      <p className="mt-2 text-xs text-neutral-500">One email, only about this light. We delete your address after sending it.</p>
     </form>
+  );
+}
+
+function SavedCard({ nearName, onDone, onUndo }: { nearName: string | null; onDone: () => void; onUndo: () => void }) {
+  return (
+    <div className="text-center">
+      <ResultIcon tone="pin" />
+      <p className="mt-3 text-xl font-bold">Spot saved</p>
+      <p className="mt-1 text-[15px] text-neutral-600">
+        {nearName ? (
+          <>
+            Near <strong>{nearName}</strong>.
+          </>
+        ) : (
+          "There's no traffic light within 60 m of this spot, so you'll pick the light on the map when you finish."
+        )}{" "}
+        Nothing has been sent yet. Once you&apos;re parked, open the app and tap <strong>Finish</strong>.
+      </p>
+      <button onClick={onDone} className="btn-dark mt-4 w-full">
+        OK
+      </button>
+      <button onClick={onUndo} className="mt-1 w-full py-3 text-sm font-medium text-neutral-500">
+        Undo
+      </button>
+    </div>
+  );
+}
+
+function NoneNearbyCard({
+  nearest,
+  onPick,
+  onDone,
+}: {
+  nearest: { signal: MapSignal; distance: number } | null;
+  onPick: (signalId: string) => void;
+  onDone: () => void;
+}) {
+  const miles = nearest ? nearest.distance / 1609.34 : 0;
+  return (
+    <div>
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xl font-bold">No traffic light right here</p>
+        <CloseButton onClick={onDone} />
+      </div>
+      <p className="mt-1 text-[15px] text-neutral-600">
+        We only cover Hillsborough&apos;s traffic lights, and none is within 60 m (200 ft) of you. If you already drove away from the light, find it on the map and tap it.
+      </p>
+      {nearest && miles < 2 && (
+        <button onClick={() => onPick(nearest.signal.id)} className="mt-3 w-full rounded-2xl bg-neutral-50 p-4 text-left ring-1 ring-black/5 active:bg-neutral-100">
+          <span className="block text-xs text-neutral-500">
+            Closest light · {miles < 0.1 ? `${Math.round(nearest.distance * 3.28)} ft` : `${miles.toFixed(1)} mi`} away
+          </span>
+          <span className="mt-0.5 block font-semibold">{nearest.signal.name}</span>
+          <span className="mt-1 block text-sm font-semibold text-red-700">Report this light →</span>
+        </button>
+      )}
+      <button onClick={onDone} className="btn-dark mt-3 w-full">
+        Pick on the map
+      </button>
+    </div>
+  );
+}
+
+function MyReportsList({
+  reports,
+  signals,
+  onTakeBack,
+  onShow,
+  onDone,
+}: {
+  reports: MyReport[];
+  signals: MapSignal[];
+  onTakeBack: (id: string) => Promise<boolean>;
+  onShow: (signalId: string) => void;
+  onDone: () => void;
+}) {
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const name = (id: string) => signals.find((s) => s.id === id)?.name ?? "Unknown light";
+  return (
+    <div>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-xl font-bold">Your reports</p>
+          <p className="text-sm text-neutral-600">From this phone, in the last 30 days</p>
+        </div>
+        <CloseButton onClick={onDone} />
+      </div>
+      {reports.length === 0 && <p className="mt-4 text-sm text-neutral-600">None right now.</p>}
+      <ul className="mt-3 divide-y divide-neutral-100">
+        {reports.map((r) => (
+          <li key={r.id} className="flex items-center justify-between gap-3 py-3">
+            <button onClick={() => onShow(r.signalId)} className="min-w-0 text-left">
+              <span className="block truncate font-medium">{name(r.signalId)}</span>
+              <span className="block text-xs text-neutral-500">
+                {ISSUE_LABELS[r.issueType]} · {new Date(r.createdAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
+              </span>
+            </button>
+            <button
+              disabled={busyId === r.id}
+              onClick={async () => {
+                if (!window.confirm(`Take back your report for ${name(r.signalId)}?`)) return;
+                setBusyId(r.id);
+                await onTakeBack(r.id);
+                setBusyId(null);
+              }}
+              className="shrink-0 rounded-full bg-neutral-100 px-3.5 py-2 text-sm font-semibold text-neutral-700 disabled:opacity-50"
+            >
+              {busyId === r.id ? "…" : "Take back"}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -735,7 +839,7 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`rounded-full px-3 py-2 text-sm font-medium ring-1 transition ${active ? "bg-neutral-900 text-white ring-neutral-900" : "bg-white text-neutral-800 ring-neutral-300"}`}
+      className={`rounded-full px-4 py-2.5 text-sm font-medium transition active:scale-[0.97] ${active ? "bg-neutral-900 text-white shadow-sm" : "bg-neutral-100 text-neutral-800"}`}
     >
       {children}
     </button>
