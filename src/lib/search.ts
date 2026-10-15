@@ -1,4 +1,4 @@
-// Find traffic lights by street name, the way people actually type them: "triangle rd", "rt 206", "amwell and 206".
+// Find traffic lights by street or town, the way people actually type them: "triangle rd", "rt 206", "bridgewater 22".
 
 import type { Signal } from "./signals";
 
@@ -27,12 +27,14 @@ const words = (s: string) =>
     .split(/\s+/)
     .filter(Boolean);
 
-function searchText(signal: Pick<Signal, "name" | "roads">): string[] {
-  return words([signal.name, ...signal.roads.flatMap((r) => [r.name ?? "", r.ref ?? ""])].join(" "));
+type Searchable = Pick<Signal, "name" | "roads"> & { municipality?: string };
+
+function searchText(signal: Searchable): string[] {
+  return words([signal.name, signal.municipality ?? "", ...signal.roads.flatMap((r) => [r.name ?? "", r.ref ?? ""])].join(" "));
 }
 
 /** Lights whose name or route numbers contain every word typed, best matches first. Empty query: nothing. */
-export function searchSignals<T extends Pick<Signal, "name" | "roads">>(signals: readonly T[], query: string, limit = 8): T[] {
+export function searchSignals<T extends Searchable>(signals: readonly T[], query: string, limit = 8): T[] {
   const terms = words(query)
     .map((w) => ABBREVIATIONS[w] ?? w)
     .filter((w) => !IGNORED.has(w));

@@ -1,0 +1,493 @@
+[
+  {
+    "id": "osm-105292497",
+    "osmNodeIds": [
+      105292497,
+      3897194645
+    ],
+    "lat": 40.466801,
+    "lng": -74.662898,
+    "name": "Trent Avenue & US 206",
+    "roads": [
+      {
+        "name": "Trent Avenue",
+        "ref": "CR 601"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105328985",
+    "osmNodeIds": [
+      105328985
+    ],
+    "lat": 40.404335,
+    "lng": -74.718547,
+    "name": "Hollow Road & Georgetown-Franklin Turnpike",
+    "roads": [
+      {
+        "name": "Hollow Road",
+        "ref": null
+      },
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 518",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105335285",
+    "osmNodeIds": [
+      105335285
+    ],
+    "lat": 40.406413,
+    "lng": -74.667415,
+    "name": "Opossum Road & Georgetown-Franklin Turnpike",
+    "roads": [
+      {
+        "name": "Opossum Road",
+        "ref": null
+      },
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 518",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105338233",
+    "osmNodeIds": [
+      105338233
+    ],
+    "lat": 40.464258,
+    "lng": -74.660628,
+    "name": "Pike Run Road & Scarborough Road & US 206",
+    "roads": [
+      {
+        "name": "Pike Run Road",
+        "ref": null
+      },
+      {
+        "name": "Scarborough Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105339797",
+    "osmNodeIds": [
+      105339797
+    ],
+    "lat": 40.396933,
+    "lng": -74.652003,
+    "name": "Wall Street & Airpark Road & State Road",
+    "roads": [
+      {
+        "name": "Wall Street",
+        "ref": null
+      },
+      {
+        "name": "Airpark Road",
+        "ref": null
+      },
+      {
+        "name": "State Road",
+        "ref": "US 206;CR 533"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105344421",
+    "osmNodeIds": [
+      105344421
+    ],
+    "lat": 40.407872,
+    "lng": -74.702523,
+    "name": "Belle Mead-Blawenburg Road & Great Road & Georgetown-Franklin Turnpike",
+    "roads": [
+      {
+        "name": "Belle Mead-Blawenburg Road",
+        "ref": "CR 601"
+      },
+      {
+        "name": "Great Road",
+        "ref": "CR 601"
+      },
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 601",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105344438",
+    "osmNodeIds": [
+      105344438,
+      6518779396
+    ],
+    "lat": 40.417583,
+    "lng": -74.702225,
+    "name": "Belle Mead-Blawenburg Road",
+    "roads": [
+      {
+        "name": "Belle Mead-Blawenburg Road",
+        "ref": "CR 601"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 601",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105344446",
+    "osmNodeIds": [
+      105344446
+    ],
+    "lat": 40.421269,
+    "lng": -74.702446,
+    "name": "Skillman Road & Belle Mead-Blawenburg Road",
+    "roads": [
+      {
+        "name": "Skillman Road",
+        "ref": "CR 602"
+      },
+      {
+        "name": "Skillman Road",
+        "ref": null
+      },
+      {
+        "name": "Belle Mead-Blawenburg Road",
+        "ref": "CR 601"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 602",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105372247",
+    "osmNodeIds": [
+      105372247
+    ],
+    "lat": 40.459247,
+    "lng": -74.658281,
+    "name": "Belle Mead-Griggstown Road & US 206",
+    "roads": [
+      {
+        "name": "Belle Mead-Griggstown Road",
+        "ref": "CR 630"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373151",
+    "osmNodeIds": [
+      105373151
+    ],
+    "lat": 40.380829,
+    "lng": -74.697864,
+    "name": "Great Road & Cherry Valley Road",
+    "roads": [
+      {
+        "name": "Great Road",
+        "ref": "CR 601"
+      },
+      {
+        "name": "Great Road",
+        "ref": null
+      },
+      {
+        "name": "Cherry Valley Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 601",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373313",
+    "osmNodeIds": [
+      105373313
+    ],
+    "lat": 40.391008,
+    "lng": -74.654111,
+    "name": "State Road & Princeton Avenue & Cherry Valley Road",
+    "roads": [
+      {
+        "name": "State Road",
+        "ref": "US 206;CR 533"
+      },
+      {
+        "name": "Princeton Avenue",
+        "ref": null
+      },
+      {
+        "name": "Cherry Valley Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373905",
+    "osmNodeIds": [
+      105373905
+    ],
+    "lat": 40.447775,
+    "lng": -74.662467,
+    "name": "Harlingen Road & Dutchtown-Harlingen Road & US 206",
+    "roads": [
+      {
+        "name": "Harlingen Road",
+        "ref": null
+      },
+      {
+        "name": "Dutchtown-Harlingen Road",
+        "ref": "CR 604"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373939",
+    "osmNodeIds": [
+      105373939
+    ],
+    "lat": 40.439078,
+    "lng": -74.661904,
+    "name": "Sunset Road & Devon Drive & US 206",
+    "roads": [
+      {
+        "name": "Sunset Road",
+        "ref": null
+      },
+      {
+        "name": "Devon Drive",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105373984",
+    "osmNodeIds": [
+      105373984
+    ],
+    "lat": 40.416843,
+    "lng": -74.652537,
+    "name": "Orchard Road & US 206",
+    "roads": [
+      {
+        "name": "Orchard Road",
+        "ref": "CR 533"
+      },
+      {
+        "name": null,
+        "ref": "US 206;CR 533"
+      },
+      {
+        "name": "Orchard Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105374024",
+    "osmNodeIds": [
+      105374024
+    ],
+    "lat": 40.406062,
+    "lng": -74.649487,
+    "name": "US 206 & Village Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 206;CR 533"
+      },
+      {
+        "name": "Village Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105374039",
+    "osmNodeIds": [
+      105374039
+    ],
+    "lat": 40.403075,
+    "lng": -74.649575,
+    "name": "Georgetown-Franklin Turnpike & State Road & US 206",
+    "roads": [
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      },
+      {
+        "name": "State Road",
+        "ref": "US 206;CR 533"
+      },
+      {
+        "name": null,
+        "ref": "US 206;CR 533"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105428940",
+    "osmNodeIds": [
+      105428940
+    ],
+    "lat": 40.408806,
+    "lng": -74.68994,
+    "name": "Georgetown-Franklin Turnpike near Covenhoven Road",
+    "roads": [
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 518",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105429178",
+    "osmNodeIds": [
+      105429178
+    ],
+    "lat": 40.404735,
+    "lng": -74.657113,
+    "name": "Village Drive & Georgetown-Franklin Turnpike",
+    "roads": [
+      {
+        "name": "Village Drive",
+        "ref": null
+      },
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 518",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-2363124109",
+    "osmNodeIds": [
+      2363124109,
+      2363124111
+    ],
+    "lat": 40.400587,
+    "lng": -74.65098,
+    "name": "State Road near Benjamin Boulevard",
+    "roads": [
+      {
+        "name": "State Road",
+        "ref": "US 206;CR 533"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-8746456271",
+    "osmNodeIds": [
+      8746456271
+    ],
+    "lat": 40.408804,
+    "lng": -74.690924,
+    "name": "Georgetown-Franklin Turnpike",
+    "roads": [
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 518",
+    "municipality": "Montgomery Township",
+    "county": "Somerset"
+  }
+]

@@ -1,0 +1,406 @@
+[
+  {
+    "id": "osm-105286532",
+    "osmNodeIds": [
+      105286532
+    ],
+    "lat": 40.690547,
+    "lng": -74.577731,
+    "name": "Mount Airy Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Mount Airy Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105311555",
+    "osmNodeIds": [
+      105311555
+    ],
+    "lat": 40.645475,
+    "lng": -74.575752,
+    "name": "Liberty Corner Road near Phillipsburg-Newark Expressway",
+    "roads": [
+      {
+        "name": "Liberty Corner Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324172",
+    "osmNodeIds": [
+      105324172
+    ],
+    "lat": 40.692585,
+    "lng": -74.578349,
+    "name": "Meeker Road & Whitenack Road & Mount Airy Road",
+    "roads": [
+      {
+        "name": "Meeker Road",
+        "ref": null
+      },
+      {
+        "name": "Whitenack Road",
+        "ref": null
+      },
+      {
+        "name": "Mount Airy Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105328271",
+    "osmNodeIds": [
+      105328271
+    ],
+    "lat": 40.670949,
+    "lng": -74.574717,
+    "name": "Lyons Road & Mount Airy Road",
+    "roads": [
+      {
+        "name": "Lyons Road",
+        "ref": "(640)"
+      },
+      {
+        "name": "Mount Airy Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105332598",
+    "osmNodeIds": [
+      105332598,
+      105433679
+    ],
+    "lat": 40.685695,
+    "lng": -74.547309,
+    "name": "Rocky Lane & Cross Road & South Finley Avenue",
+    "roads": [
+      {
+        "name": "Rocky Lane",
+        "ref": null
+      },
+      {
+        "name": "Cross Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "South Finley Avenue",
+        "ref": "CR 613"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 613",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105336346",
+    "osmNodeIds": [
+      105336346
+    ],
+    "lat": 40.694241,
+    "lng": -74.54932,
+    "name": "Lake Road & South Finley Avenue",
+    "roads": [
+      {
+        "name": "Lake Road",
+        "ref": null
+      },
+      {
+        "name": "South Finley Avenue",
+        "ref": "CR 613"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 613",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105343410",
+    "osmNodeIds": [
+      105343410
+    ],
+    "lat": 40.628344,
+    "lng": -74.571621,
+    "name": "Elm Avenue & Mountain Road & Liberty Corner Road",
+    "roads": [
+      {
+        "name": "Elm Avenue",
+        "ref": null
+      },
+      {
+        "name": "Mountain Road",
+        "ref": null
+      },
+      {
+        "name": "Liberty Corner Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105374427",
+    "osmNodeIds": [
+      105374427,
+      105374647
+    ],
+    "lat": 40.659495,
+    "lng": -74.531241,
+    "name": "Spring Valley Boulevard & King George Road",
+    "roads": [
+      {
+        "name": "Spring Valley Boulevard",
+        "ref": null
+      },
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105377384",
+    "osmNodeIds": [
+      105377384
+    ],
+    "lat": 40.659866,
+    "lng": -74.576643,
+    "name": "Valley Road & Mount Airy Road",
+    "roads": [
+      {
+        "name": "Valley Road",
+        "ref": "CR 512"
+      },
+      {
+        "name": "Mount Airy Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 512",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105377954",
+    "osmNodeIds": [
+      105377954
+    ],
+    "lat": 40.719635,
+    "lng": -74.540532,
+    "name": "Madisonville Road & North Maple Avenue",
+    "roads": [
+      {
+        "name": "Madisonville Road",
+        "ref": null
+      },
+      {
+        "name": "North Maple Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105378000",
+    "osmNodeIds": [
+      105378000
+    ],
+    "lat": 40.731513,
+    "lng": -74.540911,
+    "name": "Morristown Road & Childs Road & North Maple Avenue",
+    "roads": [
+      {
+        "name": "Morristown Road",
+        "ref": "US 202"
+      },
+      {
+        "name": "Childs Road",
+        "ref": "CR 613"
+      },
+      {
+        "name": "North Maple Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105388514",
+    "osmNodeIds": [
+      105388514
+    ],
+    "lat": 40.655716,
+    "lng": -74.576437,
+    "name": "Martinsville Road & Allen Road",
+    "roads": [
+      {
+        "name": "Martinsville Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": "Allen Road",
+        "ref": "CR 652"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390961",
+    "osmNodeIds": [
+      105390961
+    ],
+    "lat": 40.666135,
+    "lng": -74.540196,
+    "name": "Stonehouse Road & Valley Road",
+    "roads": [
+      {
+        "name": "Stonehouse Road",
+        "ref": "CR 613"
+      },
+      {
+        "name": "Valley Road",
+        "ref": "CR 512"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 613",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390965",
+    "osmNodeIds": [
+      105390965
+    ],
+    "lat": 40.683374,
+    "lng": -74.54954,
+    "name": "Stonehouse Road & South Finley Avenue",
+    "roads": [
+      {
+        "name": "Stonehouse Road",
+        "ref": "CR 613"
+      },
+      {
+        "name": "South Finley Avenue",
+        "ref": "CR 640"
+      },
+      {
+        "name": "South Finley Avenue",
+        "ref": "CR 613"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 613",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105435866",
+    "osmNodeIds": [
+      105435866
+    ],
+    "lat": 40.662459,
+    "lng": -74.533401,
+    "name": "Valley Road & King George Road",
+    "roads": [
+      {
+        "name": "Valley Road",
+        "ref": "CR 512"
+      },
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 512",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621546515",
+    "osmNodeIds": [
+      621546515
+    ],
+    "lat": 40.640942,
+    "lng": -74.574231,
+    "name": "Unnamed intersection near Liberty Corner Road",
+    "roads": [],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-2585185131",
+    "osmNodeIds": [
+      2585185131
+    ],
+    "lat": 40.655028,
+    "lng": -74.52896,
+    "name": "King George Road",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Bernards Township",
+    "county": "Somerset"
+  }
+]

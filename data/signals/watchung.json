@@ -1,0 +1,284 @@
+[
+  {
+    "id": "osm-105286896",
+    "osmNodeIds": [
+      105286896
+    ],
+    "lat": 40.641596,
+    "lng": -74.415244,
+    "name": "Unnamed intersection near Raymond Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105291910",
+    "osmNodeIds": [
+      105291910,
+      14103772062,
+      14103772063,
+      14103772064
+    ],
+    "lat": 40.648555,
+    "lng": -74.407085,
+    "name": "US 22 near Blue Star Drive (south side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105307574",
+    "osmNodeIds": [
+      105307574,
+      14104213674
+    ],
+    "lat": 40.641203,
+    "lng": -74.415744,
+    "name": "US 22 near Mountain Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105319069",
+    "osmNodeIds": [
+      105319069,
+      14103772060,
+      14103772061
+    ],
+    "lat": 40.64896,
+    "lng": -74.40706,
+    "name": "US 22 near Blue Star Drive (north side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105334106",
+    "osmNodeIds": [
+      105334106,
+      4342145604
+    ],
+    "lat": 40.655562,
+    "lng": -74.404299,
+    "name": "New Providence Road & Bonnie Burn Road",
+    "roads": [
+      {
+        "name": "New Providence Road",
+        "ref": "CR 655"
+      },
+      {
+        "name": "Bonnie Burn Road",
+        "ref": "CR 663"
+      },
+      {
+        "name": "Bonnie Burn Road",
+        "ref": "CR 695"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 655",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105334187",
+    "osmNodeIds": [
+      105334187
+    ],
+    "lat": 40.659022,
+    "lng": -74.416175,
+    "name": "Plainfield Avenue & Valley Road & Bonnie Burn Road",
+    "roads": [
+      {
+        "name": "Plainfield Avenue",
+        "ref": "CR 641"
+      },
+      {
+        "name": "Valley Road",
+        "ref": "CR 527"
+      },
+      {
+        "name": "Bonnie Burn Road",
+        "ref": "CR 695"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 641",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105410255",
+    "osmNodeIds": [
+      105410255
+    ],
+    "lat": 40.664425,
+    "lng": -74.430873,
+    "name": "Drift Road & Plainfield Avenue",
+    "roads": [
+      {
+        "name": "Drift Road",
+        "ref": null
+      },
+      {
+        "name": "Plainfield Avenue",
+        "ref": "CR 641"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 641",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105422708",
+    "osmNodeIds": [
+      105422708
+    ],
+    "lat": 40.661863,
+    "lng": -74.412567,
+    "name": "Connell Drive & Valley Road",
+    "roads": [
+      {
+        "name": "Connell Drive",
+        "ref": null
+      },
+      {
+        "name": "Valley Road",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105429300",
+    "osmNodeIds": [
+      105429300
+    ],
+    "lat": 40.665487,
+    "lng": -74.408408,
+    "name": "Oak Way & Valley Road",
+    "roads": [
+      {
+        "name": "Oak Way",
+        "ref": null
+      },
+      {
+        "name": "Valley Road",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-4342131064",
+    "osmNodeIds": [
+      4342131064,
+      14103942209,
+      14103942210,
+      14103942211
+    ],
+    "lat": 40.644715,
+    "lng": -74.409176,
+    "name": "Terrill Road",
+    "roads": [
+      {
+        "name": "Terrill Road",
+        "ref": "CR 611"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 611",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-4342131605",
+    "osmNodeIds": [
+      4342131605,
+      14103942218,
+      14103942219,
+      14103942220
+    ],
+    "lat": 40.645398,
+    "lng": -74.410341,
+    "name": "Terrill Road & US 22",
+    "roads": [
+      {
+        "name": "Terrill Road",
+        "ref": "CR 611"
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-14104213676",
+    "osmNodeIds": [
+      14104213676,
+      14104213677
+    ],
+    "lat": 40.639688,
+    "lng": -74.419078,
+    "name": "US 22 near Gray Street",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Watchung",
+    "county": "Somerset"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "osm-105412099",
+    "osmNodeIds": [
+      105412099
+    ],
+    "lat": 40.502816,
+    "lng": -74.588447,
+    "name": "Amwell Road & Millstone River Road & Millstone Bypass",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Millstone River Road",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Millstone Bypass",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Millstone",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105412103",
+    "osmNodeIds": [
+      105412103
+    ],
+    "lat": 40.503014,
+    "lng": -74.592519,
+    "name": "Somerset Courthouse Road & Millstone Bypass",
+    "roads": [
+      {
+        "name": "Somerset Courthouse Road",
+        "ref": "CR 533 Bypass"
+      },
+      {
+        "name": "Millstone Bypass",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533 Bypass",
+    "municipality": "Millstone",
+    "county": "Somerset"
+  }
+]

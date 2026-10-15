@@ -1,0 +1,253 @@
+[
+  {
+    "id": "osm-105288880",
+    "osmNodeIds": [
+      105288880
+    ],
+    "lat": 40.535444,
+    "lng": -74.589935,
+    "name": "South Main Street & Kennedy Boulevard",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "South Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Kennedy Boulevard",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105299430",
+    "osmNodeIds": [
+      105299430
+    ],
+    "lat": 40.549035,
+    "lng": -74.586209,
+    "name": "Dukes Parkway & North Main Street",
+    "roads": [
+      {
+        "name": "Dukes Parkway",
+        "ref": "CR 608"
+      },
+      {
+        "name": "North Main Street",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 608",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105299441",
+    "osmNodeIds": [
+      105299441
+    ],
+    "lat": 40.545586,
+    "lng": -74.586763,
+    "name": "North Main Street & Brooks Boulevard",
+    "roads": [
+      {
+        "name": "North Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Brooks Boulevard",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105345888",
+    "osmNodeIds": [
+      105345888
+    ],
+    "lat": 40.538573,
+    "lng": -74.596779,
+    "name": "South 13th Avenue & West Camplain Road",
+    "roads": [
+      {
+        "name": "South 13th Avenue",
+        "ref": null
+      },
+      {
+        "name": "West Camplain Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105360632",
+    "osmNodeIds": [
+      105360632
+    ],
+    "lat": 40.552154,
+    "lng": -74.599291,
+    "name": "Dukes Parkway & North 13th Avenue",
+    "roads": [
+      {
+        "name": "Dukes Parkway",
+        "ref": "CR 608"
+      },
+      {
+        "name": "North 13th Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 608",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105364700",
+    "osmNodeIds": [
+      105364700
+    ],
+    "lat": 40.53088,
+    "lng": -74.590166,
+    "name": "South Main Street & Central Street & Wilhousky Street",
+    "roads": [
+      {
+        "name": "South Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Central Street",
+        "ref": null
+      },
+      {
+        "name": "Wilhousky Street",
+        "ref": "CR 623"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105372508",
+    "osmNodeIds": [
+      105372508
+    ],
+    "lat": 40.537492,
+    "lng": -74.589338,
+    "name": "Kyle Street & South Main Street & Roosevelt Avenue",
+    "roads": [
+      {
+        "name": "Kyle Street",
+        "ref": null
+      },
+      {
+        "name": "South Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Roosevelt Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105395732",
+    "osmNodeIds": [
+      105395732
+    ],
+    "lat": 40.540958,
+    "lng": -74.587518,
+    "name": "East Camplain Road & South Main Street & West Camplain Road",
+    "roads": [
+      {
+        "name": "East Camplain Road",
+        "ref": null
+      },
+      {
+        "name": "South Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "West Camplain Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105398546",
+    "osmNodeIds": [
+      105398546
+    ],
+    "lat": 40.543355,
+    "lng": -74.598881,
+    "name": "North 13th Avenue & Brooks Boulevard",
+    "roads": [
+      {
+        "name": "North 13th Avenue",
+        "ref": null
+      },
+      {
+        "name": "Brooks Boulevard",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Manville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105426871",
+    "osmNodeIds": [
+      105426871,
+      5527270789
+    ],
+    "lat": 40.542579,
+    "lng": -74.58724,
+    "name": "Washington Avenue & South Main Street & Thomas J Kaschek Boulevard",
+    "roads": [
+      {
+        "name": "Washington Avenue",
+        "ref": null
+      },
+      {
+        "name": "South Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Thomas J Kaschek Boulevard",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Manville",
+    "county": "Somerset"
+  }
+]

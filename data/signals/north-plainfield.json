@@ -1,0 +1,512 @@
+[
+  {
+    "id": "osm-105307554",
+    "osmNodeIds": [
+      105307554,
+      14104213673
+    ],
+    "lat": 40.641186,
+    "lng": -74.415364,
+    "name": "US 22 near Mountain Avenue (east side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105309796",
+    "osmNodeIds": [
+      105309796,
+      617501920
+    ],
+    "lat": 40.628826,
+    "lng": -74.437551,
+    "name": "Watchung Avenue & CR 531",
+    "roads": [
+      {
+        "name": "Watchung Avenue",
+        "ref": "CR 531"
+      },
+      {
+        "name": null,
+        "ref": "CR 531"
+      },
+      {
+        "name": "Watchung Avenue",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 531",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324695",
+    "osmNodeIds": [
+      105324695
+    ],
+    "lat": 40.619608,
+    "lng": -74.425821,
+    "name": "Somerset Street & Craig Place & Pearl Street",
+    "roads": [
+      {
+        "name": "Somerset Street",
+        "ref": "CR 531"
+      },
+      {
+        "name": "Craig Place",
+        "ref": null
+      },
+      {
+        "name": "Pearl Street",
+        "ref": "CR 531"
+      },
+      {
+        "name": "Somerset Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 531",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324707",
+    "osmNodeIds": [
+      105324707
+    ],
+    "lat": 40.621778,
+    "lng": -74.429404,
+    "name": "Park Place & Jackson Avenue & Somerset Street",
+    "roads": [
+      {
+        "name": "Park Place",
+        "ref": null
+      },
+      {
+        "name": "Jackson Avenue",
+        "ref": null
+      },
+      {
+        "name": "Somerset Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324718",
+    "osmNodeIds": [
+      105324718,
+      105324720
+    ],
+    "lat": 40.624013,
+    "lng": -74.43309,
+    "name": "Summit Avenue & Somerset Street & Greenbrook Road",
+    "roads": [
+      {
+        "name": "Summit Avenue",
+        "ref": null
+      },
+      {
+        "name": "Somerset Street",
+        "ref": null
+      },
+      {
+        "name": "Greenbrook Road",
+        "ref": "CR 636"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 636",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324722",
+    "osmNodeIds": [
+      105324722
+    ],
+    "lat": 40.624598,
+    "lng": -74.434025,
+    "name": "Mountain Avenue & Somerset Street",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 642"
+      },
+      {
+        "name": "Somerset Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 642",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105349824",
+    "osmNodeIds": [
+      105349824
+    ],
+    "lat": 40.614615,
+    "lng": -74.446964,
+    "name": "West End Avenue & Greenbrook Road",
+    "roads": [
+      {
+        "name": "West End Avenue",
+        "ref": "CR 649"
+      },
+      {
+        "name": "Greenbrook Road",
+        "ref": "CR 636"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 649",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105349832",
+    "osmNodeIds": [
+      105349832,
+      105349834
+    ],
+    "lat": 40.617712,
+    "lng": -74.452015,
+    "name": "US 22 & West End Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "West End Avenue",
+        "ref": "CR 649"
+      },
+      {
+        "name": "West End Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105360081",
+    "osmNodeIds": [
+      105360081,
+      105360083,
+      105360085
+    ],
+    "lat": 40.624132,
+    "lng": -74.442886,
+    "name": "Cedar Street & Wilson Avenue & US 22",
+    "roads": [
+      {
+        "name": "Cedar Street",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Wilson Avenue",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Route 22",
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105363280",
+    "osmNodeIds": [
+      105363280
+    ],
+    "lat": 40.626005,
+    "lng": -74.432502,
+    "name": "Mountain Avenue & Watchung Avenue",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 642"
+      },
+      {
+        "name": "Watchung Avenue",
+        "ref": "CR 531"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 642",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105367698",
+    "osmNodeIds": [
+      105367698
+    ],
+    "lat": 40.630205,
+    "lng": -74.427719,
+    "name": "Mountain Avenue & North Drive & Norwood Avenue",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 642"
+      },
+      {
+        "name": "North Drive",
+        "ref": null
+      },
+      {
+        "name": "Norwood Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 642",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105387215",
+    "osmNodeIds": [
+      105387215
+    ],
+    "lat": 40.622418,
+    "lng": -74.43563,
+    "name": "Grove Street & Greenbrook Road",
+    "roads": [
+      {
+        "name": "Grove Street",
+        "ref": null
+      },
+      {
+        "name": "Greenbrook Road",
+        "ref": "CR 636"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 636",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105417284",
+    "osmNodeIds": [
+      105417284
+    ],
+    "lat": 40.609351,
+    "lng": -74.45492,
+    "name": "Clinton Avenue & Greenbrook Road",
+    "roads": [
+      {
+        "name": "Clinton Avenue",
+        "ref": null
+      },
+      {
+        "name": "Greenbrook Road",
+        "ref": "CR 636"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 636",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105423362",
+    "osmNodeIds": [
+      105423362,
+      105423364
+    ],
+    "lat": 40.610122,
+    "lng": -74.463942,
+    "name": "Rock Avenue & US 22",
+    "roads": [
+      {
+        "name": "Rock Avenue",
+        "ref": "CR 645"
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Rock Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105431108",
+    "osmNodeIds": [
+      105431108
+    ],
+    "lat": 40.641527,
+    "lng": -74.414835,
+    "name": "Mountain Avenue & US 22 & Raymond Avenue",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Raymond Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105431166",
+    "osmNodeIds": [
+      105431166,
+      105431640
+    ],
+    "lat": 40.63175,
+    "lng": -74.430271,
+    "name": "US 22 & North Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "North Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440146015",
+    "osmNodeIds": [
+      440146015
+    ],
+    "lat": 40.640987,
+    "lng": -74.41583,
+    "name": "US 22 near Mountain Avenue (west side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-14104213678",
+    "osmNodeIds": [
+      14104213678
+    ],
+    "lat": 40.639413,
+    "lng": -74.419232,
+    "name": "US 22 near Gray Street",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-14104213679",
+    "osmNodeIds": [
+      14104213679,
+      14104213681,
+      14104213686
+    ],
+    "lat": 40.637512,
+    "lng": -74.422773,
+    "name": "US 22 near Richard Way (north side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-14104213682",
+    "osmNodeIds": [
+      14104213682
+    ],
+    "lat": 40.637258,
+    "lng": -74.422982,
+    "name": "US 22 near Richard Way (south side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "North Plainfield",
+    "county": "Somerset"
+  }
+]

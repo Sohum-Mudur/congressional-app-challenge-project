@@ -3,8 +3,9 @@ import { OWNER_COLORS } from "@/components/labels";
 import { agencyFor } from "@/lib/agencies";
 import { getStore } from "@/lib/store";
 import { impactStats } from "@/lib/stats";
+import { APP_NAME } from "@/lib/brand";
 
-export const metadata = { title: "Impact · Signal Report" };
+export const metadata = { title: `Impact · ${APP_NAME}` };
 export const dynamic = "force-dynamic";
 
 export default async function ImpactPage() {
@@ -28,7 +29,7 @@ export default async function ImpactPage() {
 
   return (
     <main className="mx-auto w-full max-w-2xl p-4">
-      <h1 className="text-2xl font-bold">Impact in Hillsborough</h1>
+      <h1 className="text-2xl font-bold">Impact in Somerset County</h1>
       <p className="mt-1 text-neutral-600">Every report is one person stuck at a light that should have turned green.</p>
 
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -40,7 +41,7 @@ export default async function ImpactPage() {
         <Stat value={fixed} label={plural(fixed, "light fixed", "lights fixed")} />
       </div>
 
-      <h2 className="mt-8 text-lg font-bold">Who owns Hillsborough&apos;s {signals.length} traffic lights</h2>
+      <h2 className="mt-8 text-lg font-bold">Who owns Somerset County&apos;s {signals.length} traffic lights</h2>
       <p className="text-sm text-neutral-600">Most people don&apos;t know that the state, the county and the township each own different lights. This app works it out for you.</p>
       <div className="mt-3 flex h-9 overflow-hidden rounded-full text-xs font-semibold text-white">
         {byOwner.map((o) => (
@@ -68,7 +69,7 @@ export default async function ImpactPage() {
                   {signal.name}
                 </Link>
                 <p className="text-xs text-neutral-500">
-                  {agencyFor(signal, agencies)?.name} · {count} {plural(count, "report", "reports")}
+                  {signal.municipality} · {agencyFor(signal, agencies)?.name} · {count} {plural(count, "report", "reports")}
                 </p>
               </div>
               <span className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold ${STATUS_STYLE[status] ?? STATUS_STYLE.reported}`}>

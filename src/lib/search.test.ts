@@ -26,6 +26,13 @@ describe("searchSignals", () => {
     expect(names("amwell and 206")).toEqual(["Amwell Road & US 206"]);
     expect(names("auten & triangle")).toEqual(["Triangle Road & Auten Road"]);
   });
+  it("narrows by town", () => {
+    const withTowns = [
+      { name: "Main Street & US 22", roads: [], municipality: "Bridgewater Township" },
+      { name: "Main Street & Grove Street", roads: [], municipality: "Somerville" },
+    ];
+    expect(searchSignals(withTowns, "main somerville").map((s) => s.municipality)).toEqual(["Somerville"]);
+  });
   it("returns nothing for empty or unknown input", () => {
     expect(names("")).toEqual([]);
     expect(names("  & ")).toEqual([]);

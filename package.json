@@ -12,7 +12,8 @@
     "postinstall": "node scripts/copy-maplibre-worker.mjs",
     "db:migrate": "tsx --env-file=.env.local scripts/db-migrate.ts",
     "db:seed": "tsx --env-file=.env.local scripts/db-seed.ts",
-    "smoke": "tsx --env-file=.env.local scripts/smoke-test.ts"
+    "smoke": "tsx --env-file=.env.local scripts/smoke-test.ts",
+    "name:lights": "tsx scripts/name-single-road-lights.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

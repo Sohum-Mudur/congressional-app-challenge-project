@@ -1,27 +1,32 @@
 import Link from "next/link";
-import { team } from "@/content/team";
+import { APP_NAME } from "@/lib/brand";
 
-export const metadata = { title: "About · Signal Report" };
+export const metadata = { title: `About · ${APP_NAME}` };
 
+// Written by the team. Keep the wording as they wrote it.
 export default function AboutPage() {
   return (
     <main className="mx-auto w-full max-w-2xl p-4 leading-relaxed">
-      <h1 className="text-2xl font-bold">Why this exists</h1>
+      <h1 className="text-2xl font-bold">Why we created {APP_NAME}</h1>
       <p className="mt-3">
-        Many traffic lights use sensors buried in the road to detect waiting cars. When a sensor breaks, the light can stay red with no cross traffic at all, and drivers
-        sit there for minutes for no reason. Most people don&apos;t report it because they don&apos;t know who to tell.
+        Many traffic lights use sensors buried in the road to detect waiting cars. When a sensor breaks, the light can often stay red with no cross traffic at all,
+        and drivers sit there for minutes for no reason. People choose not to report it because they either don&rsquo;t have the time, or don&rsquo;t know who to
+        tell.
       </p>
       <p className="mt-3">
-        In New Jersey the answer depends on the road. Lights on state highways like US 206 belong to NJDOT, lights on county roads like Amwell Road (CR 514) belong to the
-        county, and the rest belong to the township.
+        In New Jersey, the answer depends on the road and who owns it. Lights on state highways like US 206 belong to NJDOT, lights on county roads like Amwell Road
+        (CR 514) belong to the county, and the rest belong to the township.
       </p>
+      <p className="mt-3">We have streamlined the reporting process into a basic web application that allows people to easily report specific traffic lights.</p>
 
-      <h2 className="mt-6 text-lg font-bold">How it works</h2>
+      <h2 className="mt-6 text-lg font-bold">How our app works:</h2>
       <ol className="mt-2 list-decimal space-y-1.5 pl-5">
         <li>Tap one button. Your location is matched to the nearest traffic light.</li>
         <li>The app looks up which roads meet there and works out who owns that light.</li>
-        <li>Reports are combined. When 3 or more people report the same light within a week, the owner gets one clear summary instead of a pile of complaints.</li>
-        <li>The agency marks it fixed with one click, the map updates, and anyone who asked gets an email.</li>
+        <li>
+          Reports are combined. When 3 or more people report the same light within a week, the owner gets one clear summary instead of a pile of complaints.
+        </li>
+        <li>The agency marks it fixed with one click, the map updates, and anyone who asked is notified via email.</li>
       </ol>
 
       <h2 className="mt-6 text-lg font-bold">Safety first</h2>
@@ -47,30 +52,8 @@ export default function AboutPage() {
         <li>If you ask to be emailed when a light is fixed, we use your address for that one email and then delete it.</li>
       </ul>
 
-      {team.story && (
-        <>
-          <h2 className="mt-6 text-lg font-bold">Who built this</h2>
-          {team.story.split(/\n\s*\n/).map((paragraph, i) => (
-            <p key={i} className="mt-2">
-              {paragraph}
-            </p>
-          ))}
-          {team.members.length > 0 && (
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {team.members.map((m) => (
-                <div key={m.name} className="rounded-2xl bg-white p-4 ring-1 ring-black/5">
-                  <p className="font-semibold">{m.name}</p>
-                  <p className="text-sm text-neutral-500">{m.role}</p>
-                  <p className="mt-1.5 text-sm">{m.bio}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </>
-      )}
-
       <p className="mt-8 text-sm text-neutral-500">
-        Built by students in Hillsborough, NJ for the Congressional App Challenge. <Link href="/impact" className="text-sky-700">See the impact →</Link>{" "}
+        Built by students from Hillsborough, NJ. <Link href="/impact" className="text-sky-700">See the impact →</Link>{" "}
         <Link href="/install" className="text-sky-700">Get the app →</Link>
       </p>
     </main>

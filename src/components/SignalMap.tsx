@@ -8,7 +8,8 @@ import { applyMapColors, MAP_STYLE } from "./mapStyle";
 import type { MapSignal } from "./types";
 import type { LivePosition } from "./useLiveLocation";
 
-const HILLSBOROUGH_CENTER: [number, number] = [-74.64, 40.5];
+// Somerset County, NJ: the whole area the app covers.
+const COUNTY_CENTER: [number, number] = [-74.6, 40.56];
 
 // Served from public/ by scripts/copy-maplibre-worker.mjs.
 setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
@@ -119,8 +120,8 @@ export default function SignalMap({ signals, selectedId, userPosition, heading, 
     const map = new MapLibreMap({
       container: containerRef.current,
       style: MAP_STYLE,
-      center: HILLSBOROUGH_CENTER,
-      zoom: 11.8,
+      center: COUNTY_CENTER,
+      zoom: 10.4,
       attributionControl: { compact: true },
     });
     mapRef.current = map;

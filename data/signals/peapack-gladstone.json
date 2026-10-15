@@ -1,0 +1,93 @@
+[
+  {
+    "id": "osm-105311455",
+    "osmNodeIds": [
+      105311455,
+      13459384999
+    ],
+    "lat": 40.719401,
+    "lng": -74.678677,
+    "name": "Pottersville Road & US Highway 206 (west side)",
+    "roads": [
+      {
+        "name": "Pottersville Road",
+        "ref": "CR 512"
+      },
+      {
+        "name": "US Highway 206",
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Peapack-Gladstone",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-11951468197",
+    "osmNodeIds": [
+      11951468197,
+      11951468202
+    ],
+    "lat": 40.704205,
+    "lng": -74.660894,
+    "name": "US Highway 206 & Holland Avenue",
+    "roads": [
+      {
+        "name": "US Highway 206",
+        "ref": "US 206"
+      },
+      {
+        "name": "Holland Avenue",
+        "ref": "CR 661"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Peapack-Gladstone",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-11951468198",
+    "osmNodeIds": [
+      11951468198
+    ],
+    "lat": 40.703914,
+    "lng": -74.660844,
+    "name": "US Highway 206 near Holland Avenue",
+    "roads": [
+      {
+        "name": "US Highway 206",
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Peapack-Gladstone",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13459385000",
+    "osmNodeIds": [
+      13459385000,
+      13459385001
+    ],
+    "lat": 40.719206,
+    "lng": -74.678115,
+    "name": "Pottersville Road & US Highway 206 (east side)",
+    "roads": [
+      {
+        "name": "Pottersville Road",
+        "ref": "CR 512"
+      },
+      {
+        "name": "US Highway 206",
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Peapack-Gladstone",
+    "county": "Somerset"
+  }
+]

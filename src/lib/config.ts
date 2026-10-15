@@ -1,4 +1,5 @@
 import "server-only";
+import { APP_NAME } from "./brand";
 
 /** Read an env var, treating blank values (e.g. `TEST_INBOX=` in .env.local) as unset. */
 const env = (name: string): string | undefined => process.env[name]?.trim() || undefined;
@@ -19,7 +20,7 @@ export const config = {
   adminEmail: env("ADMIN_EMAIL") ?? null,
 
   resendApiKey: env("RESEND_API_KEY") ?? null,
-  emailFrom: env("EMAIL_FROM") ?? "Signal Report <onboarding@resend.dev>",
+  emailFrom: env("EMAIL_FROM") ?? `${APP_NAME} <onboarding@resend.dev>`,
 
   /** Secret mixed into IP-address hashes, so a stored hash can't be turned back into an address. */
   networkSalt: env("NETWORK_SALT") ?? (process.env.NODE_ENV === "production" ? null : "dev-only-salt"),

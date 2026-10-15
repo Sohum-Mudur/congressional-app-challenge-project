@@ -1,0 +1,265 @@
+[
+  {
+    "id": "osm-105352107",
+    "osmNodeIds": [
+      105352107,
+      105362226
+    ],
+    "lat": 40.56765,
+    "lng": -74.543304,
+    "name": "Carleton Street & West Union Avenue & Union Avenue",
+    "roads": [
+      {
+        "name": "Carleton Street",
+        "ref": null
+      },
+      {
+        "name": "West Union Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Vosseller Avenue",
+        "ref": null
+      },
+      {
+        "name": "Vosseller Avenue",
+        "ref": "CR 635"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105362190",
+    "osmNodeIds": [
+      105362190
+    ],
+    "lat": 40.561223,
+    "lng": -74.540112,
+    "name": "Vosseller Avenue & Talmage Avenue",
+    "roads": [
+      {
+        "name": "Vosseller Avenue",
+        "ref": null
+      },
+      {
+        "name": "Talmage Avenue",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Vosseller Avenue",
+        "ref": "CR 635"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105367752",
+    "osmNodeIds": [
+      105367752
+    ],
+    "lat": 40.561597,
+    "lng": -74.532223,
+    "name": "Mountain Avenue & East Main Street",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 527"
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 527:CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105367763",
+    "osmNodeIds": [
+      105367763
+    ],
+    "lat": 40.566489,
+    "lng": -74.530545,
+    "name": "East Union Avenue & Mountain Avenue",
+    "roads": [
+      {
+        "name": "East Union Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105369327",
+    "osmNodeIds": [
+      105369327
+    ],
+    "lat": 40.563389,
+    "lng": -74.528392,
+    "name": "East High Street & East Street",
+    "roads": [
+      {
+        "name": "East High Street",
+        "ref": null
+      },
+      {
+        "name": "East Street",
+        "ref": "CR 689"
+      },
+      {
+        "name": "East High Street",
+        "ref": "CR 654"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 689",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105369339",
+    "osmNodeIds": [
+      105369339
+    ],
+    "lat": 40.566337,
+    "lng": -74.527878,
+    "name": "East Street & East Union Avenue",
+    "roads": [
+      {
+        "name": "East Street",
+        "ref": "CR 689"
+      },
+      {
+        "name": "East Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105386042",
+    "osmNodeIds": [
+      105386042
+    ],
+    "lat": 40.561553,
+    "lng": -74.530037,
+    "name": "Hamilton Blv & East Main Street",
+    "roads": [
+      {
+        "name": "Hamilton Blv",
+        "ref": null
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 527:CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527:CR 533",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105398634",
+    "osmNodeIds": [
+      105398634
+    ],
+    "lat": 40.560737,
+    "lng": -74.548199,
+    "name": "Tea Street & Talmage Avenue",
+    "roads": [
+      {
+        "name": "Tea Street",
+        "ref": "CR 687"
+      },
+      {
+        "name": "Talmage Avenue",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 687",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105398689",
+    "osmNodeIds": [
+      105398689
+    ],
+    "lat": 40.56806,
+    "lng": -74.551182,
+    "name": "Tea Street & Union Avenue",
+    "roads": [
+      {
+        "name": "Tea Street",
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Tea Street",
+        "ref": "CR 687"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105418713",
+    "osmNodeIds": [
+      105418713
+    ],
+    "lat": 40.567915,
+    "lng": -74.547957,
+    "name": "Thompson Avenue & Union Avenue",
+    "roads": [
+      {
+        "name": "Thompson Avenue",
+        "ref": "CR 525"
+      },
+      {
+        "name": "Thompson Avenue",
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bound Brook",
+    "county": "Somerset"
+  }
+]

@@ -2,7 +2,7 @@
 
 **Stuck at a red light with no cross traffic? Report it in a few taps, and the app gets it to the agency that actually fixes that light.**
 
-Built in Hillsborough, New Jersey, for the 2026 Congressional App Challenge.
+Covers all **327 traffic lights in Somerset County, New Jersey** (21 towns). Built by students from Hillsborough, NJ, for the 2026 Congressional App Challenge.
 
 **Live app:** https://congressional-app-challenge-project.vercel.app (works on any phone; add it to your home screen to use it like an app)
 
@@ -14,18 +14,18 @@ Many traffic lights detect waiting cars with sensors buried in the road. When a 
 
 Almost nobody reports it, because **nobody knows who owns the light.** In New Jersey it depends on which roads meet there:
 
-| Road at the intersection | Who owns and fixes the light | Example in Hillsborough |
+| Road at the intersection | Who owns and fixes the light | Example |
 |---|---|---|
 | Interstate, US or NJ route | NJ Department of Transportation (NJDOT) | US 206 & Amwell Rd |
 | County route (CR 5xx/6xx) | Somerset County Engineering | Amwell Rd (CR 514) & Beekman Ln |
-| Anything else | Hillsborough Township Public Works | Triangle Rd & Auten Rd |
+| Anything else | That town's public works department | Triangle Rd & Auten Rd (Hillsborough) |
 
 Even when people do report, a single complaint is easy to dismiss. Agencies act on **patterns**.
 
 ## What the app does
 
-1. **Find the light.** Three ways: tap **"I'm at the light now"** (GPS picks the nearest of Hillsborough's 38 signalized intersections), **choose it on the map**, or **search by street** ("triangle rd", "rt 206").
-2. **Say what's wrong.** Stays red, completely out, stuck flashing, pedestrian button broken; plus roughly how long you waited and which way you were going (guessed from your direction of travel).
+1. **Find the light.** Three ways: tap **"I'm at the light now"** (GPS picks the nearest of the county's 327 signalized intersections), **choose it on the map**, or **search by street or town** ("triangle rd", "bridgewater 22").
+2. **Say what's wrong.** Stays red, completely out, stuck flashing, pedestrian button broken; plus roughly how long you waited and which way you were going. The app shows your live direction ("Driving eastbound") and fills that answer in for you.
 3. **Route it automatically.** The app reads which roads meet at that light and works out the owner using the rules above.
 4. **Combine reports into evidence.** When **3+ reports from 2+ different people** arrive within 7 days, the owner gets **one short summary email (a "digest")**: the problem, the direction, typical wait, and a map link.
 5. **Close the loop.** The email has a private link where staff mark a light "We're on it" or "Fixed", with no account needed. The public map updates, and anyone who asked gets **one email saying it's fixed**.
@@ -77,7 +77,9 @@ flowchart TD
 
 ### Problems we had to solve
 
-- **Divided highways.** OpenStreetMap puts a separate signal on each side of a divided road, so one intersection could show up as 4 lights. `buildSignals()` (`src/lib/signals.ts`) merges signals within 40 m: 64 map points became 38 real intersections.
+- **Divided highways.** OpenStreetMap puts a separate signal on each side of a divided road, so one intersection could show up as 4 lights. `buildSignals()` (`src/lib/signals.ts`) merges signals within 40 m (in Hillsborough alone, 64 map points became 38 real intersections).
+- **Lights with no cross street.** 57 lights sit on a single road (shopping-center entrances, crosswalks, ramps), so five lights in one town were all called "US 22". `scripts/name-single-road-lights.ts` names each after the nearest other street ("US 22 near Gray Street"), and adds which side of a divided highway it's on when two still match.
+- **Same town name, different places.** New Jersey has several Franklin Townships, so the importer finds Somerset County's 21 towns by their OpenStreetMap boundary IDs, not by name.
 - **Who owns a light.** `ownerForRoads()` (`src/lib/jurisdiction.ts`) ranks every road through the intersection (state > county > township), so a light where US 206 crosses a county road goes to NJDOT.
 - **Which way were you going?** GPS gives no direction when you're stopped at a red light. The app remembers your direction of travel from just before you stopped (`src/components/useLiveLocation.ts`).
 - **Spam and fairness.** A digest needs reports from 2+ devices **and** 2+ internet connections, so clearing cookies isn't enough to fake a crowd. Repeat reports within 30 minutes are ignored, and there are daily caps per device and per connection.
@@ -105,9 +107,9 @@ src/
     digest.ts             When a light qualifies, and the digest email
     search.ts             Street search
     store/                Database access (Supabase, or a local JSON file for offline development)
-  content/team.ts         The "Who built this" section of the About page
+  lib/brand.ts            The app's name, in one place
 data/
-  signals/                Hillsborough's 38 traffic lights (generated from OpenStreetMap)
+  signals/                Somerset County's 327 traffic lights, one file per town (generated from OpenStreetMap)
   agencies.json           Who to contact, with a source link for each
 supabase/migrations/      Database tables and security rules
 scripts/                  Import, database setup and the end-to-end test
@@ -133,9 +135,10 @@ npm run db:seed      # load the traffic lights and agencies
 Other commands:
 
 ```bash
-npm test             # 36 unit tests
+npm test             # unit tests
 npm run smoke        # end-to-end test against a running site (refuses to run unless TEST_MODE is on)
-npm run import:signals -- "Hillsborough Township" "Somerset"   # refresh traffic light data from OpenStreetMap
+npm run import:signals -- --somerset   # refresh all of Somerset County's lights from OpenStreetMap
+npm run name:lights                    # give one-road lights a nearby landmark (run after importing)
 ```
 
 **Try the whole loop locally:** report a light from three different browser windows (two of them private), open `/dev/outbox` and press **Run digest now**, then follow the "Mark signals as fixed" link in the email.

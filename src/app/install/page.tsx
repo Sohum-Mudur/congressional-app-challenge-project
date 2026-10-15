@@ -1,8 +1,9 @@
 import QRCode from "qrcode";
 import { config } from "@/lib/config";
 import InstallButton from "./InstallButton";
+import { APP_NAME } from "@/lib/brand";
 
-export const metadata = { title: "Get the app · Signal Report" };
+export const metadata = { title: `Get the app · ${APP_NAME}` };
 
 export default async function InstallPage() {
   const qr = await QRCode.toString(config.siteUrl, { type: "svg", margin: 1, color: { dark: "#171717", light: "#ffffff" } });
@@ -11,7 +12,7 @@ export default async function InstallPage() {
     <main className="mx-auto w-full max-w-2xl p-4 leading-relaxed">
       <h1 className="text-2xl font-bold">Get the app</h1>
       <p className="mt-1 text-neutral-600">
-        Add Signal Report to your home screen. It opens full-screen like any other app, with no App Store download.
+        Add {APP_NAME} to your home screen. It opens full-screen like any other app, with no App Store download.
       </p>
 
       <InstallButton />

@@ -1,0 +1,233 @@
+[
+  {
+    "id": "osm-105289086",
+    "osmNodeIds": [
+      105289086,
+      105289087
+    ],
+    "lat": 40.574508,
+    "lng": -74.654524,
+    "name": "US 202 near Ortho Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324844",
+    "osmNodeIds": [
+      105324844,
+      621057918
+    ],
+    "lat": 40.569655,
+    "lng": -74.625574,
+    "name": "Somerset Street & US 206 & E. Somerset Street",
+    "roads": [
+      {
+        "name": "Somerset Street",
+        "ref": "CR 626"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "E. Somerset Street",
+        "ref": "CR 626"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326927",
+    "osmNodeIds": [
+      105326927
+    ],
+    "lat": 40.566161,
+    "lng": -74.637619,
+    "name": "First Avenue & Lyman Street & West Somerset Street",
+    "roads": [
+      {
+        "name": "First Avenue",
+        "ref": "CR 567"
+      },
+      {
+        "name": "Lyman Street",
+        "ref": "CR 625"
+      },
+      {
+        "name": "West Somerset Street",
+        "ref": "CR 567"
+      },
+      {
+        "name": "West Somerset Street",
+        "ref": "CR 626"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 567",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326939",
+    "osmNodeIds": [
+      105326939
+    ],
+    "lat": 40.56964,
+    "lng": -74.638108,
+    "name": "First Avenue & 3rd Street & Johnson Drive",
+    "roads": [
+      {
+        "name": "First Avenue",
+        "ref": "CR 567"
+      },
+      {
+        "name": "3rd Street",
+        "ref": null
+      },
+      {
+        "name": "Johnson Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 567",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326949",
+    "osmNodeIds": [
+      105326949,
+      105326951
+    ],
+    "lat": 40.574237,
+    "lng": -74.63871,
+    "name": "US 202 & First Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202"
+      },
+      {
+        "name": "First Avenue",
+        "ref": "CR 567"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105359248",
+    "osmNodeIds": [
+      105359248
+    ],
+    "lat": 40.566466,
+    "lng": -74.624,
+    "name": "US 206 & Orlando Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": "Orlando Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105382203",
+    "osmNodeIds": [
+      105382203
+    ],
+    "lat": 40.567874,
+    "lng": -74.632675,
+    "name": "East Somerset Street & Thompson Street & West Somerset Street",
+    "roads": [
+      {
+        "name": "East Somerset Street",
+        "ref": "CR 626"
+      },
+      {
+        "name": "Thompson Street",
+        "ref": null
+      },
+      {
+        "name": "West Somerset Street",
+        "ref": "CR 626"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 626",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390141",
+    "osmNodeIds": [
+      105390141,
+      105390432
+    ],
+    "lat": 40.573048,
+    "lng": -74.627744,
+    "name": "Bell Avenue & US 206",
+    "roads": [
+      {
+        "name": "Bell Avenue",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105417737",
+    "osmNodeIds": [
+      105417737
+    ],
+    "lat": 40.565388,
+    "lng": -74.637219,
+    "name": "River Road & Lyman Street & Canal Street",
+    "roads": [
+      {
+        "name": "River Road",
+        "ref": "CR 625"
+      },
+      {
+        "name": "Lyman Street",
+        "ref": "CR 625"
+      },
+      {
+        "name": "Canal Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 625",
+    "municipality": "Raritan",
+    "county": "Somerset"
+  }
+]

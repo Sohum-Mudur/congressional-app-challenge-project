@@ -52,11 +52,15 @@ async function main() {
   const busy = await sql`select signal_id from reports where created_at > now() - interval '7 days' group by signal_id having count(*) >= 3`;
   expect(busy.length === 0, `real lights have 3+ reports this week (${busy.map((b) => b.signal_id).join(", ")}); run this later so the digest only contains test data`);
 
-  const signals: { id: string; name: string; ownerType: string; status: string }[] = await fetch(`${BASE}/api/signals`).then((r) => r.json());
-  const signal = signals.find((s) => s.ownerType === "municipal" && s.status === "ok");
-  expect(signal, "a township light with no reports");
+  const signals: { id: string; name: string; ownerType: string; status: string; municipality: string; agency: { id: string } | null }[] = await fetch(
+    `${BASE}/api/signals`,
+  ).then((r) => r.json());
+  // A town-owned light in Hillsborough, so the test email looks like what DPW would receive.
+  const signal = signals.find((s) => s.ownerType === "municipal" && s.status === "ok" && s.agency?.id === "hillsborough-township");
+  expect(signal?.agency, "a Hillsborough township light with no reports");
   signalId = signal.id;
-  step(`using ${signal.name} (${signal.id})`);
+  const agencyId = signal.agency.id;
+  step(`using ${signal.name}, ${signal.municipality} (${signal.id})`);
 
   const people = [new Person(), new Person(), new Person()];
   for (const [i, p] of people.entries()) {
@@ -83,11 +87,11 @@ async function main() {
   step("reporter signed up for a fix alert (and a non-reporter was refused)");
 
   const digest = await new Person().post("/api/digest", {}, auth);
-  const result = digest.body.results?.find((r: { agencyId: string }) => r.agencyId === "hillsborough-township");
+  const result = digest.body.results?.find((r: { agencyId: string }) => r.agencyId === agencyId);
   expect(digest.body.testMode === true && result?.delivered, `digest should email the test inbox: ${JSON.stringify(digest.body)}`);
   step("digest emailed to the test inbox");
 
-  const [{ manage_token }] = await sql`select manage_token from agencies where id = 'hillsborough-township'`;
+  const [{ manage_token }] = await sql`select manage_token from agencies where id = ${agencyId}`;
   const fixed = await new Person().post(`/api/agency/${manage_token}`, { signalId, status: "fixed" });
   expect(fixed.status === 200 && fixed.body.notified === 1, `marking fixed should email 1 person: ${JSON.stringify(fixed.body)}`);
   step("agency marked it fixed and the reporter was emailed");

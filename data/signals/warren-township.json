@@ -1,0 +1,606 @@
+[
+  {
+    "id": "osm-105283580",
+    "osmNodeIds": [
+      105283580,
+      105283582
+    ],
+    "lat": 40.646985,
+    "lng": -74.521662,
+    "name": "King George Road near Phillipsburg-Newark Expressway (south side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105285691",
+    "osmNodeIds": [
+      105285691,
+      105285693
+    ],
+    "lat": 40.648571,
+    "lng": -74.523099,
+    "name": "King George Road near Phillipsburg-Newark Expressway (north side)",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105286796",
+    "osmNodeIds": [
+      105286796,
+      1519930596
+    ],
+    "lat": 40.648194,
+    "lng": -74.575177,
+    "name": "Liberty Corner Road near Phillipsburg-Newark Expressway (north side)",
+    "roads": [
+      {
+        "name": "Liberty Corner Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105292830",
+    "osmNodeIds": [
+      105292830
+    ],
+    "lat": 40.640788,
+    "lng": -74.574085,
+    "name": "Liberty Corner Road near Westgate Drive",
+    "roads": [
+      {
+        "name": "Liberty Corner Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105302899",
+    "osmNodeIds": [
+      105302899,
+      105302900
+    ],
+    "lat": 40.644743,
+    "lng": -74.51873,
+    "name": "King George Road near Aster Boulevard",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324565",
+    "osmNodeIds": [
+      105324565
+    ],
+    "lat": 40.666415,
+    "lng": -74.458089,
+    "name": "Mountain Avenue & Hillcrest Road",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 622"
+      },
+      {
+        "name": "Hillcrest Road",
+        "ref": "CR 531"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 622",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105328158",
+    "osmNodeIds": [
+      105328158
+    ],
+    "lat": 40.638462,
+    "lng": -74.514198,
+    "name": "Crown Drive & King George Road",
+    "roads": [
+      {
+        "name": "Crown Drive",
+        "ref": null
+      },
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105331070",
+    "osmNodeIds": [
+      105331070
+    ],
+    "lat": 40.643972,
+    "lng": -74.575403,
+    "name": "Mountainview Road & Liberty Corner Road",
+    "roads": [
+      {
+        "name": "Mountainview Road",
+        "ref": null
+      },
+      {
+        "name": "Liberty Corner Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105331252",
+    "osmNodeIds": [
+      105331252
+    ],
+    "lat": 40.63785,
+    "lng": -74.513975,
+    "name": "King George Road & Mount Bethel Road & Mountainview Road",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": "Mount Bethel Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": "Mountainview Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105334817",
+    "osmNodeIds": [
+      105334817
+    ],
+    "lat": 40.607032,
+    "lng": -74.508794,
+    "name": "Washington Valley Road & Morning Glory Road",
+    "roads": [
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 616"
+      },
+      {
+        "name": "Morning Glory Road",
+        "ref": "CR 527"
+      },
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 616",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105345542",
+    "osmNodeIds": [
+      105345542
+    ],
+    "lat": 40.604117,
+    "lng": -74.518983,
+    "name": "King George Road & Washington Valley Road",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": null
+      },
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 616"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 616",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105345788",
+    "osmNodeIds": [
+      105345788
+    ],
+    "lat": 40.625533,
+    "lng": -74.497812,
+    "name": "Hillcrest Boulevard & Mount Bethel Road",
+    "roads": [
+      {
+        "name": "Hillcrest Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Mount Bethel Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105366105",
+    "osmNodeIds": [
+      105366105
+    ],
+    "lat": 40.6461,
+    "lng": -74.476826,
+    "name": "Old Smalleytown Road & Reinman Road & Stirling Road",
+    "roads": [
+      {
+        "name": "Old Smalleytown Road",
+        "ref": null
+      },
+      {
+        "name": "Reinman Road",
+        "ref": null
+      },
+      {
+        "name": "Stirling Road",
+        "ref": "CR 653"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 653",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105366143",
+    "osmNodeIds": [
+      105366143
+    ],
+    "lat": 40.655675,
+    "lng": -74.47868,
+    "name": "Stirling Road & Mountain Avenue",
+    "roads": [
+      {
+        "name": "Stirling Road",
+        "ref": "CR 653"
+      },
+      {
+        "name": "Mountain Avenue",
+        "ref": null
+      },
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 622"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 653",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105367655",
+    "osmNodeIds": [
+      105367655,
+      105367657
+    ],
+    "lat": 40.643597,
+    "lng": -74.516923,
+    "name": "King George Road & Mountain Avenue",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": "Mountain Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105378687",
+    "osmNodeIds": [
+      105378687,
+      105378689
+    ],
+    "lat": 40.621641,
+    "lng": -74.482544,
+    "name": "Old Stirling Road & Mountain Boulevard & Hauser Lane",
+    "roads": [
+      {
+        "name": "Old Stirling Road",
+        "ref": null
+      },
+      {
+        "name": "Mountain Boulevard",
+        "ref": "CR 527"
+      },
+      {
+        "name": "Hauser Lane",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105378708",
+    "osmNodeIds": [
+      105378708
+    ],
+    "lat": 40.618802,
+    "lng": -74.492027,
+    "name": "Penny Lane & Bardy Road & Mountain Boulevard",
+    "roads": [
+      {
+        "name": "Penny Lane",
+        "ref": null
+      },
+      {
+        "name": "Bardy Road",
+        "ref": null
+      },
+      {
+        "name": "Mountain Boulevard",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105378714",
+    "osmNodeIds": [
+      105378714
+    ],
+    "lat": 40.61775,
+    "lng": -74.49553,
+    "name": "Mountain Boulevard & Mount Bethel Road",
+    "roads": [
+      {
+        "name": "Mountain Boulevard",
+        "ref": "CR 527"
+      },
+      {
+        "name": "Mount Bethel Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105380099",
+    "osmNodeIds": [
+      105380099
+    ],
+    "lat": 40.624759,
+    "lng": -74.49778,
+    "name": "Mount Horeb Road & Mount Bethel Road",
+    "roads": [
+      {
+        "name": "Mount Horeb Road",
+        "ref": "CR 618"
+      },
+      {
+        "name": "Mount Bethel Road",
+        "ref": "CR 651"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 618",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105380137",
+    "osmNodeIds": [
+      105380137
+    ],
+    "lat": 40.634131,
+    "lng": -74.505479,
+    "name": "Mount Bethel Road & Technology Drive",
+    "roads": [
+      {
+        "name": "Mount Bethel Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": "Technology Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 651",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105402073",
+    "osmNodeIds": [
+      105402073
+    ],
+    "lat": 40.62356,
+    "lng": -74.517441,
+    "name": "Mount Horeb Road & King George Road",
+    "roads": [
+      {
+        "name": "Mount Horeb Road",
+        "ref": "CR 618"
+      },
+      {
+        "name": "King George Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 618",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621546245",
+    "osmNodeIds": [
+      621546245,
+      621546246
+    ],
+    "lat": 40.651201,
+    "lng": -74.575341,
+    "name": "Colonial Crossing & Martinsville Road",
+    "roads": [
+      {
+        "name": "Colonial Crossing",
+        "ref": null
+      },
+      {
+        "name": "Martinsville Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621546251",
+    "osmNodeIds": [
+      621546251,
+      621546252
+    ],
+    "lat": 40.653035,
+    "lng": -74.575778,
+    "name": "Independence Boulevard & Martinsville Road",
+    "roads": [
+      {
+        "name": "Independence Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Martinsville Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-1519930592",
+    "osmNodeIds": [
+      1519930592
+    ],
+    "lat": 40.645461,
+    "lng": -74.575593,
+    "name": "Liberty Corner Road near Phillipsburg-Newark Expressway (south side)",
+    "roads": [
+      {
+        "name": "Liberty Corner Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-4414952173",
+    "osmNodeIds": [
+      4414952173,
+      8950238212
+    ],
+    "lat": 40.608576,
+    "lng": -74.503376,
+    "name": "Promenade Boulevard & Washington Valley Road",
+    "roads": [
+      {
+        "name": "Promenade Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Warren Township",
+    "county": "Somerset"
+  }
+]

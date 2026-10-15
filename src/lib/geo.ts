@@ -62,6 +62,11 @@ export function approachDirection(
     headingDegrees != null && !Number.isNaN(headingDegrees)
       ? headingDegrees
       : bearingDegrees(position, signal);
-  const sector = Math.round((((heading % 360) + 360) % 360) / 90) % 4;
+  return headingToApproach(heading);
+}
+
+/** A compass heading (0 = north, 90 = east) as the nearest of the four directions on the report form. */
+export function headingToApproach(headingDegrees: number): Approach {
+  const sector = Math.round((((headingDegrees % 360) + 360) % 360) / 90) % 4;
   return (["northbound", "eastbound", "southbound", "westbound"] as const)[sector];
 }

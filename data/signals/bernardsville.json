@@ -1,0 +1,60 @@
+[
+  {
+    "id": "osm-105325744",
+    "osmNodeIds": [
+      105325744
+    ],
+    "lat": 40.720342,
+    "lng": -74.55859,
+    "name": "Finley Avenue & Childs Road & Morristown Road",
+    "roads": [
+      {
+        "name": "Finley Avenue",
+        "ref": "CR 613"
+      },
+      {
+        "name": "Childs Road",
+        "ref": "(613)"
+      },
+      {
+        "name": "Morristown Road",
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bernardsville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105329563",
+    "osmNodeIds": [
+      105329563
+    ],
+    "lat": 40.718343,
+    "lng": -74.569292,
+    "name": "Mine Brook Road & Mount Airy Road & Olcott Square",
+    "roads": [
+      {
+        "name": "Mine Brook Road",
+        "ref": "US 202;CR 525"
+      },
+      {
+        "name": "Mount Airy Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": "Olcott Square",
+        "ref": null
+      },
+      {
+        "name": "Olcott Square",
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bernardsville",
+    "county": "Somerset"
+  }
+]

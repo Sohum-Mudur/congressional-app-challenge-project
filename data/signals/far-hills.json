@@ -1,0 +1,29 @@
+[
+  {
+    "id": "osm-105388896",
+    "osmNodeIds": [
+      105388896
+    ],
+    "lat": 40.683223,
+    "lng": -74.636991,
+    "name": "Peapack Road & Main Street",
+    "roads": [
+      {
+        "name": "Peapack Road",
+        "ref": "CR 512"
+      },
+      {
+        "name": "Main Street",
+        "ref": "US 202;CR 512"
+      },
+      {
+        "name": "Main Street",
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Far Hills",
+    "county": "Somerset"
+  }
+]

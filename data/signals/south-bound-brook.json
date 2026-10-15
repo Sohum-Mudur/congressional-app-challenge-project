@@ -1,0 +1,75 @@
+[
+  {
+    "id": "osm-105393475",
+    "osmNodeIds": [
+      105393475
+    ],
+    "lat": 40.558323,
+    "lng": -74.528039,
+    "name": "Canal Road & Main Street",
+    "roads": [
+      {
+        "name": "Canal Road",
+        "ref": "CR 623"
+      },
+      {
+        "name": "Main Street",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 623",
+    "municipality": "South Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105416573",
+    "osmNodeIds": [
+      105416573
+    ],
+    "lat": 40.555327,
+    "lng": -74.525917,
+    "name": "Cherry Street & Washington Street & Main Street",
+    "roads": [
+      {
+        "name": "Cherry Street",
+        "ref": null
+      },
+      {
+        "name": "Washington Street",
+        "ref": null
+      },
+      {
+        "name": "Main Street",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "South Bound Brook",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105423833",
+    "osmNodeIds": [
+      105423833
+    ],
+    "lat": 40.552867,
+    "lng": -74.531246,
+    "name": "Elizabeth Street & Edgewood Terrace",
+    "roads": [
+      {
+        "name": "Elizabeth Street",
+        "ref": "CR 621"
+      },
+      {
+        "name": "Edgewood Terrace",
+        "ref": "CR 610"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 621",
+    "municipality": "South Bound Brook",
+    "county": "Somerset"
+  }
+]

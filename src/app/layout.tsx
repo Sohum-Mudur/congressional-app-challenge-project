@@ -3,13 +3,14 @@ import { Geist } from "next/font/google";
 import Link from "next/link";
 import NavLinks from "@/components/NavLinks";
 import "./globals.css";
+import { APP_NAME } from "@/lib/brand";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Signal Report",
+  title: APP_NAME,
   description: "Stuck at a broken traffic light? Report it and we send it to the agency that fixes it.",
-  appleWebApp: { capable: true, title: "Signal Report", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: APP_NAME, statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
               <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
             </span>
-            <span className="truncate text-[15px] max-[350px]:hidden">Signal Report</span>
+            <span className="truncate text-[15px] max-[350px]:hidden">{APP_NAME}</span>
           </Link>
           <NavLinks />
         </header>

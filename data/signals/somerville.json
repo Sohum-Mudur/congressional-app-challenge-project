@@ -1,0 +1,548 @@
+[
+  {
+    "id": "osm-105324860",
+    "osmNodeIds": [
+      105324860
+    ],
+    "lat": 40.569973,
+    "lng": -74.620706,
+    "name": "Urban Drive & Somerset Street & Mountain Avenue",
+    "roads": [
+      {
+        "name": "Urban Drive",
+        "ref": null
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "CR 626"
+      },
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 643"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 626",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324867",
+    "osmNodeIds": [
+      105324867
+    ],
+    "lat": 40.570116,
+    "lng": -74.618697,
+    "name": "West End Avenue & West Main Street & Somerset Street",
+    "roads": [
+      {
+        "name": "West End Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "West Main Street",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "CR 626"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324877",
+    "osmNodeIds": [
+      105324877
+    ],
+    "lat": 40.570055,
+    "lng": -74.617935,
+    "name": "North Doughty Avenue & West End Avenue & South Doughty Avenue",
+    "roads": [
+      {
+        "name": "North Doughty Avenue",
+        "ref": null
+      },
+      {
+        "name": "West End Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "South Doughty Avenue",
+        "ref": null
+      },
+      {
+        "name": "West Main Street",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326406",
+    "osmNodeIds": [
+      105326406,
+      105403042
+    ],
+    "lat": 40.566133,
+    "lng": -74.603592,
+    "name": "South Gaston Avenue & East Main Street & North Gaston Avenue",
+    "roads": [
+      {
+        "name": "South Gaston Avenue",
+        "ref": null
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 612"
+      },
+      {
+        "name": "North Gaston Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "East Main Street",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326860",
+    "osmNodeIds": [
+      105326860
+    ],
+    "lat": 40.568172,
+    "lng": -74.611742,
+    "name": "East Main Street & South Bridge Street & North Bridge Street",
+    "roads": [
+      {
+        "name": "East Main Street",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "South Bridge Street",
+        "ref": null
+      },
+      {
+        "name": "North Bridge Street",
+        "ref": null
+      },
+      {
+        "name": "West Main Street",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326862",
+    "osmNodeIds": [
+      105326862
+    ],
+    "lat": 40.568521,
+    "lng": -74.612907,
+    "name": "Division Street & West Main Street",
+    "roads": [
+      {
+        "name": "Division Street",
+        "ref": null
+      },
+      {
+        "name": "West Main Street",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105326868",
+    "osmNodeIds": [
+      105326868
+    ],
+    "lat": 40.569449,
+    "lng": -74.61595,
+    "name": "West Main Street & Davenport Street & South Davenport Street",
+    "roads": [
+      {
+        "name": "West Main Street",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Davenport Street",
+        "ref": null
+      },
+      {
+        "name": "South Davenport Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105327591",
+    "osmNodeIds": [
+      105327591
+    ],
+    "lat": 40.571545,
+    "lng": -74.610771,
+    "name": "East Cliff Street & North Bridge Street & West Cliff Street",
+    "roads": [
+      {
+        "name": "East Cliff Street",
+        "ref": null
+      },
+      {
+        "name": "North Bridge Street",
+        "ref": null
+      },
+      {
+        "name": "West Cliff Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105343571",
+    "osmNodeIds": [
+      105343571
+    ],
+    "lat": 40.571029,
+    "lng": -74.593623,
+    "name": "Monroe Street & Union Avenue",
+    "roads": [
+      {
+        "name": "Monroe Street",
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105349899",
+    "osmNodeIds": [
+      105349899
+    ],
+    "lat": 40.571002,
+    "lng": -74.619965,
+    "name": "Mountain Avenue & West End Avenue",
+    "roads": [
+      {
+        "name": "Mountain Avenue",
+        "ref": "CR 643"
+      },
+      {
+        "name": "West End Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105351796",
+    "osmNodeIds": [
+      105351796
+    ],
+    "lat": 40.566021,
+    "lng": -74.612373,
+    "name": "Veterans Memorial Drive East & South Bridge Street & Veterans Memorial Drive West",
+    "roads": [
+      {
+        "name": "Veterans Memorial Drive East",
+        "ref": null
+      },
+      {
+        "name": "South Bridge Street",
+        "ref": null
+      },
+      {
+        "name": "Veterans Memorial Drive West",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105355601",
+    "osmNodeIds": [
+      105355601
+    ],
+    "lat": 40.574118,
+    "lng": -74.610068,
+    "name": "William Street & Green Street & North Bridge Street",
+    "roads": [
+      {
+        "name": "William Street",
+        "ref": null
+      },
+      {
+        "name": "Green Street",
+        "ref": null
+      },
+      {
+        "name": "North Bridge Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105355611",
+    "osmNodeIds": [
+      105355611
+    ],
+    "lat": 40.57321,
+    "lng": -74.608099,
+    "name": "Grove Street & William Street",
+    "roads": [
+      {
+        "name": "Grove Street",
+        "ref": null
+      },
+      {
+        "name": "William Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105355627",
+    "osmNodeIds": [
+      105355627
+    ],
+    "lat": 40.57154,
+    "lng": -74.601723,
+    "name": "North Gaston Avenue & William Street & Union Avenue",
+    "roads": [
+      {
+        "name": "North Gaston Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "North Gaston Avenue",
+        "ref": null
+      },
+      {
+        "name": "William Street",
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105386022",
+    "osmNodeIds": [
+      105386022
+    ],
+    "lat": 40.565245,
+    "lng": -74.60816,
+    "name": "Veterans Memorial Drive East & Hamilton Street",
+    "roads": [
+      {
+        "name": "Veterans Memorial Drive East",
+        "ref": null
+      },
+      {
+        "name": "Hamilton Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105387137",
+    "osmNodeIds": [
+      105387137
+    ],
+    "lat": 40.569217,
+    "lng": -74.609487,
+    "name": "Grove Street & East High Street",
+    "roads": [
+      {
+        "name": "Grove Street",
+        "ref": null
+      },
+      {
+        "name": "East High Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390507",
+    "osmNodeIds": [
+      105390507,
+      621057913
+    ],
+    "lat": 40.557475,
+    "lng": -74.616547,
+    "name": "South Bridge Street & US 206",
+    "roads": [
+      {
+        "name": "South Bridge Street",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105391197",
+    "osmNodeIds": [
+      105391197
+    ],
+    "lat": 40.569783,
+    "lng": -74.611264,
+    "name": "North Bridge Street & East High Street & West High Street",
+    "roads": [
+      {
+        "name": "North Bridge Street",
+        "ref": null
+      },
+      {
+        "name": "East High Street",
+        "ref": null
+      },
+      {
+        "name": "West High Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105392653",
+    "osmNodeIds": [
+      105392653
+    ],
+    "lat": 40.565359,
+    "lng": -74.596881,
+    "name": "Rehill Avenue & East Main Street",
+    "roads": [
+      {
+        "name": "Rehill Avenue",
+        "ref": null
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 612"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 612",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621057890",
+    "osmNodeIds": [
+      621057890
+    ],
+    "lat": 40.566529,
+    "lng": -74.623893,
+    "name": "US 206 & Orlando Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 206"
+      },
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Orlando Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-5555781439",
+    "osmNodeIds": [
+      5555781439,
+      6799781789
+    ],
+    "lat": 40.571222,
+    "lng": -74.596693,
+    "name": "Union Avenue near Lisa Terrace",
+    "roads": [
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Somerville",
+    "county": "Somerset"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "osm-105417182",
+    "osmNodeIds": [
+      105417182
+    ],
+    "lat": 40.60158,
+    "lng": -74.473661,
+    "name": "Greenbrook Road & Washington Avenue",
+    "roads": [
+      {
+        "name": "Greenbrook Road",
+        "ref": "(634)"
+      },
+      {
+        "name": "Washington Avenue",
+        "ref": "CR 529"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 529",
+    "municipality": "Green Brook Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105417296",
+    "osmNodeIds": [
+      105417296
+    ],
+    "lat": 40.606011,
+    "lng": -74.460486,
+    "name": "Greenbrook Road & Rock Avenue",
+    "roads": [
+      {
+        "name": "Greenbrook Road",
+        "ref": "CR 636"
+      },
+      {
+        "name": "Rock Avenue",
+        "ref": "CR 645"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 636",
+    "municipality": "Green Brook Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105419625",
+    "osmNodeIds": [
+      105419625,
+      105419627
+    ],
+    "lat": 40.595863,
+    "lng": -74.490093,
+    "name": "Warrenville Road & US 22",
+    "roads": [
+      {
+        "name": "Warrenville Road",
+        "ref": "CR 651"
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Green Brook Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105426698",
+    "osmNodeIds": [
+      105426698,
+      105426699
+    ],
+    "lat": 40.603522,
+    "lng": -74.475802,
+    "name": "US 22 & Washington Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Washington Avenue",
+        "ref": "CR 529"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Green Brook Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105429710",
+    "osmNodeIds": [
+      105429710,
+      105429712
+    ],
+    "lat": 40.591618,
+    "lng": -74.497964,
+    "name": "US 22 & Cramer Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Cramer Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Green Brook Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105431285",
+    "osmNodeIds": [
+      105431285,
+      105431728
+    ],
+    "lat": 40.586041,
+    "lng": -74.508812,
+    "name": "King George Road & Sebrings Mills Road & US 22",
+    "roads": [
+      {
+        "name": "King George Road",
+        "ref": null
+      },
+      {
+        "name": "Sebrings Mills Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": null,
+        "ref": "US Route 22 Eastbound"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Green Brook Township",
+    "county": "Somerset"
+  }
+]

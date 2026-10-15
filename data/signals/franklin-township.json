@@ -1,0 +1,1508 @@
+[
+  {
+    "id": "osm-104244402",
+    "osmNodeIds": [
+      104244402
+    ],
+    "lat": 40.483433,
+    "lng": -74.479488,
+    "name": "Franklin Boulevard & Somerset Street & Oliver Avenue",
+    "roads": [
+      {
+        "name": "Franklin Boulevard",
+        "ref": "CR 617"
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Oliver Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104266293",
+    "osmNodeIds": [
+      104266293
+    ],
+    "lat": 40.436685,
+    "lng": -74.539731,
+    "name": "Henderson Road & Stewart Avenue & Lincoln Highway",
+    "roads": [
+      {
+        "name": "Henderson Road",
+        "ref": "CR 610"
+      },
+      {
+        "name": "Stewart Avenue",
+        "ref": null
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104292777",
+    "osmNodeIds": [
+      104292777
+    ],
+    "lat": 40.486512,
+    "lng": -74.469383,
+    "name": "Juliet Avenue & Somerset Street & Quentin Avenue",
+    "roads": [
+      {
+        "name": "Juliet Avenue",
+        "ref": null
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Quentin Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104322982",
+    "osmNodeIds": [
+      104322982
+    ],
+    "lat": 40.417504,
+    "lng": -74.585657,
+    "name": "Gateway Boulevard & Lincoln Highway & Georgetown-Franklin Turnpike",
+    "roads": [
+      {
+        "name": "Gateway Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104323052",
+    "osmNodeIds": [
+      104323052
+    ],
+    "lat": 40.451086,
+    "lng": -74.520653,
+    "name": "Cortelyous Lane & Lincoln Highway",
+    "roads": [
+      {
+        "name": "Cortelyous Lane",
+        "ref": null
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104323173",
+    "osmNodeIds": [
+      104323173
+    ],
+    "lat": 40.4391,
+    "lng": -74.535058,
+    "name": "Claremont Road & Lincoln Highway",
+    "roads": [
+      {
+        "name": "Claremont Road",
+        "ref": "CR 648"
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104381183",
+    "osmNodeIds": [
+      104381183,
+      104381192
+    ],
+    "lat": 40.48471,
+    "lng": -74.475768,
+    "name": "Irving Street & Somerset Street & Van Dyke Avenue",
+    "roads": [
+      {
+        "name": "Irving Street",
+        "ref": null
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Van Dyke Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-104381245",
+    "osmNodeIds": [
+      104381245
+    ],
+    "lat": 40.48036,
+    "lng": -74.484106,
+    "name": "Churchill Avenue & Somerset Street",
+    "roads": [
+      {
+        "name": "Churchill Avenue",
+        "ref": null
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105282566",
+    "osmNodeIds": [
+      105282566
+    ],
+    "lat": 40.494213,
+    "lng": -74.465604,
+    "name": "Highland Avenue & Hamilton Street",
+    "roads": [
+      {
+        "name": "Highland Avenue",
+        "ref": null
+      },
+      {
+        "name": "Hamilton Street",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105282617",
+    "osmNodeIds": [
+      105282617
+    ],
+    "lat": 40.500142,
+    "lng": -74.473737,
+    "name": "Highland Avenue & Franklin Boulevard",
+    "roads": [
+      {
+        "name": "Highland Avenue",
+        "ref": null
+      },
+      {
+        "name": "Franklin Boulevard",
+        "ref": "CR 617"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 617",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105292482",
+    "osmNodeIds": [
+      105292482
+    ],
+    "lat": 40.496619,
+    "lng": -74.526912,
+    "name": "South Middlebush Road & Amwell Road",
+    "roads": [
+      {
+        "name": "South Middlebush Road",
+        "ref": "CR 615"
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 615",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105298457",
+    "osmNodeIds": [
+      105298457
+    ],
+    "lat": 40.478482,
+    "lng": -74.539205,
+    "name": "Blackwells Mills Road & South Middlebush Road",
+    "roads": [
+      {
+        "name": "Blackwells Mills Road",
+        "ref": null
+      },
+      {
+        "name": "South Middlebush Road",
+        "ref": "CR 615"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 615",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105307861",
+    "osmNodeIds": [
+      105307861,
+      105325959
+    ],
+    "lat": 40.528365,
+    "lng": -74.498574,
+    "name": "Willow Avenue & Easton Avenue",
+    "roads": [
+      {
+        "name": "Willow Avenue",
+        "ref": null
+      },
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105310350",
+    "osmNodeIds": [
+      105310350,
+      13485213027,
+      13485213028
+    ],
+    "lat": 40.553932,
+    "lng": -74.543091,
+    "name": "Weston Canal Road & Canal Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Weston Canal Road",
+        "ref": "CR 623"
+      },
+      {
+        "name": "Canal Road",
+        "ref": "CR 623"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 623",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105315408",
+    "osmNodeIds": [
+      105315408,
+      105315409
+    ],
+    "lat": 40.517675,
+    "lng": -74.490669,
+    "name": "Easton Avenue near Easton North Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105318512",
+    "osmNodeIds": [
+      105318512,
+      13485213004,
+      13485213005
+    ],
+    "lat": 40.552973,
+    "lng": -74.544469,
+    "name": "Weston Canal Road near Delaware & Raritan Canal Towpath",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Weston Canal Road",
+        "ref": "CR 623"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 623",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105321805",
+    "osmNodeIds": [
+      105321805
+    ],
+    "lat": 40.399374,
+    "lng": -74.626836,
+    "name": "Kingston-Rocky Hill Road & Georgetown-Franklin Turnpike & Canal Road",
+    "roads": [
+      {
+        "name": "Kingston-Rocky Hill Road",
+        "ref": "CR 603"
+      },
+      {
+        "name": "Georgetown-Franklin Turnpike",
+        "ref": "CR 518"
+      },
+      {
+        "name": "Canal Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 603",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105337437",
+    "osmNodeIds": [
+      105337437
+    ],
+    "lat": 40.448235,
+    "lng": -74.557504,
+    "name": "Claremont Road & Suydam Road & South Middlebush Road",
+    "roads": [
+      {
+        "name": "Claremont Road",
+        "ref": "CR 648"
+      },
+      {
+        "name": "Suydam Road",
+        "ref": null
+      },
+      {
+        "name": "South Middlebush Road",
+        "ref": "CR 615"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 648",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105340535",
+    "osmNodeIds": [
+      105340535
+    ],
+    "lat": 40.375014,
+    "lng": -74.61531,
+    "name": "Academy Street & Church Street & Main Street",
+    "roads": [
+      {
+        "name": "Academy Street",
+        "ref": null
+      },
+      {
+        "name": "Church Street",
+        "ref": null
+      },
+      {
+        "name": "Main Street",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105341217",
+    "osmNodeIds": [
+      105341217
+    ],
+    "lat": 40.528197,
+    "lng": -74.540859,
+    "name": "Schoolhouse Road & Elizabeth Avenue & New Brunswick Road",
+    "roads": [
+      {
+        "name": "Schoolhouse Road",
+        "ref": null
+      },
+      {
+        "name": "Elizabeth Avenue",
+        "ref": "CR 621"
+      },
+      {
+        "name": "New Brunswick Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 621",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105341267",
+    "osmNodeIds": [
+      105341267
+    ],
+    "lat": 40.513682,
+    "lng": -74.547734,
+    "name": "Weston Road & Elizabeth Avenue",
+    "roads": [
+      {
+        "name": "Weston Road",
+        "ref": null
+      },
+      {
+        "name": "Elizabeth Avenue",
+        "ref": "CR 621"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 621",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105341314",
+    "osmNodeIds": [
+      105341314
+    ],
+    "lat": 40.499761,
+    "lng": -74.554923,
+    "name": "Amwell Road & Elizabeth Avenue",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Elizabeth Avenue",
+        "ref": "CR 621"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105344611",
+    "osmNodeIds": [
+      105344611
+    ],
+    "lat": 40.54888,
+    "lng": -74.54536,
+    "name": "Cottontail Lane & Campus Drive",
+    "roads": [
+      {
+        "name": "Cottontail Lane",
+        "ref": null
+      },
+      {
+        "name": "Campus Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105348963",
+    "osmNodeIds": [
+      105348963
+    ],
+    "lat": 40.48809,
+    "lng": -74.502719,
+    "name": "Veronica Avenue & Hamilton Street",
+    "roads": [
+      {
+        "name": "Veronica Avenue",
+        "ref": null
+      },
+      {
+        "name": "Hamilton Street",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105357196",
+    "osmNodeIds": [
+      105357196
+    ],
+    "lat": 40.532269,
+    "lng": -74.580122,
+    "name": "Weston Canal Road & School House Road",
+    "roads": [
+      {
+        "name": "Weston Canal Road",
+        "ref": "CR 623"
+      },
+      {
+        "name": "School House Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 623",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105357868",
+    "osmNodeIds": [
+      105357868
+    ],
+    "lat": 40.543178,
+    "lng": -74.517482,
+    "name": "Davidson Avenue & Easton Avenue",
+    "roads": [
+      {
+        "name": "Davidson Avenue",
+        "ref": null
+      },
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105365761",
+    "osmNodeIds": [
+      105365761
+    ],
+    "lat": 40.4915,
+    "lng": -74.472735,
+    "name": "Baier Avenue & Hamilton Street",
+    "roads": [
+      {
+        "name": "Baier Avenue",
+        "ref": null
+      },
+      {
+        "name": "Hamilton Street",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105368695",
+    "osmNodeIds": [
+      105368695
+    ],
+    "lat": 40.526384,
+    "lng": -74.516866,
+    "name": "Pierce Street & Sunnyvale Drive & Cedar Grove Lane",
+    "roads": [
+      {
+        "name": "Pierce Street",
+        "ref": null
+      },
+      {
+        "name": "Sunnyvale Drive",
+        "ref": null
+      },
+      {
+        "name": "Cedar Grove Lane",
+        "ref": "CR 619"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 619",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105370384",
+    "osmNodeIds": [
+      105370384,
+      105370560
+    ],
+    "lat": 40.511015,
+    "lng": -74.482608,
+    "name": "Easton Avenue & Foxwood Drive",
+    "roads": [
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      },
+      {
+        "name": "Foxwood Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105370398",
+    "osmNodeIds": [
+      105370398,
+      105370400,
+      105370575,
+      440177999
+    ],
+    "lat": 40.51423,
+    "lng": -74.487339,
+    "name": "Easton Avenue & John F Kennedy Boulevard",
+    "roads": [
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      },
+      {
+        "name": "John F Kennedy Boulevard",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105370414",
+    "osmNodeIds": [
+      105370414,
+      440178154
+    ],
+    "lat": 40.522245,
+    "lng": -74.494321,
+    "name": "Demott Lane & Easton Avenue",
+    "roads": [
+      {
+        "name": "Demott Lane",
+        "ref": null
+      },
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105370447",
+    "osmNodeIds": [
+      105370447,
+      105370614,
+      621538313,
+      621538314
+    ],
+    "lat": 40.536065,
+    "lng": -74.507526,
+    "name": "Cedar Grove Lane & Easton Avenue",
+    "roads": [
+      {
+        "name": "Cedar Grove Lane",
+        "ref": "CR 619"
+      },
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 619",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105386067",
+    "osmNodeIds": [
+      105386067
+    ],
+    "lat": 40.488918,
+    "lng": -74.508041,
+    "name": "Hamilton Street & John F Kennedy Boulevard & Clyde Road",
+    "roads": [
+      {
+        "name": "Hamilton Street",
+        "ref": "CR 514"
+      },
+      {
+        "name": "John F Kennedy Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Clyde Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105386131",
+    "osmNodeIds": [
+      105386131
+    ],
+    "lat": 40.487674,
+    "lng": -74.48293,
+    "name": "Hamilton Street & Franklin Boulevard",
+    "roads": [
+      {
+        "name": "Hamilton Street",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Franklin Boulevard",
+        "ref": "CR 617"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105386142",
+    "osmNodeIds": [
+      105386142
+    ],
+    "lat": 40.490292,
+    "lng": -74.47588,
+    "name": "Matilda Avenue & Hamilton Street",
+    "roads": [
+      {
+        "name": "Matilda Avenue",
+        "ref": null
+      },
+      {
+        "name": "Hamilton Street",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105403463",
+    "osmNodeIds": [
+      105403463
+    ],
+    "lat": 40.503267,
+    "lng": -74.573379,
+    "name": "Amwell Road & Mettlers Road",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Mettlers Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105407535",
+    "osmNodeIds": [
+      105407535
+    ],
+    "lat": 40.493628,
+    "lng": -74.50476,
+    "name": "Berger Street & John F Kennedy Boulevard",
+    "roads": [
+      {
+        "name": "Berger Street",
+        "ref": null
+      },
+      {
+        "name": "John F Kennedy Boulevard",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105411966",
+    "osmNodeIds": [
+      105411966
+    ],
+    "lat": 40.495872,
+    "lng": -74.525797,
+    "name": "Demott Lane & Amwell Road",
+    "roads": [
+      {
+        "name": "Demott Lane",
+        "ref": null
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105411996",
+    "osmNodeIds": [
+      105411996,
+      8991808260
+    ],
+    "lat": 40.499846,
+    "lng": -74.540457,
+    "name": "Amwell Road & Cedar Grove Lane",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      },
+      {
+        "name": "Cedar Grove Lane",
+        "ref": "CR 619"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105422135",
+    "osmNodeIds": [
+      105422135,
+      105422333
+    ],
+    "lat": 40.520974,
+    "lng": -74.522766,
+    "name": "New Brunswick Road & Cedar Grove Lane",
+    "roads": [
+      {
+        "name": "New Brunswick Road",
+        "ref": null
+      },
+      {
+        "name": "Cedar Grove Lane",
+        "ref": "CR 619"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 619",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105430793",
+    "osmNodeIds": [
+      105430793
+    ],
+    "lat": 40.513357,
+    "lng": -74.531556,
+    "name": "Treptow Road & Cedar Grove Lane",
+    "roads": [
+      {
+        "name": "Treptow Road",
+        "ref": null
+      },
+      {
+        "name": "Cedar Grove Lane",
+        "ref": "CR 619"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 619",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105452943",
+    "osmNodeIds": [
+      105452943
+    ],
+    "lat": 40.510497,
+    "lng": -74.534449,
+    "name": "Cedar Grove Lane & Weston Road",
+    "roads": [
+      {
+        "name": "Cedar Grove Lane",
+        "ref": "CR 619"
+      },
+      {
+        "name": "Weston Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 619",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-366079074",
+    "osmNodeIds": [
+      366079074,
+      7377391905
+    ],
+    "lat": 40.386445,
+    "lng": -74.595288,
+    "name": "Promenade Boulevard & Lincoln Highway",
+    "roads": [
+      {
+        "name": "Promenade Boulevard",
+        "ref": "CR 522"
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440178058",
+    "osmNodeIds": [
+      440178058
+    ],
+    "lat": 40.509481,
+    "lng": -74.5075,
+    "name": "New Brunswick Road & Demott Lane",
+    "roads": [
+      {
+        "name": "New Brunswick Road",
+        "ref": null
+      },
+      {
+        "name": "Demott Lane",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440179500",
+    "osmNodeIds": [
+      440179500
+    ],
+    "lat": 40.441383,
+    "lng": -74.531476,
+    "name": "Bennington Parkway & Finnegans Lane & Lincoln Highway",
+    "roads": [
+      {
+        "name": "Bennington Parkway",
+        "ref": null
+      },
+      {
+        "name": "Finnegans Lane",
+        "ref": "CR 682"
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440179529",
+    "osmNodeIds": [
+      440179529
+    ],
+    "lat": 40.469913,
+    "lng": -74.49421,
+    "name": "Lincoln Highway & Bennetts Lane",
+    "roads": [
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Bennetts Lane",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440275671",
+    "osmNodeIds": [
+      440275671
+    ],
+    "lat": 40.38071,
+    "lng": -74.602564,
+    "name": "Lincoln Highway & Main Street & Raymond Road",
+    "roads": [
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Main Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Raymond Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440276274",
+    "osmNodeIds": [
+      440276274
+    ],
+    "lat": 40.37563,
+    "lng": -74.613393,
+    "name": "Heathcote Road & Main Street & Laurel Avenue",
+    "roads": [
+      {
+        "name": "Heathcote Road",
+        "ref": null
+      },
+      {
+        "name": "Main Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Laurel Avenue",
+        "ref": "CR 603"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-529772469",
+    "osmNodeIds": [
+      529772469
+    ],
+    "lat": 40.433473,
+    "lng": -74.546908,
+    "name": "Lincoln Highway & Beekman Road",
+    "roads": [
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Beekman Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-768126466",
+    "osmNodeIds": [
+      768126466
+    ],
+    "lat": 40.497777,
+    "lng": -74.546543,
+    "name": "Van Cleef Road & Old Amwell Road & Amwell Road",
+    "roads": [
+      {
+        "name": "Van Cleef Road",
+        "ref": null
+      },
+      {
+        "name": "Old Amwell Road",
+        "ref": null
+      },
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-771566525",
+    "osmNodeIds": [
+      771566525
+    ],
+    "lat": 40.461466,
+    "lng": -74.507105,
+    "name": "Lincoln Highway & Cozzens Lane",
+    "roads": [
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Cozzens Lane",
+        "ref": "CR 608"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-771568585",
+    "osmNodeIds": [
+      771568585
+    ],
+    "lat": 40.42797,
+    "lng": -74.560467,
+    "name": "Sand Hills Road & Lincoln Highway & South Middlebush Road",
+    "roads": [
+      {
+        "name": "Sand Hills Road",
+        "ref": null
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "South Middlebush Road",
+        "ref": "CR 615"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-1837117219",
+    "osmNodeIds": [
+      1837117219
+    ],
+    "lat": 40.530365,
+    "lng": -74.539808,
+    "name": "Elizabeth Avenue near Old New Brunswick Road",
+    "roads": [
+      {
+        "name": "Elizabeth Avenue",
+        "ref": "CR 621"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 621",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-1958775466",
+    "osmNodeIds": [
+      1958775466
+    ],
+    "lat": 40.535261,
+    "lng": -74.537826,
+    "name": "Elizabeth Avenue & Pierce Street",
+    "roads": [
+      {
+        "name": "Elizabeth Avenue",
+        "ref": "CR 621"
+      },
+      {
+        "name": "Pierce Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 621",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-5516418369",
+    "osmNodeIds": [
+      5516418369
+    ],
+    "lat": 40.48932,
+    "lng": -74.463232,
+    "name": "Somerset Street & Main Street & French Street",
+    "roads": [
+      {
+        "name": "Somerset Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Somerset Street",
+        "ref": null
+      },
+      {
+        "name": "Main Street",
+        "ref": null
+      },
+      {
+        "name": "French Street",
+        "ref": "NJ 27"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-5560959338",
+    "osmNodeIds": [
+      5560959338
+    ],
+    "lat": 40.503492,
+    "lng": -74.579352,
+    "name": "Amwell Road near Franklin Street (east side)",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-6886297993",
+    "osmNodeIds": [
+      6886297993
+    ],
+    "lat": 40.474469,
+    "lng": -74.489514,
+    "name": "How Lane & Somerset Street & Lincoln Highway",
+    "roads": [
+      {
+        "name": "How Lane",
+        "ref": "CR 680"
+      },
+      {
+        "name": "Somerset Street",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Lincoln Highway",
+        "ref": "NJ 27"
+      },
+      {
+        "name": "Veronica Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 27",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-8746455999",
+    "osmNodeIds": [
+      8746455999
+    ],
+    "lat": 40.503484,
+    "lng": -74.579988,
+    "name": "Amwell Road near Franklin Street (west side)",
+    "roads": [
+      {
+        "name": "Amwell Road",
+        "ref": "CR 514"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 514",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-10045745914",
+    "osmNodeIds": [
+      10045745914,
+      13670340428,
+      13670340429,
+      13670340437
+    ],
+    "lat": 40.518469,
+    "lng": -74.546633,
+    "name": "Elizabeth Avenue near Warrior Way",
+    "roads": [
+      {
+        "name": "Elizabeth Avenue",
+        "ref": "CR 621"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 621",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13322729117",
+    "osmNodeIds": [
+      13322729117,
+      13322729119,
+      13322729131
+    ],
+    "lat": 40.505397,
+    "lng": -74.468263,
+    "name": "Easton Avenue & Landing Lane & Franklin Boulevard",
+    "roads": [
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      },
+      {
+        "name": "Landing Lane",
+        "ref": "CR 617"
+      },
+      {
+        "name": "Franklin Boulevard",
+        "ref": "CR 617"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13322729118",
+    "osmNodeIds": [
+      13322729118
+    ],
+    "lat": 40.505269,
+    "lng": -74.467912,
+    "name": "Easton Avenue near Landing Lane",
+    "roads": [
+      {
+        "name": "Easton Avenue",
+        "ref": "CR 527"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 527",
+    "municipality": "Franklin Township",
+    "county": "Somerset"
+  }
+]

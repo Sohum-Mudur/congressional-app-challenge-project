@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { approachDirection, snapToNearest, type Approach, type LatLng } from "@/lib/geo";
+import { approachDirection, distanceMeters, headingToApproach, snapToNearest, type Approach, type LatLng } from "@/lib/geo";
 import { searchSignals } from "@/lib/search";
 import { ISSUE_LABELS, type IssueType } from "@/lib/types";
 import { useIsInstalled } from "./install";
@@ -228,6 +228,10 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
   // --- render ---
 
   const formSignal = step.name === "form" || step.name === "sent" ? signals.find((s) => s.id === step.signalId) : null;
+  // Which way the phone says you're going: direction of travel while driving (or just after), else the compass.
+  const travel = live.position?.travelHeading ?? null;
+  const direction: LiveDirection | null =
+    travel != null ? { heading: travel, approach: headingToApproach(travel), driving: true } : live.heading != null ? { heading: live.heading, approach: headingToApproach(live.heading), driving: false } : null;
   const close = () => setStep({ name: "idle" });
 
   /** Go straight to the report form for a light picked from search, the map, or a list. */
@@ -274,7 +278,15 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
             )}
 
             {step.name === "form" && formSignal && (
-              <ReportForm key={formSignal.id} signal={formSignal} initialApproach={step.approach} onSubmit={submit} onCancel={close} />
+              <ReportForm
+                key={formSignal.id}
+                signal={formSignal}
+                initialApproach={step.approach}
+                // Only suggest a direction when it means something for this light: you're driving, or standing near it.
+                direction={direction && (direction.driving || (live.position && distanceMeters(live.position, formSignal) < 150)) ? direction : null}
+                onSubmit={submit}
+                onCancel={close}
+              />
             )}
 
             {step.name === "sent" && formSignal && (
@@ -338,6 +350,7 @@ export default function ReportApp({ initialSignalId }: { initialSignalId: string
 
             {step.name === "idle" && (
               <>
+                {direction && <DirectionBadge direction={direction} />}
                 {live.error && !notice && <Banner tone="warn">{live.error}</Banner>}
                 {notice && <Banner tone={notice.tone}>{notice.text}</Banner>}
                 {pending.length > 0 && (
@@ -450,8 +463,8 @@ function SearchBar({ signals, onChoose }: { signals: MapSignal[]; onChoose: (id:
               (e.target as HTMLInputElement).blur();
             }
           }}
-          placeholder="Search a street, e.g. Triangle Rd"
-          aria-label="Search for a traffic light by street"
+          placeholder="Search a street or town"
+          aria-label="Search for a traffic light by street or town"
           className="min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-neutral-400 [&::-webkit-search-cancel-button]:hidden"
         />
         {query && (
@@ -462,7 +475,7 @@ function SearchBar({ signals, onChoose }: { signals: MapSignal[]; onChoose: (id:
       </div>
       {showList && (
         <ul className="mt-2 max-h-[50dvh] overflow-y-auto rounded-3xl bg-white py-2 shadow-[0_1px_3px_rgb(60_64_67/0.3),0_4px_8px_3px_rgb(60_64_67/0.15)]">
-          {results.length === 0 && <li className="px-4 py-3 text-sm text-neutral-500">No Hillsborough traffic light on a street like that.</li>}
+          {results.length === 0 && <li className="px-4 py-3 text-sm text-neutral-500">No Somerset County traffic light matches that.</li>}
           {results.map((s) => (
             <li key={s.id}>
               <button
@@ -478,7 +491,9 @@ function SearchBar({ signals, onChoose }: { signals: MapSignal[]; onChoose: (id:
                 <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: OWNER_COLORS[s.ownerType] }} aria-hidden />
                 <span className="min-w-0">
                   <span className="block truncate font-medium">{s.name}</span>
-                  <span className="block text-xs text-neutral-500">Fixed by {s.agency?.name ?? OWNER_LABELS[s.ownerType]}</span>
+                  <span className="block truncate text-xs text-neutral-500">
+                    {s.municipality} · {OWNER_LABELS[s.ownerType]}
+                  </span>
                 </span>
               </button>
             </li>
@@ -621,6 +636,7 @@ function SignalCard({ signal, onReport, onClose }: { signal: MapSignal; onReport
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-lg font-bold leading-snug">{signal.name}</p>
+          <p className="text-sm text-neutral-500">{signal.municipality}</p>
           <p className="mt-0.5 flex items-center gap-1.5 text-sm text-neutral-600">
             <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: OWNER_COLORS[signal.ownerType] }} />
             <span>
@@ -662,11 +678,13 @@ export function StatusBadge({ signal }: { signal: Pick<MapSignal, "status" | "re
 function ReportForm({
   signal,
   initialApproach,
+  direction,
   onSubmit,
   onCancel,
 }: {
   signal: MapSignal;
   initialApproach: Approach | null;
+  direction: LiveDirection | null;
   onSubmit: (input: { issueType: IssueType; waitSeconds: number | null; approach: Approach | null; note: string }) => Promise<void>;
   onCancel: () => void;
 }) {
@@ -690,7 +708,7 @@ function ReportForm({
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Reporting</p>
           <p className="text-xl font-bold leading-snug">{signal.name}</p>
-          <p className="mt-0.5 text-sm text-neutral-600">Goes to {signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}</p>
+          <p className="mt-0.5 text-sm text-neutral-600">{signal.municipality} · Goes to {signal.agency?.name ?? OWNER_LABELS[signal.ownerType]}</p>
         </div>
         <CloseButton onClick={onCancel} label="Cancel report" />
       </div>
@@ -712,6 +730,20 @@ function ReportForm({
       </Question>
 
       <Question label="Which way were you going?">
+        {direction && (
+          <button
+            type="button"
+            onClick={() => setApproach(direction.approach)}
+            className="mb-1 flex w-full items-center gap-3 rounded-2xl bg-sky-50 px-3.5 py-2.5 text-left text-sm text-sky-950 active:bg-sky-100"
+          >
+            <DirectionLetter approach={direction.approach} />
+            <span className="min-w-0 flex-1">
+              Your phone says {direction.driving ? "you were driving" : "it's facing"} <strong>{direction.driving ? direction.approach : compassWord(direction.approach)}</strong>
+              {!direction.driving && <span className="block text-xs text-sky-800">Point the top of your phone the way you were driving.</span>}
+            </span>
+            <span className="shrink-0 font-semibold text-sky-700">{approach === direction.approach ? "✓ Using" : "Use"}</span>
+          </button>
+        )}
         {(["northbound", "eastbound", "southbound", "westbound"] as const).map((a) => (
           <Chip key={a} active={approach === a} onClick={() => setApproach(approach === a ? null : a)}>
             {a[0].toUpperCase() + a.slice(1)}
@@ -739,6 +771,40 @@ function ReportForm({
         </button>
       </div>
     </form>
+  );
+}
+
+type LiveDirection = { heading: number; approach: Approach; driving: boolean };
+
+const compassWord = (a: Approach) => ({ northbound: "north", eastbound: "east", southbound: "south", westbound: "west" })[a];
+
+/**
+ * The direction as a compass letter (N, E, S, W). A letter rather than an arrow, because the map itself turns
+ * while driving, and an arrow pointing "east" would disagree with the map's arrow pointing up.
+ */
+function DirectionLetter({ approach }: { approach: Approach }) {
+  return (
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white" aria-hidden>
+      {approach[0].toUpperCase()}
+    </span>
+  );
+}
+
+/** Always-visible "which way am I going" readout on the main screen. */
+function DirectionBadge({ direction }: { direction: LiveDirection }) {
+  return (
+    <p className="mb-3 flex items-center gap-2.5 text-sm text-neutral-700" aria-live="polite">
+      <DirectionLetter approach={direction.approach} />
+      {direction.driving ? (
+        <span>
+          Driving <strong className="text-neutral-900">{direction.approach}</strong>
+        </span>
+      ) : (
+        <span>
+          Facing <strong className="text-neutral-900">{compassWord(direction.approach)}</strong>
+        </span>
+      )}
+    </p>
   );
 }
 
@@ -886,7 +952,7 @@ function NoneNearbyCard({
         <CloseButton onClick={onDone} />
       </div>
       <p className="mt-1 text-[15px] text-neutral-600">
-        We only cover Hillsborough&apos;s traffic lights, and none is within 60 m (200 ft) of you. If you already drove away from the light, find it on the map and tap it.
+        We cover traffic lights in Somerset County, NJ, and none is within 60 m (200 ft) of you. If you already drove away from the light, find it on the map and tap it.
       </p>
       {nearest && miles < 2 && (
         <button onClick={() => onPick(nearest.signal.id)} className="mt-3 w-full rounded-2xl bg-neutral-50 p-4 text-left ring-1 ring-black/5 active:bg-neutral-100">

@@ -1,0 +1,261 @@
+[
+  {
+    "id": "osm-105285875",
+    "osmNodeIds": [
+      105285875,
+      105285917,
+      1899705493
+    ],
+    "lat": 40.643689,
+    "lng": -74.716029,
+    "name": "Rattlesnake Bridge Road near Phillipsburg-Newark Expressway",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Rattlesnake Bridge Road",
+        "ref": "CR 665"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 665",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105310277",
+    "osmNodeIds": [
+      105310277,
+      105390371,
+      5172057015
+    ],
+    "lat": 40.662792,
+    "lng": -74.645133,
+    "name": "US 202 near River Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105312481",
+    "osmNodeIds": [
+      105312481
+    ],
+    "lat": 40.676304,
+    "lng": -74.64788,
+    "name": "US Highway 206",
+    "roads": [
+      {
+        "name": "US Highway 206",
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105314831",
+    "osmNodeIds": [
+      105314831
+    ],
+    "lat": 40.679173,
+    "lng": -74.649873,
+    "name": "Lamington Road & US Highway 206",
+    "roads": [
+      {
+        "name": "Lamington Road",
+        "ref": "CR 523"
+      },
+      {
+        "name": "US Highway 206",
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105345148",
+    "osmNodeIds": [
+      105345148
+    ],
+    "lat": 40.646639,
+    "lng": -74.640155,
+    "name": "US 202 & Washington Valley Road & Burnt Mills Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      },
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 620"
+      },
+      {
+        "name": "Burnt Mills Road",
+        "ref": "(620)"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105354246",
+    "osmNodeIds": [
+      105354246,
+      13429731286
+    ],
+    "lat": 40.680455,
+    "lng": -74.645661,
+    "name": "Main Street & Hillside Avenue & Somerville Road",
+    "roads": [
+      {
+        "name": "Main Street",
+        "ref": "US 202"
+      },
+      {
+        "name": "Hillside Avenue",
+        "ref": null
+      },
+      {
+        "name": "Somerville Road",
+        "ref": "US 202"
+      },
+      {
+        "name": "Lamington Road",
+        "ref": "CR 523"
+      },
+      {
+        "name": null,
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105363653",
+    "osmNodeIds": [
+      105363653
+    ],
+    "lat": 40.650592,
+    "lng": -74.643725,
+    "name": "US 202 & Crossroads Drive & Hills Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      },
+      {
+        "name": "Crossroads Drive",
+        "ref": null
+      },
+      {
+        "name": "Hills Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105388847",
+    "osmNodeIds": [
+      105388847
+    ],
+    "lat": 40.673618,
+    "lng": -74.645545,
+    "name": "US 202 & US 206",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202"
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105388946",
+    "osmNodeIds": [
+      105388946,
+      5172057012,
+      14015413688
+    ],
+    "lat": 40.656828,
+    "lng": -74.643601,
+    "name": "US 202 near Schley Mountain Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105389655",
+    "osmNodeIds": [
+      105389655,
+      621543012,
+      5172057014
+    ],
+    "lat": 40.662435,
+    "lng": -74.645486,
+    "name": "River Road & US 202",
+    "roads": [
+      {
+        "name": "River Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bedminster Township",
+    "county": "Somerset"
+  }
+]

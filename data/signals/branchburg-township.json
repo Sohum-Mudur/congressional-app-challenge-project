@@ -1,0 +1,294 @@
+[
+  {
+    "id": "osm-103960289",
+    "osmNodeIds": [
+      103960289
+    ],
+    "lat": 40.584206,
+    "lng": -74.712946,
+    "name": "Harlan School Road & Readington Road",
+    "roads": [
+      {
+        "name": "Harlan School Road",
+        "ref": null
+      },
+      {
+        "name": "Readington Road",
+        "ref": "CR 637"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 637",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-103960448",
+    "osmNodeIds": [
+      103960448,
+      13243341565
+    ],
+    "lat": 40.569485,
+    "lng": -74.722506,
+    "name": "Readington Road & Dreahook Road & Fawn Run Lane",
+    "roads": [
+      {
+        "name": "Readington Road",
+        "ref": "CR 637"
+      },
+      {
+        "name": "Readington Road",
+        "ref": "CR 620"
+      },
+      {
+        "name": "Dreahook Road",
+        "ref": "CR 637"
+      },
+      {
+        "name": "Fawn Run Lane",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 637",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105322512",
+    "osmNodeIds": [
+      105322512
+    ],
+    "lat": 40.605719,
+    "lng": -74.688309,
+    "name": "Campus Drive & Easton Turnpike & Orr Drive",
+    "roads": [
+      {
+        "name": "Campus Drive",
+        "ref": null
+      },
+      {
+        "name": "Easton Turnpike",
+        "ref": "CR 614"
+      },
+      {
+        "name": "Orr Drive",
+        "ref": "CR 637"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 614",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105329119",
+    "osmNodeIds": [
+      105329119,
+      105431503
+    ],
+    "lat": 40.610062,
+    "lng": -74.714911,
+    "name": "US 22 & County Line Road & Churchill Circle",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "County Line Road",
+        "ref": null
+      },
+      {
+        "name": "Churchill Circle",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105354080",
+    "osmNodeIds": [
+      105354080
+    ],
+    "lat": 40.60661,
+    "lng": -74.694415,
+    "name": "Lamington Road & Easton Turnpike",
+    "roads": [
+      {
+        "name": "Lamington Road",
+        "ref": "CR 665"
+      },
+      {
+        "name": "Easton Turnpike",
+        "ref": "CR 614"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 665",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105366319",
+    "osmNodeIds": [
+      105366319,
+      105392196
+    ],
+    "lat": 40.60232,
+    "lng": -74.689805,
+    "name": "Readington Road & US 22 & Orr Drive",
+    "roads": [
+      {
+        "name": "Readington Road",
+        "ref": "CR 637"
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Orr Drive",
+        "ref": "CR 637"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105388731",
+    "osmNodeIds": [
+      105388731,
+      105389047
+    ],
+    "lat": 40.54821,
+    "lng": -74.738252,
+    "name": "Whiton Road & US 202",
+    "roads": [
+      {
+        "name": "Whiton Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105388745",
+    "osmNodeIds": [
+      105388745,
+      773340559
+    ],
+    "lat": 40.558623,
+    "lng": -74.709049,
+    "name": "Chubb Way & US 202",
+    "roads": [
+      {
+        "name": "Chubb Way",
+        "ref": "CR 646"
+      },
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105388749",
+    "osmNodeIds": [
+      105388749,
+      105389030,
+      4337845877,
+      4337846295,
+      5558159410,
+      5558159411
+    ],
+    "lat": 40.561324,
+    "lng": -74.701478,
+    "name": "Old York Road & US 202",
+    "roads": [
+      {
+        "name": "Old York Road",
+        "ref": "CR 637"
+      },
+      {
+        "name": null,
+        "ref": "US 202"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105431521",
+    "osmNodeIds": [
+      105431521
+    ],
+    "lat": 40.606332,
+    "lng": -74.699314,
+    "name": "US 22 near Independence Way",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-773343685",
+    "osmNodeIds": [
+      773343685,
+      773343693
+    ],
+    "lat": 40.567686,
+    "lng": -74.683624,
+    "name": "US 202 near River Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Branchburg Township",
+    "county": "Somerset"
+  }
+]

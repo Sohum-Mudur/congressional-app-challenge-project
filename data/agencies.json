@@ -34,5 +34,89 @@
     "phone": "908-369-4313 option 6",
     "sourceUrl": "https://hillsboroughnj.gov/departments/dpw",
     "verified": false
+  },
+  {
+    "id": "bernards-township",
+    "name": "Bernards Township Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Bernards Township",
+    "email": "publicworks@bernards.org",
+    "formUrl": null,
+    "phone": "908-204-3084",
+    "sourceUrl": "https://www.bernards.org/departments/dpw",
+    "verified": false
+  },
+  {
+    "id": "bridgewater-township",
+    "name": "Bridgewater Township Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Bridgewater Township",
+    "email": "publicworks@bridgewaternj.gov",
+    "formUrl": null,
+    "phone": "908-725-6300 ext. 6000",
+    "sourceUrl": "https://bridgewaternj.gov/departments/dpw",
+    "verified": false
+  },
+  {
+    "id": "franklin-township",
+    "name": "Franklin Township Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Franklin Township",
+    "email": null,
+    "formUrl": "https://www.franklintwpnj.org/departments/public-works",
+    "phone": "732-873-2500 option 6",
+    "sourceUrl": "https://www.franklintwpnj.org/departments/public-works",
+    "verified": false
+  },
+  {
+    "id": "manville",
+    "name": "Manville Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Manville",
+    "email": null,
+    "formUrl": "https://www.manvillenj.org",
+    "phone": "908-725-5512",
+    "sourceUrl": "https://www.manvillenj.org/DocumentCenter/View/5550/2023-Borough-of-Manville-Calendar",
+    "verified": false
+  },
+  {
+    "id": "north-plainfield",
+    "name": "North Plainfield Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "North Plainfield",
+    "email": null,
+    "formUrl": "https://northplainfieldnj.gov/departments/dpw",
+    "phone": "908-769-2914",
+    "sourceUrl": "https://northplainfieldnj.gov/departments/dpw",
+    "verified": false
+  },
+  {
+    "id": "somerville",
+    "name": "Somerville Borough Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Somerville",
+    "email": null,
+    "formUrl": "https://somervillenj.org/people",
+    "phone": "908-725-2300",
+    "sourceUrl": "https://somervillenj.org/people",
+    "verified": false
+  },
+  {
+    "id": "watchung",
+    "name": "Watchung Department of Public Works",
+    "type": "municipal",
+    "county": "Somerset",
+    "municipality": "Watchung",
+    "email": null,
+    "formUrl": "https://watchungnj.gov/government/directory",
+    "phone": "908-756-0080 ext. 214",
+    "sourceUrl": "https://watchungnj.gov/government/directory",
+    "verified": false
   }
 ]

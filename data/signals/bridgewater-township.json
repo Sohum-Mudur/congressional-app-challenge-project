@@ -1,0 +1,1133 @@
+[
+  {
+    "id": "osm-105287220",
+    "osmNodeIds": [
+      105287220
+    ],
+    "lat": 40.598219,
+    "lng": -74.623234,
+    "name": "US 202 & Downey Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      },
+      {
+        "name": "Downey Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105288935",
+    "osmNodeIds": [
+      105288935,
+      105288937,
+      773343379
+    ],
+    "lat": 40.573679,
+    "lng": -74.666426,
+    "name": "US 202",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105291555",
+    "osmNodeIds": [
+      105291555,
+      105291591
+    ],
+    "lat": 40.591819,
+    "lng": -74.651599,
+    "name": "US 22 (south side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105291557",
+    "osmNodeIds": [
+      105291557,
+      105291586
+    ],
+    "lat": 40.592121,
+    "lng": -74.651791,
+    "name": "US 22 (north side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105292990",
+    "osmNodeIds": [
+      105292990
+    ],
+    "lat": 40.625167,
+    "lng": -74.630711,
+    "name": "Muirfield Lane & US 202",
+    "roads": [
+      {
+        "name": "Muirfield Lane",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105299326",
+    "osmNodeIds": [
+      105299326
+    ],
+    "lat": 40.556593,
+    "lng": -74.582394,
+    "name": "Van Veghten Drive & Finderne Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Van Veghten Drive",
+        "ref": null
+      },
+      {
+        "name": "Finderne Avenue",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105314359",
+    "osmNodeIds": [
+      105314359,
+      105314386,
+      7485576538
+    ],
+    "lat": 40.633276,
+    "lng": -74.634269,
+    "name": "US 202 near Corporate Drive South",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105314539",
+    "osmNodeIds": [
+      105314539,
+      105316481,
+      7485576551
+    ],
+    "lat": 40.637469,
+    "lng": -74.635548,
+    "name": "US 202 near Corporate Drive North",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105317646",
+    "osmNodeIds": [
+      105317646,
+      9309013383
+    ],
+    "lat": 40.577088,
+    "lng": -74.631316,
+    "name": "Easton Turnpike",
+    "roads": [
+      {
+        "name": "Easton Turnpike",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324292",
+    "osmNodeIds": [
+      105324292
+    ],
+    "lat": 40.563224,
+    "lng": -74.578424,
+    "name": "East Main Street & Finderne Avenue",
+    "roads": [
+      {
+        "name": "East Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Finderne Avenue",
+        "ref": "CR 633"
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 612"
+      },
+      {
+        "name": "Finderne Avenue",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324304",
+    "osmNodeIds": [
+      105324304
+    ],
+    "lat": 40.569459,
+    "lng": -74.575966,
+    "name": "Finderne Avenue & Union Avenue",
+    "roads": [
+      {
+        "name": "Finderne Avenue",
+        "ref": "CR 633"
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105324311",
+    "osmNodeIds": [
+      105324311,
+      105324313
+    ],
+    "lat": 40.574912,
+    "lng": -74.573842,
+    "name": "Finderne Avenue & Foothill Road",
+    "roads": [
+      {
+        "name": "Finderne Avenue",
+        "ref": "CR 633"
+      },
+      {
+        "name": "Foothill Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 633",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105334623",
+    "osmNodeIds": [
+      105334623,
+      9929084484
+    ],
+    "lat": 40.641001,
+    "lng": -74.636789,
+    "name": "US 202 & Manor Drive",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      },
+      {
+        "name": "Manor Drive",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105335856",
+    "osmNodeIds": [
+      105335856
+    ],
+    "lat": 40.610373,
+    "lng": -74.625251,
+    "name": "US 202 & Talamini Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      },
+      {
+        "name": "Talamini Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105339386",
+    "osmNodeIds": [
+      105339386,
+      105339388
+    ],
+    "lat": 40.571067,
+    "lng": -74.674073,
+    "name": "US 202 & Milltown Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 202"
+      },
+      {
+        "name": "Milltown Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105339470",
+    "osmNodeIds": [
+      105339470,
+      105339472
+    ],
+    "lat": 40.596333,
+    "lng": -74.673109,
+    "name": "US Route 22 Eastbound & Milltown Road & US 22",
+    "roads": [
+      {
+        "name": "US Route 22 Eastbound",
+        "ref": "US 22"
+      },
+      {
+        "name": "Milltown Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105345412",
+    "osmNodeIds": [
+      105345412
+    ],
+    "lat": 40.602725,
+    "lng": -74.564015,
+    "name": "Washington Valley Road & Mount Horeb Road",
+    "roads": [
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 620"
+      },
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": "Mount Horeb Road",
+        "ref": null
+      },
+      {
+        "name": "Mount Horeb Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 620",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105345425",
+    "osmNodeIds": [
+      105345425
+    ],
+    "lat": 40.600557,
+    "lng": -74.559408,
+    "name": "Washington Valley Road & Chimney Rock Road",
+    "roads": [
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 525"
+      },
+      {
+        "name": "Washington Valley Road",
+        "ref": "CR 616"
+      },
+      {
+        "name": "Chimney Rock Road",
+        "ref": "CR 525"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 525",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105362273",
+    "osmNodeIds": [
+      105362273,
+      105362275
+    ],
+    "lat": 40.576471,
+    "lng": -74.544134,
+    "name": "US Route 22 Eastbound & US 22 & Vosseller Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US Route 22 Eastbound"
+      },
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Vosseller Avenue",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105369779",
+    "osmNodeIds": [
+      105369779
+    ],
+    "lat": 40.597093,
+    "lng": -74.641654,
+    "name": "Garretson Road & Country Club Road",
+    "roads": [
+      {
+        "name": "Garretson Road",
+        "ref": null
+      },
+      {
+        "name": "Country Club Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105369824",
+    "osmNodeIds": [
+      105369824
+    ],
+    "lat": 40.593005,
+    "lng": -74.626432,
+    "name": "Commons Way & Garretson Road",
+    "roads": [
+      {
+        "name": "Commons Way",
+        "ref": null
+      },
+      {
+        "name": "Garretson Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105375931",
+    "osmNodeIds": [
+      105375931,
+      105375967
+    ],
+    "lat": 40.588412,
+    "lng": -74.640597,
+    "name": "US 22 & Country Club Road",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Country Club Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105375946",
+    "osmNodeIds": [
+      105375946,
+      105375980,
+      105375982
+    ],
+    "lat": 40.585232,
+    "lng": -74.632136,
+    "name": "US 22 & Somerset Corporate Boulevard & Richard Street",
+    "roads": [
+      {
+        "name": null,
+        "ref": "US 22"
+      },
+      {
+        "name": "Somerset Corporate Boulevard",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Richard Street",
+        "ref": "US 22"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 22",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105378287",
+    "osmNodeIds": [
+      105378287
+    ],
+    "lat": 40.589067,
+    "lng": -74.653485,
+    "name": "Vista Road & Easton Turnpike",
+    "roads": [
+      {
+        "name": "Vista Road",
+        "ref": null
+      },
+      {
+        "name": "Easton Turnpike",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105384292",
+    "osmNodeIds": [
+      105384292,
+      105429275
+    ],
+    "lat": 40.562568,
+    "lng": -74.573119,
+    "name": "Ramsey Street & East Main Street & Pearl Street",
+    "roads": [
+      {
+        "name": "Ramsey Street",
+        "ref": null
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Pearl Street",
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105390224",
+    "osmNodeIds": [
+      105390224
+    ],
+    "lat": 40.628163,
+    "lng": -74.632828,
+    "name": "Balaji Temple Drive & Brown Road & US 202",
+    "roads": [
+      {
+        "name": "Balaji Temple Drive",
+        "ref": null
+      },
+      {
+        "name": "Brown Road",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 202;US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 202",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105401688",
+    "osmNodeIds": [
+      105401688
+    ],
+    "lat": 40.561608,
+    "lng": -74.565112,
+    "name": "Chimney Rock Road & Polhemus Lane & East Main Street",
+    "roads": [
+      {
+        "name": "Chimney Rock Road",
+        "ref": "(675)"
+      },
+      {
+        "name": "Polhemus Lane",
+        "ref": "(675)"
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105416234",
+    "osmNodeIds": [
+      105416234,
+      11380487531,
+      11380487532,
+      11380487533
+    ],
+    "lat": 40.585727,
+    "lng": -74.615401,
+    "name": "Prince Rodgers Avenue & Commons Way",
+    "roads": [
+      {
+        "name": "Prince Rodgers Avenue",
+        "ref": null
+      },
+      {
+        "name": "Commons Way",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105430421",
+    "osmNodeIds": [
+      105430421,
+      12327882536,
+      13516036212,
+      13516036213
+    ],
+    "lat": 40.588893,
+    "lng": -74.619618,
+    "name": "Commons Way",
+    "roads": [
+      {
+        "name": "Commons Way",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-105456549",
+    "osmNodeIds": [
+      105456549
+    ],
+    "lat": 40.560805,
+    "lng": -74.558585,
+    "name": "Foothill Road & East Main Street",
+    "roads": [
+      {
+        "name": "Foothill Road",
+        "ref": "CR 683"
+      },
+      {
+        "name": "East Main Street",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 683",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440146104",
+    "osmNodeIds": [
+      440146104
+    ],
+    "lat": 40.586044,
+    "lng": -74.647913,
+    "name": "Vanderveer Road & Easton Turnpike",
+    "roads": [
+      {
+        "name": "Vanderveer Road",
+        "ref": null
+      },
+      {
+        "name": "Easton Turnpike",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440146122",
+    "osmNodeIds": [
+      440146122
+    ],
+    "lat": 40.581582,
+    "lng": -74.639656,
+    "name": "Country Club Road & First Avenue & Easton Turnpike",
+    "roads": [
+      {
+        "name": "Country Club Road",
+        "ref": null
+      },
+      {
+        "name": "First Avenue",
+        "ref": "CR 567"
+      },
+      {
+        "name": "Easton Turnpike",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-440146569",
+    "osmNodeIds": [
+      440146569
+    ],
+    "lat": 40.570531,
+    "lng": -74.586259,
+    "name": "North Adamsville Road & Union Avenue",
+    "roads": [
+      {
+        "name": "North Adamsville Road",
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621538183",
+    "osmNodeIds": [
+      621538183,
+      621538193
+    ],
+    "lat": 40.568016,
+    "lng": -74.555265,
+    "name": "Union Avenue",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-621538198",
+    "osmNodeIds": [
+      621538198,
+      13502907751,
+      13502907752,
+      13502907753
+    ],
+    "lat": 40.568178,
+    "lng": -74.56282,
+    "name": "Foothill Road & Union Avenue & Chimney Rock Road",
+    "roads": [
+      {
+        "name": "Foothill Road",
+        "ref": "CR 675"
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      },
+      {
+        "name": "Chimney Rock Road",
+        "ref": "CR 675"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-3803679777",
+    "osmNodeIds": [
+      3803679777
+    ],
+    "lat": 40.574804,
+    "lng": -74.561017,
+    "name": "Chimney Rock Road (south side)",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Chimney Rock Road",
+        "ref": "CR 675"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 675",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-3803699093",
+    "osmNodeIds": [
+      3803699093
+    ],
+    "lat": 40.577805,
+    "lng": -74.55992,
+    "name": "Frontier Road & Chimney Rock Road",
+    "roads": [
+      {
+        "name": "Frontier Road",
+        "ref": null
+      },
+      {
+        "name": "Chimney Rock Road",
+        "ref": "CR 675"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 675",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-5426015374",
+    "osmNodeIds": [
+      5426015374
+    ],
+    "lat": 40.577002,
+    "lng": -74.627696,
+    "name": "US 206 near West Summit Street",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": "US 206"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "US 206",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-10050163413",
+    "osmNodeIds": [
+      10050163413
+    ],
+    "lat": 40.574833,
+    "lng": -74.627131,
+    "name": "West End Avenue near Northwood Avenue",
+    "roads": [
+      {
+        "name": "West End Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-11380487523",
+    "osmNodeIds": [
+      11380487523,
+      11380487524,
+      11380487525,
+      11380487526
+    ],
+    "lat": 40.588798,
+    "lng": -74.624622,
+    "name": "Somerset Corporate Boulevard & Commons Way",
+    "roads": [
+      {
+        "name": "Somerset Corporate Boulevard",
+        "ref": null
+      },
+      {
+        "name": "Commons Way",
+        "ref": null
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-11380487527",
+    "osmNodeIds": [
+      11380487527,
+      11380487528,
+      11380487529,
+      11380487530
+    ],
+    "lat": 40.593593,
+    "lng": -74.609253,
+    "name": "North Bridge Street & Woodlawn Avenue & Lawton Road",
+    "roads": [
+      {
+        "name": "North Bridge Street",
+        "ref": "(639)"
+      },
+      {
+        "name": "Woodlawn Avenue",
+        "ref": null
+      },
+      {
+        "name": "Lawton Road",
+        "ref": null
+      }
+    ],
+    "ownerType": "municipal",
+    "viaRef": null,
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13484465448",
+    "osmNodeIds": [
+      13484465448,
+      13484465450,
+      13520783027
+    ],
+    "lat": 40.576427,
+    "lng": -74.560586,
+    "name": "Chimney Rock Road (2 of 3)",
+    "roads": [
+      {
+        "name": "Chimney Rock Road",
+        "ref": "CR 675"
+      },
+      {
+        "name": null,
+        "ref": null
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 675",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13484465449",
+    "osmNodeIds": [
+      13484465449
+    ],
+    "lat": 40.576206,
+    "lng": -74.560636,
+    "name": "Chimney Rock Road (3 of 3)",
+    "roads": [
+      {
+        "name": "Chimney Rock Road",
+        "ref": "CR 675"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 675",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13485182428",
+    "osmNodeIds": [
+      13485182428,
+      13485182429,
+      13485182430
+    ],
+    "lat": 40.568163,
+    "lng": -74.559851,
+    "name": "Union Avenue near Promenade Boulevard",
+    "roads": [
+      {
+        "name": null,
+        "ref": null
+      },
+      {
+        "name": "Union Avenue",
+        "ref": "NJ 28"
+      }
+    ],
+    "ownerType": "state",
+    "viaRef": "NJ 28",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  },
+  {
+    "id": "osm-13520783004",
+    "osmNodeIds": [
+      13520783004,
+      13520783005,
+      13520783006
+    ],
+    "lat": 40.561467,
+    "lng": -74.554574,
+    "name": "East Main Street & Promenade Boulevard & Main Street",
+    "roads": [
+      {
+        "name": "East Main Street",
+        "ref": "CR 533"
+      },
+      {
+        "name": "Promenade Boulevard",
+        "ref": "CR 685"
+      },
+      {
+        "name": "Main Street",
+        "ref": "CR 533"
+      }
+    ],
+    "ownerType": "county",
+    "viaRef": "CR 533",
+    "municipality": "Bridgewater Township",
+    "county": "Somerset"
+  }
+]
