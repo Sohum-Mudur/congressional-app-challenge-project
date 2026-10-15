@@ -1,10 +1,12 @@
-# Signal Report (working name)
+# Traffix
+
+*It fixes traffic lights.*
 
 **Stuck at a red light with no cross traffic? Report it in a few taps, and the app gets it to the agency that actually fixes that light.**
 
 Covers all **327 traffic lights in Somerset County, New Jersey** (21 towns). Built by students from Hillsborough, NJ, for the 2026 Congressional App Challenge.
 
-**Live app:** https://congressional-app-challenge-project.vercel.app (works on any phone; add it to your home screen to use it like an app)
+**Live app:** https://traffix-nj.vercel.app (works on any phone; add it to your home screen to use it like an app)
 
 ---
 

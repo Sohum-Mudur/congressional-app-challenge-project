@@ -65,7 +65,7 @@ async function fetchOsm(municipality: string, relationId?: number) {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": "signal-app-student-project/0.1 (Congressional App Challenge)",
+        "User-Agent": "traffix-student-project/0.1 (Congressional App Challenge)",
         Accept: "application/json",
       },
       body: new URLSearchParams({ data: query }),

@@ -47,7 +47,7 @@ async function nameLonely(lonely: Signal[]) {
   for (let attempt = 1; attempt <= 4; attempt++) {
     const res = await fetch(OVERPASS_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "signal-app-student-project/0.1 (Congressional App Challenge)" },
+      headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "traffix-student-project/0.1 (Congressional App Challenge)" },
       body: new URLSearchParams({ data: query }),
     });
     if (res.ok) {
