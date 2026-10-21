@@ -13,6 +13,11 @@ export const config = {
    * Only set TEST_MODE=false after the agency has agreed to receive reports.
    */
   testMode: env("TEST_MODE") !== "false",
+  /**
+   * Agencies that have agreed to get real emails even while TEST_MODE is on, e.g. "hillsborough-township".
+   * Comma-separated agency ids from data/agencies.json. Everyone else stays in test mode.
+   */
+  liveAgencies: (env("LIVE_AGENCIES") ?? "").split(",").map((s) => s.trim()).filter(Boolean),
   // Without Resend, emails land in the local outbox anyway, so any placeholder address works.
   testInbox: env("TEST_INBOX") ?? (env("RESEND_API_KEY") ? null : "test-inbox@localhost"),
 
@@ -20,6 +25,8 @@ export const config = {
   adminEmail: env("ADMIN_EMAIL") ?? null,
 
   resendApiKey: env("RESEND_API_KEY") ?? null,
+  /** Where replies to our emails go (a person on the team), since the sending address can't receive mail. */
+  replyTo: env("REPLY_TO") ?? null,
   emailFrom: env("EMAIL_FROM") ?? `${APP_NAME} <onboarding@resend.dev>`,
 
   /** Secret mixed into IP-address hashes, so a stored hash can't be turned back into an address. */
@@ -28,3 +35,6 @@ export const config = {
   /** Vercel Cron sends this as a Bearer token; protects the digest endpoint. */
   cronSecret: env("CRON_SECRET") ?? null,
 };
+
+/** Whether real emails go to this agency (and to residents waiting on its lights) instead of the test inbox. */
+export const isLive = (agencyId: string) => !config.testMode || config.liveAgencies.includes(agencyId);

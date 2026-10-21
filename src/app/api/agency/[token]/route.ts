@@ -25,6 +25,6 @@ export async function POST(request: NextRequest, ctx: RouteContext<"/api/agency/
   }
 
   await store.setSignalStatus([signal.id], parsed.data.status);
-  const notified = parsed.data.status === "fixed" ? await sendFixAlerts(signal, agency.name) : 0;
+  const notified = parsed.data.status === "fixed" ? await sendFixAlerts(signal, agency) : 0;
   return Response.json({ ok: true, notified });
 }

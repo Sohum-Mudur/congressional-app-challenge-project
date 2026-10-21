@@ -5,7 +5,8 @@
 //   npm run smoke                                   # against SITE_URL from .env.local
 //   SMOKE_URL=http://localhost:3000 npm run smoke   # against a local dev server
 //
-// Refuses to run unless the site reports TEST_MODE is on, so no real agency is ever emailed.
+// Refuses to run unless the site reports TEST_MODE is on, and only uses lights of agencies that aren't live,
+// so no real agency is ever emailed.
 
 import postgres from "postgres";
 
@@ -46,7 +47,8 @@ async function main() {
 
   const check = await fetch(`${BASE}/api/digest?check=1`, { headers: auth }).then((r) => r.json());
   expect(check.testMode === true, `the site must be in test mode (got ${JSON.stringify(check)})`);
-  step("site is in test mode");
+  const live: string[] = check.liveAgencies ?? [];
+  step(`site is in test mode${live.length ? ` (live agencies, which this test avoids: ${live.join(", ")})` : ""}`);
 
   // Real lights close to the digest threshold would get swept into the test digest, so wait until they're handled.
   const busy = await sql`select signal_id from reports where created_at > now() - interval '7 days' group by signal_id having count(*) >= 3`;
@@ -55,9 +57,9 @@ async function main() {
   const signals: { id: string; name: string; ownerType: string; status: string; municipality: string; agency: { id: string } | null }[] = await fetch(
     `${BASE}/api/signals`,
   ).then((r) => r.json());
-  // A town-owned light in Hillsborough, so the test email looks like what DPW would receive.
-  const signal = signals.find((s) => s.ownerType === "municipal" && s.status === "ok" && s.agency?.id === "hillsborough-township");
-  expect(signal?.agency, "a Hillsborough township light with no reports");
+  // A town-owned light whose agency is still in test mode, so nothing reaches a real agency.
+  const signal = signals.find((s) => s.ownerType === "municipal" && s.status === "ok" && s.agency && !live.includes(s.agency.id));
+  expect(signal?.agency, "a town-owned light, not belonging to a live agency, with no reports");
   signalId = signal.id;
   const agencyId = signal.agency.id;
   step(`using ${signal.name}, ${signal.municipality} (${signal.id})`);
@@ -88,7 +90,7 @@ async function main() {
 
   const digest = await new Person().post("/api/digest", {}, auth);
   const result = digest.body.results?.find((r: { agencyId: string }) => r.agencyId === agencyId);
-  expect(digest.body.testMode === true && result?.delivered, `digest should email the test inbox: ${JSON.stringify(digest.body)}`);
+  expect(result?.delivered && result.live === false, `digest should email the test inbox: ${JSON.stringify(digest.body)}`);
   step("digest emailed to the test inbox");
 
   const [{ manage_token }] = await sql`select manage_token from agencies where id = ${agencyId}`;

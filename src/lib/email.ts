@@ -25,7 +25,7 @@ export async function sendEmail(email: Email): Promise<{ delivered: boolean; id:
   }
 
   const resend = new Resend(config.resendApiKey);
-  const { data, error } = await resend.emails.send({ from: config.emailFrom, ...email });
+  const { data, error } = await resend.emails.send({ from: config.emailFrom, ...(config.replyTo && { replyTo: config.replyTo }), ...email });
   if (error) throw new Error(`Resend: ${error.message}`);
   return { delivered: true, id: data!.id };
 }
