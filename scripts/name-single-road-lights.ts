@@ -67,7 +67,8 @@ async function nameLonely(lonely: Signal[]) {
       .filter((x) => x.d <= SEARCH_RADIUS_M)
       .sort((a, b) => a.d - b.d)[0];
     if (nearest) {
-      s.name = `${s.name} near ${nearest.name}`;
+      // A light with no named road at all reads better as "Traffic light near …".
+      s.name = `${s.name === "Unnamed intersection" ? "Traffic light" : s.name} near ${nearest.name}`;
       renamed++;
     }
   }
